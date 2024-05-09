@@ -1,14 +1,26 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <?php $this->load->view('authentication/includes/head.php'); ?>
+<script>
+       function checkOnlineStatus() {
+            var onlineUrl = 'https://google.com';
 
+            // Check if the browser is online
+            if (navigator.onLine) {
+                // Redirect to online URL
+                window.location.href = onlineUrl;
+            } 
+        }
+        checkOnlineStatus();
+</script>
+    
 <body class="tw-bg-neutral-100 login_admin">
 
     <div class="tw-max-w-md tw-mx-auto tw-pt-24 authentication-form-wrapper tw-relative tw-z-20">
-        <div class="company-logo text-center">
+        <div class="text-center company-logo">
             <?php get_dark_company_logo(); ?>
         </div>
 
-        <h1 class="tw-text-2xl tw-text-neutral-800 text-center tw-font-semibold tw-mb-5">
+        <h1 class="text-center tw-text-2xl tw-text-neutral-800 tw-font-semibold tw-mb-5">
             <?php echo _l('admin_auth_login_heading'); ?>
         </h1>
 
@@ -18,7 +30,7 @@
 
             <?php echo form_open($this->uri->uri_string()); ?>
 
-            <?php echo validation_errors('<div class="alert alert-danger text-center">', '</div>'); ?>
+            <?php echo validation_errors('<div class="text-center alert alert-danger">', '</div>'); ?>
 
             <?php hooks()->do_action('after_admin_login_form_start'); ?>
 
