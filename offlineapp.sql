@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2024 at 02:01 PM
+-- Generation Time: May 10, 2024 at 03:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,22 +31,15 @@ CREATE TABLE `tblactivity_log` (
   `id` int(11) NOT NULL,
   `description` longtext NOT NULL,
   `date` datetime NOT NULL,
-  `staffid` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `staffid` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblactivity_log`
 --
 
-INSERT INTO `tblactivity_log` (`id`, `description`, `date`, `staffid`, `created_at`, `updated_at`) VALUES
-(1, 'User Successfully Logged In [User Id: 1, Is Staff Member: Yes, IP: ::1]', '2024-05-08 16:23:00', 'Majid ali', '2024-05-10 11:14:00', '2024-05-10 11:14:00'),
-(2, 'User Successfully Logged In [User Id: 1, Is Staff Member: Yes, IP: ::1]', '2024-05-10 12:40:21', 'Majid ali', '2024-05-10 11:14:00', '2024-05-10 11:14:00'),
-(3, 'Failed to send email template - SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting<br /><pre>\n\n</pre>', '2024-05-10 12:43:32', 'Majid ali', '2024-05-10 11:14:00', '2024-05-10 11:14:00'),
-(4, 'New Staff Member Added [ID: 2, Majid ali]', '2024-05-10 12:43:32', 'Majid ali', '2024-05-10 11:14:00', '2024-05-10 11:14:00'),
-(5, 'Staff Member Updated [ID: 2, Majidtest ali]', '2024-05-10 12:44:55', 'Majid ali', '2024-05-10 11:14:00', '2024-05-10 11:14:00'),
-(6, 'Staff Member Updated [ID: 2, Majid ali]', '2024-05-10 12:46:15', 'Majid ali', '2024-05-10 11:14:00', '2024-05-10 11:14:00');
+INSERT INTO `tblactivity_log` (`id`, `description`, `date`, `staffid`) VALUES
+(1, 'User Successfully Logged In [User Id: 1, Is Staff Member: Yes, IP: ::1]', '2024-05-10 18:17:25', 'majid ali');
 
 -- --------------------------------------------------------
 
@@ -62,9 +55,7 @@ CREATE TABLE `tblannouncements` (
   `showtostaff` int(11) NOT NULL,
   `showname` int(11) NOT NULL,
   `dateadded` datetime NOT NULL,
-  `userid` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `userid` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -104,9 +95,7 @@ CREATE TABLE `tblclients` (
   `show_primary_contact` int(11) NOT NULL DEFAULT 0,
   `stripe_id` varchar(40) DEFAULT NULL,
   `registration_confirmed` int(11) NOT NULL DEFAULT 1,
-  `addedfrom` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `addedfrom` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -125,9 +114,7 @@ CREATE TABLE `tblconsents` (
   `description` mediumtext DEFAULT NULL,
   `opt_in_purpose_description` mediumtext DEFAULT NULL,
   `purpose_id` int(11) NOT NULL,
-  `staff_name` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `staff_name` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -141,9 +128,7 @@ CREATE TABLE `tblconsent_purposes` (
   `name` varchar(100) NOT NULL,
   `description` mediumtext DEFAULT NULL,
   `date_created` datetime NOT NULL,
-  `last_updated` datetime DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `last_updated` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -180,9 +165,7 @@ CREATE TABLE `tblcontacts` (
   `contract_emails` tinyint(1) NOT NULL DEFAULT 1,
   `task_emails` tinyint(1) NOT NULL DEFAULT 1,
   `project_emails` tinyint(1) NOT NULL DEFAULT 1,
-  `ticket_emails` tinyint(1) NOT NULL DEFAULT 1,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `ticket_emails` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -194,9 +177,7 @@ CREATE TABLE `tblcontacts` (
 CREATE TABLE `tblcontact_permissions` (
   `id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `userid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -233,9 +214,7 @@ CREATE TABLE `tblcontracts` (
   `short_link` varchar(100) DEFAULT NULL,
   `last_sent_at` datetime DEFAULT NULL,
   `contacts_sent_to` mediumtext DEFAULT NULL,
-  `last_sign_reminder_at` datetime DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `last_sign_reminder_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -246,9 +225,7 @@ CREATE TABLE `tblcontracts` (
 
 CREATE TABLE `tblcontracts_types` (
   `id` int(11) NOT NULL,
-  `name` longtext NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `name` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -262,9 +239,7 @@ CREATE TABLE `tblcontract_comments` (
   `content` longtext DEFAULT NULL,
   `contract_id` int(11) NOT NULL,
   `staffid` int(11) NOT NULL,
-  `dateadded` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateadded` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -285,9 +260,7 @@ CREATE TABLE `tblcontract_renewals` (
   `date_renewed` datetime NOT NULL,
   `renewed_by` varchar(100) NOT NULL,
   `renewed_by_staff_id` int(11) NOT NULL DEFAULT 0,
-  `is_on_old_expiry_notified` int(11) DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `is_on_old_expiry_notified` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -306,8 +279,6 @@ CREATE TABLE `tblcountries` (
   `un_member` varchar(12) DEFAULT NULL,
   `calling_code` varchar(8) DEFAULT NULL,
   `cctld` varchar(5) DEFAULT NULL
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -608,9 +579,7 @@ CREATE TABLE `tblcreditnotes` (
   `include_shipping` tinyint(1) NOT NULL,
   `show_shipping_on_credit_note` tinyint(1) NOT NULL DEFAULT 1,
   `show_quantity_as` int(11) NOT NULL DEFAULT 1,
-  `reference_no` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `reference_no` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -628,7 +597,6 @@ CREATE TABLE `tblcreditnote_refunds` (
   `note` mediumtext DEFAULT NULL,
   `amount` decimal(15,2) NOT NULL,
   `created_at` datetime DEFAULT NULL
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -645,8 +613,6 @@ CREATE TABLE `tblcredits` (
   `date` date NOT NULL,
   `date_applied` datetime NOT NULL,
   `amount` decimal(15,2) NOT NULL
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -662,18 +628,16 @@ CREATE TABLE `tblcurrencies` (
   `decimal_separator` varchar(5) DEFAULT NULL,
   `thousand_separator` varchar(5) DEFAULT NULL,
   `placement` varchar(10) DEFAULT NULL,
-  `isdefault` tinyint(1) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `isdefault` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblcurrencies`
 --
 
-INSERT INTO `tblcurrencies` (`id`, `symbol`, `name`, `decimal_separator`, `thousand_separator`, `placement`, `isdefault`, `created_at`, `updated_at`) VALUES
-(1, '$', 'USD', '.', ',', 'before', 1, '2024-05-10 11:18:40', '2024-05-10 11:18:40'),
-(2, '€', 'EUR', ',', '.', 'before', 0, '2024-05-10 11:18:40', '2024-05-10 11:18:40');
+INSERT INTO `tblcurrencies` (`id`, `symbol`, `name`, `decimal_separator`, `thousand_separator`, `placement`, `isdefault`) VALUES
+(1, '$', 'USD', '.', ',', 'before', 1),
+(2, '€', 'EUR', ',', '.', 'before', 0);
 
 -- --------------------------------------------------------
 
@@ -684,8 +648,6 @@ INSERT INTO `tblcurrencies` (`id`, `symbol`, `name`, `decimal_separator`, `thous
 CREATE TABLE `tblcustomers_groups` (
   `id` int(11) NOT NULL,
   `name` varchar(191) NOT NULL
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -697,9 +659,7 @@ CREATE TABLE `tblcustomers_groups` (
 CREATE TABLE `tblcustomer_admins` (
   `staff_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `date_assigned` mediumtext NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date_assigned` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -711,9 +671,7 @@ CREATE TABLE `tblcustomer_admins` (
 CREATE TABLE `tblcustomer_groups` (
   `id` int(11) NOT NULL,
   `groupid` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -740,9 +698,7 @@ CREATE TABLE `tblcustomfields` (
   `show_on_client_portal` int(11) NOT NULL DEFAULT 0,
   `disalow_client_to_edit` int(11) NOT NULL DEFAULT 0,
   `bs_column` int(11) NOT NULL DEFAULT 12,
-  `default_value` mediumtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `default_value` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -756,9 +712,7 @@ CREATE TABLE `tblcustomfieldsvalues` (
   `relid` int(11) NOT NULL,
   `fieldid` int(11) NOT NULL,
   `fieldto` varchar(15) NOT NULL,
-  `value` mediumtext NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `value` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -779,9 +733,7 @@ CREATE TABLE `tbldepartments` (
   `folder` varchar(191) NOT NULL DEFAULT 'INBOX',
   `delete_after_import` int(11) NOT NULL DEFAULT 0,
   `calendar_id` longtext DEFAULT NULL,
-  `hidefromclient` tinyint(1) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `hidefromclient` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -794,9 +746,7 @@ CREATE TABLE `tbldismissed_announcements` (
   `dismissedannouncementid` int(11) NOT NULL,
   `announcementid` int(11) NOT NULL,
   `staff` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `userid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -817,99 +767,97 @@ CREATE TABLE `tblemailtemplates` (
   `fromemail` varchar(100) DEFAULT NULL,
   `plaintext` int(11) NOT NULL DEFAULT 0,
   `active` tinyint(4) NOT NULL DEFAULT 0,
-  `order` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `order` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblemailtemplates`
 --
 
-INSERT INTO `tblemailtemplates` (`emailtemplateid`, `type`, `slug`, `language`, `name`, `subject`, `message`, `fromname`, `fromemail`, `plaintext`, `active`, `order`, `created_at`, `updated_at`) VALUES
-(1, 'client', 'new-client-created', 'english', 'New Contact Added/Registered (Welcome Email)', 'Welcome aboard', 'Dear {contact_firstname} {contact_lastname}<br /><br />Thank you for registering on the <strong>{companyname}</strong> CRM System.<br /><br />We just wanted to say welcome.<br /><br />Please contact us if you need any help.<br /><br />Click here to view your profile: <a href=\"{crm_url}\">{crm_url}</a><br /><br />Kind Regards, <br />{email_signature}<br /><br />(This is an automated email, so please don\'t reply to this email address)', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(2, 'invoice', 'invoice-send-to-client', 'english', 'Send Invoice to Customer', 'Invoice with number {invoice_number} created', '<span style=\"font-size: 12pt;\">Dear {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">We have prepared the following invoice for you: <strong># {invoice_number}</strong></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Invoice status</strong>: {invoice_status}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the invoice on the following link: <a href=\"{invoice_link}\">{invoice_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">Please contact us for more information.</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(3, 'ticket', 'new-ticket-opened-admin', 'english', 'New Ticket Opened (Opened by Staff, Sent to Customer)', 'New Support Ticket Opened', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">New support ticket has been opened.</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject:</strong> {ticket_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Department:</strong> {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority:</strong> {ticket_priority}<br /></span><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_public_url}\">#{ticket_id}</a><br /><br />Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(4, 'ticket', 'ticket-reply', 'english', 'Ticket Reply (Sent to Customer)', 'New Ticket Reply', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">You have a new ticket reply to ticket <a href=\"{ticket_public_url}\">#{ticket_id}</a></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Ticket Subject:</strong> {ticket_subject}<br /></span><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_public_url}\">#{ticket_id}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(5, 'ticket', 'ticket-autoresponse', 'english', 'New Ticket Opened - Autoresponse', 'New Support Ticket Opened', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">Thank you for contacting our support team. A support ticket has now been opened for your request. You will be notified when a response is made by email.</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject:</strong> {ticket_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Department</strong>: {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority:</strong> {ticket_priority}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_public_url}\">#{ticket_id}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(6, 'invoice', 'invoice-payment-recorded', 'english', 'Invoice Payment Recorded (Sent to Customer)', 'Invoice Payment Recorded', '<span style=\"font-size: 12pt;\">Hello {contact_firstname}&nbsp;{contact_lastname}<br /><br /></span>Thank you for the payment. Find the payment details below:<br /><br />-------------------------------------------------<br /><br />Amount:&nbsp;<strong>{payment_total}<br /></strong>Date:&nbsp;<strong>{payment_date}</strong><br />Invoice number:&nbsp;<span style=\"font-size: 12pt;\"><strong># {invoice_number}<br /><br /></strong></span>-------------------------------------------------<br /><br />You can always view the invoice for this payment at the following link:&nbsp;<a href=\"{invoice_link}\"><span style=\"font-size: 12pt;\">{invoice_number}</span></a><br /><br />We are looking forward working with you.<br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(7, 'invoice', 'invoice-overdue-notice', 'english', 'Invoice Overdue Notice', 'Invoice Overdue Notice - {invoice_number}', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">This is an overdue notice for invoice <strong># {invoice_number}</strong></span><br /><br /><span style=\"font-size: 12pt;\">This invoice was due: {invoice_duedate}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the invoice on the following link: <a href=\"{invoice_link}\">{invoice_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(8, 'invoice', 'invoice-already-send', 'english', 'Invoice Already Sent to Customer', 'Invoice # {invoice_number} ', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">At your request, here is the invoice with number <strong># {invoice_number}</strong></span><br /><br /><span style=\"font-size: 12pt;\">You can view the invoice on the following link: <a href=\"{invoice_link}\">{invoice_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">Please contact us for more information.</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(9, 'ticket', 'new-ticket-created-staff', 'english', 'New Ticket Created (Opened by Customer, Sent to Staff Members)', 'New Ticket Created', '<p><span style=\"font-size: 12pt;\">A new support ticket has been opened.</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject</strong>: {ticket_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Department</strong>: {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority</strong>: {ticket_priority}<br /></span><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_url}\">#{ticket_id}</a></span><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(10, 'estimate', 'estimate-send-to-client', 'english', 'Send Estimate to Customer', 'Estimate # {estimate_number} created', '<span style=\"font-size: 12pt;\">Dear {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">Please find the attached estimate <strong># {estimate_number}</strong></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Estimate status:</strong> {estimate_status}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the estimate on the following link: <a href=\"{estimate_link}\">{estimate_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">We look forward to your communication.</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}<br /></span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(11, 'ticket', 'ticket-reply-to-admin', 'english', 'Ticket Reply (Sent to Staff)', 'New Support Ticket Reply', '<span style=\"font-size: 12pt;\">A new support ticket reply from {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject</strong>: {ticket_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Department</strong>: {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority</strong>: {ticket_priority}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_url}\">#{ticket_id}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(12, 'estimate', 'estimate-already-send', 'english', 'Estimate Already Sent to Customer', 'Estimate # {estimate_number} ', '<span style=\"font-size: 12pt;\">Dear {contact_firstname} {contact_lastname}</span><br /> <br /><span style=\"font-size: 12pt;\">Thank you for your estimate request.</span><br /> <br /><span style=\"font-size: 12pt;\">You can view the estimate on the following link: <a href=\"{estimate_link}\">{estimate_number}</a></span><br /> <br /><span style=\"font-size: 12pt;\">Please contact us for more information.</span><br /> <br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(13, 'contract', 'contract-expiration', 'english', 'Contract Expiration Reminder (Sent to Customer Contacts)', 'Contract Expiration Reminder', '<span style=\"font-size: 12pt;\">Dear {client_company}</span><br /><br /><span style=\"font-size: 12pt;\">This is a reminder that the following contract will expire soon:</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject:</strong> {contract_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Description:</strong> {contract_description}</span><br /><span style=\"font-size: 12pt;\"><strong>Date Start:</strong> {contract_datestart}</span><br /><span style=\"font-size: 12pt;\"><strong>Date End:</strong> {contract_dateend}</span><br /><br /><span style=\"font-size: 12pt;\">Please contact us for more information.</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(14, 'tasks', 'task-assigned', 'english', 'New Task Assigned (Sent to Staff)', 'New Task Assigned to You - {task_name}', '<span style=\"font-size: 12pt;\">Dear {staff_firstname}</span><br /><br /><span style=\"font-size: 12pt;\">You have been assigned to a new task:</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Name:</strong> {task_name}<br /></span><strong>Start Date:</strong> {task_startdate}<br /><span style=\"font-size: 12pt;\"><strong>Due date:</strong> {task_duedate}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority:</strong> {task_priority}<br /><br /></span><span style=\"font-size: 12pt;\"><span>You can view the task on the following link</span>: <a href=\"{task_link}\">{task_name}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(15, 'tasks', 'task-added-as-follower', 'english', 'Staff Member Added as Follower on Task (Sent to Staff)', 'You are added as follower on task - {task_name}', '<span style=\"font-size: 12pt;\">Hi {staff_firstname}<br /></span><br /><span style=\"font-size: 12pt;\">You have been added as follower on the following task:</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Name:</strong> {task_name}</span><br /><span style=\"font-size: 12pt;\"><strong>Start date:</strong> {task_startdate}</span><br /><br /><span>You can view the task on the following link</span><span>: </span><a href=\"{task_link}\">{task_name}</a><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(16, 'tasks', 'task-commented', 'english', 'New Comment on Task (Sent to Staff)', 'New Comment on Task - {task_name}', 'Dear {staff_firstname}<br /><br />A comment has been made on the following task:<br /><br /><strong>Name:</strong> {task_name}<br /><strong>Comment:</strong> {task_comment}<br /><br />You can view the task on the following link: <a href=\"{task_link}\">{task_name}</a><br /><br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(17, 'tasks', 'task-added-attachment', 'english', 'New Attachment(s) on Task (Sent to Staff)', 'New Attachment on Task - {task_name}', 'Hi {staff_firstname}<br /><br /><strong>{task_user_take_action}</strong> added an attachment on the following task:<br /><br /><strong>Name:</strong> {task_name}<br /><br />You can view the task on the following link: <a href=\"{task_link}\">{task_name}</a><br /><br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(18, 'estimate', 'estimate-declined-to-staff', 'english', 'Estimate Declined (Sent to Staff)', 'Customer Declined Estimate', '<span style=\"font-size: 12pt;\">Hi</span><br /> <br /><span style=\"font-size: 12pt;\">Customer ({client_company}) declined estimate with number <strong># {estimate_number}</strong></span><br /> <br /><span style=\"font-size: 12pt;\">You can view the estimate on the following link: <a href=\"{estimate_link}\">{estimate_number}</a></span><br /> <br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(19, 'estimate', 'estimate-accepted-to-staff', 'english', 'Estimate Accepted (Sent to Staff)', 'Customer Accepted Estimate', '<span style=\"font-size: 12pt;\">Hi</span><br /> <br /><span style=\"font-size: 12pt;\">Customer ({client_company}) accepted estimate with number <strong># {estimate_number}</strong></span><br /> <br /><span style=\"font-size: 12pt;\">You can view the estimate on the following link: <a href=\"{estimate_link}\">{estimate_number}</a></span><br /> <br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(20, 'proposals', 'proposal-client-accepted', 'english', 'Customer Action - Accepted (Sent to Staff)', 'Customer Accepted Proposal', '<div>Hi<br /> <br />Client <strong>{proposal_proposal_to}</strong> accepted the following proposal:<br /> <br /><strong>Number:</strong> {proposal_number}<br /><strong>Subject</strong>: {proposal_subject}<br /><strong>Total</strong>: {proposal_total}<br /> <br />View the proposal on the following link: <a href=\"{proposal_link}\">{proposal_number}</a><br /> <br />Kind Regards,<br />{email_signature}</div>\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(21, 'proposals', 'proposal-send-to-customer', 'english', 'Send Proposal to Customer', 'Proposal With Number {proposal_number} Created', 'Dear {proposal_proposal_to}<br /><br />Please find our attached proposal.<br /><br />This proposal is valid until: {proposal_open_till}<br />You can view the proposal on the following link: <a href=\"{proposal_link}\">{proposal_number}</a><br /><br />Please don\'t hesitate to comment online if you have any questions.<br /><br />We look forward to your communication.<br /><br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(22, 'proposals', 'proposal-client-declined', 'english', 'Customer Action - Declined (Sent to Staff)', 'Client Declined Proposal', 'Hi<br /> <br />Customer <strong>{proposal_proposal_to}</strong> declined the proposal <strong>{proposal_subject}</strong><br /> <br />View the proposal on the following link <a href=\"{proposal_link}\">{proposal_number}</a>&nbsp;or from the admin area.<br /> <br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(23, 'proposals', 'proposal-client-thank-you', 'english', 'Thank You Email (Sent to Customer After Accept)', 'Thank for you accepting proposal', 'Dear {proposal_proposal_to}<br /> <br />Thank for for accepting the proposal.<br /> <br />We look forward to doing business with you.<br /> <br />We will contact you as soon as possible<br /> <br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(24, 'proposals', 'proposal-comment-to-client', 'english', 'New Comment  (Sent to Customer/Lead)', 'New Proposal Comment', 'Dear {proposal_proposal_to}<br /> <br />A new comment has been made on the following proposal: <strong>{proposal_number}</strong><br /> <br />You can view and reply to the comment on the following link: <a href=\"{proposal_link}\">{proposal_number}</a><br /> <br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(25, 'proposals', 'proposal-comment-to-admin', 'english', 'New Comment (Sent to Staff) ', 'New Proposal Comment', 'Hi<br /> <br />A new comment has been made to the proposal <strong>{proposal_subject}</strong><br /> <br />You can view and reply to the comment on the following link: <a href=\"{proposal_link}\">{proposal_number}</a>&nbsp;or from the admin area.<br /> <br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(26, 'estimate', 'estimate-thank-you-to-customer', 'english', 'Thank You Email (Sent to Customer After Accept)', 'Thank for you accepting estimate', '<span style=\"font-size: 12pt;\">Dear {contact_firstname} {contact_lastname}</span><br /> <br /><span style=\"font-size: 12pt;\">Thank for for accepting the estimate.</span><br /> <br /><span style=\"font-size: 12pt;\">We look forward to doing business with you.</span><br /> <br /><span style=\"font-size: 12pt;\">We will contact you as soon as possible.</span><br /> <br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(27, 'tasks', 'task-deadline-notification', 'english', 'Task Deadline Reminder - Sent to Assigned Members', 'Task Deadline Reminder', 'Hi {staff_firstname}&nbsp;{staff_lastname}<br /><br />This is an automated email from {companyname}.<br /><br />The task <strong>{task_name}</strong> deadline is on <strong>{task_duedate}</strong>. <br />This task is still not finished.<br /><br />You can view the task on the following link: <a href=\"{task_link}\">{task_name}</a><br /><br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(28, 'contract', 'send-contract', 'english', 'Send Contract to Customer', 'Contract - {contract_subject}', '<p><span style=\"font-size: 12pt;\">Hi&nbsp;{contact_firstname}&nbsp;{contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">Please find the <a href=\"{contract_link}\">{contract_subject}</a> attached.<br /><br />Description: {contract_description}<br /><br /></span><span style=\"font-size: 12pt;\">Looking forward to hear from you.</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(29, 'invoice', 'invoice-payment-recorded-to-staff', 'english', 'Invoice Payment Recorded (Sent to Staff)', 'New Invoice Payment', '<span style=\"font-size: 12pt;\">Hi</span><br /><br /><span style=\"font-size: 12pt;\">Customer recorded payment for invoice <strong># {invoice_number}</strong></span><br /> <br /><span style=\"font-size: 12pt;\">You can view the invoice on the following link: <a href=\"{invoice_link}\">{invoice_number}</a></span><br /> <br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(30, 'ticket', 'auto-close-ticket', 'english', 'Auto Close Ticket', 'Ticket Auto Closed', '<p><span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">Ticket {ticket_subject} has been auto close due to inactivity.</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Ticket #</strong>: <a href=\"{ticket_public_url}\">{ticket_id}</a></span><br /><span style=\"font-size: 12pt;\"><strong>Department</strong>: {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority:</strong> {ticket_priority}</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(31, 'project', 'new-project-discussion-created-to-staff', 'english', 'New Project Discussion (Sent to Project Members)', 'New Project Discussion Created - {project_name}', '<p>Hi {staff_firstname}<br /><br />New project discussion created from <strong>{discussion_creator}</strong><br /><br /><strong>Subject:</strong> {discussion_subject}<br /><strong>Description:</strong> {discussion_description}<br /><br />You can view the discussion on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(32, 'project', 'new-project-discussion-created-to-customer', 'english', 'New Project Discussion (Sent to Customer Contacts)', 'New Project Discussion Created - {project_name}', '<p>Hello {contact_firstname} {contact_lastname}<br /><br />New project discussion created from <strong>{discussion_creator}</strong><br /><br /><strong>Subject:</strong> {discussion_subject}<br /><strong>Description:</strong> {discussion_description}<br /><br />You can view the discussion on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(33, 'project', 'new-project-file-uploaded-to-customer', 'english', 'New Project File(s) Uploaded (Sent to Customer Contacts)', 'New Project File(s) Uploaded - {project_name}', '<p>Hello {contact_firstname} {contact_lastname}<br /><br />New project file is uploaded on <strong>{project_name}</strong> from <strong>{file_creator}</strong><br /><br />You can view the project on the following link: <a href=\"{project_link}\">{project_name}</a><br /><br />To view the file in our CRM you can click on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(34, 'project', 'new-project-file-uploaded-to-staff', 'english', 'New Project File(s) Uploaded (Sent to Project Members)', 'New Project File(s) Uploaded - {project_name}', '<p>Hello&nbsp;{staff_firstname}</p>\r\n<p>New project&nbsp;file is uploaded on&nbsp;<strong>{project_name}</strong> from&nbsp;<strong>{file_creator}</strong></p>\r\n<p>You can view the project on the following link: <a href=\"{project_link}\">{project_name}<br /></a><br />To view&nbsp;the file you can click on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a></p>\r\n<p>Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(35, 'project', 'new-project-discussion-comment-to-customer', 'english', 'New Discussion Comment  (Sent to Customer Contacts)', 'New Discussion Comment', '<p><span style=\"font-size: 12pt;\">Hello {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">New discussion comment has been made on <strong>{discussion_subject}</strong> from <strong>{comment_creator}</strong></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Discussion subject:</strong> {discussion_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Comment</strong>: {discussion_comment}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the discussion on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(36, 'project', 'new-project-discussion-comment-to-staff', 'english', 'New Discussion Comment (Sent to Project Members)', 'New Discussion Comment', '<p>Hi {staff_firstname}<br /><br />New discussion comment has been made on <strong>{discussion_subject}</strong> from <strong>{comment_creator}</strong><br /><br /><strong>Discussion subject:</strong> {discussion_subject}<br /><strong>Comment:</strong> {discussion_comment}<br /><br />You can view the discussion on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(37, 'project', 'staff-added-as-project-member', 'english', 'Staff Added as Project Member', 'New project assigned to you', '<p>Hi {staff_firstname}<br /><br />New project has been assigned to you.<br /><br />You can view the project on the following link <a href=\"{project_link}\">{project_name}</a><br /><br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(38, 'estimate', 'estimate-expiry-reminder', 'english', 'Estimate Expiration Reminder', 'Estimate Expiration Reminder', '<p><span style=\"font-size: 12pt;\">Hello {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">The estimate with <strong># {estimate_number}</strong> will expire on <strong>{estimate_expirydate}</strong></span><br /><br /><span style=\"font-size: 12pt;\">You can view the estimate on the following link: <a href=\"{estimate_link}\">{estimate_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(39, 'proposals', 'proposal-expiry-reminder', 'english', 'Proposal Expiration Reminder', 'Proposal Expiration Reminder', '<p>Hello {proposal_proposal_to}<br /><br />The proposal {proposal_number}&nbsp;will expire on <strong>{proposal_open_till}</strong><br /><br />You can view the proposal on the following link: <a href=\"{proposal_link}\">{proposal_number}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(40, 'staff', 'new-staff-created', 'english', 'New Staff Created (Welcome Email)', 'You are added as staff member', 'Hi {staff_firstname}<br /><br />You are added as member on our CRM.<br /><br />Please use the following logic credentials:<br /><br /><strong>Email:</strong> {staff_email}<br /><strong>Password:</strong> {password}<br /><br />Click <a href=\"{admin_url}\">here </a>to login in the dashboard.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(41, 'client', 'contact-forgot-password', 'english', 'Forgot Password', 'Create New Password', '<h2>Create a new password</h2>\r\nForgot your password?<br /> To create a new password, just follow this link:<br /> <br /><a href=\"{reset_password_url}\">Reset Password</a><br /> <br /> You received this email, because it was requested by a {companyname}&nbsp;user. This is part of the procedure to create a new password on the system. If you DID NOT request a new password then please ignore this email and your password will remain the same. <br /><br /> {email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(42, 'client', 'contact-password-reseted', 'english', 'Password Reset - Confirmation', 'Your password has been changed', '<strong><span style=\"font-size: 14pt;\">You have changed your password.</span><br /></strong><br /> Please, keep it in your records so you don\'t forget it.<br /> <br /> Your email address for login is: {contact_email}<br /><br />If this wasnt you, please contact us.<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(43, 'client', 'contact-set-password', 'english', 'Set New Password', 'Set new password on {companyname} ', '<h2><span style=\"font-size: 14pt;\">Setup your new password on {companyname}</span></h2>\r\nPlease use the following link to set up your new password:<br /><br /><a href=\"{set_password_url}\">Set new password</a><br /><br />Keep it in your records so you don\'t forget it.<br /><br />Please set your new password in <strong>48 hours</strong>. After that, you won\'t be able to set your password because this link will expire.<br /><br />You can login at: <a href=\"{crm_url}\">{crm_url}</a><br />Your email address for login: {contact_email}<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(44, 'staff', 'staff-forgot-password', 'english', 'Forgot Password', 'Create New Password', '<h2><span style=\"font-size: 14pt;\">Create a new password</span></h2>\r\nForgot your password?<br /> To create a new password, just follow this link:<br /> <br /><a href=\"{reset_password_url}\">Reset Password</a><br /> <br /> You received this email, because it was requested by a <strong>{companyname}</strong>&nbsp;user. This is part of the procedure to create a new password on the system. If you DID NOT request a new password then please ignore this email and your password will remain the same. <br /><br /> {email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(45, 'staff', 'staff-password-reseted', 'english', 'Password Reset - Confirmation', 'Your password has been changed', '<span style=\"font-size: 14pt;\"><strong>You have changed your password.<br /></strong></span><br /> Please, keep it in your records so you don\'t forget it.<br /> <br /> Your email address for login is: {staff_email}<br /><br /> If this wasnt you, please contact us.<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(46, 'project', 'assigned-to-project', 'english', 'New Project Created (Sent to Customer Contacts)', 'New Project Created', '<p>Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}</p>\r\n<p>New project is assigned to your company.<br /><br /><strong>Project Name:</strong>&nbsp;{project_name}<br /><strong>Project Start Date:</strong>&nbsp;{project_start_date}</p>\r\n<p>You can view the project on the following link:&nbsp;<a href=\"{project_link}\">{project_name}</a></p>\r\n<p>We are looking forward hearing from you.<br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(47, 'tasks', 'task-added-attachment-to-contacts', 'english', 'New Attachment(s) on Task (Sent to Customer Contacts)', 'New Attachment on Task - {task_name}', '<span>Hi {contact_firstname} {contact_lastname}</span><br /><br /><strong>{task_user_take_action}</strong><span> added an attachment on the following task:</span><br /><br /><strong>Name:</strong><span> {task_name}</span><br /><br /><span>You can view the task on the following link: </span><a href=\"{task_link}\">{task_name}</a><br /><br /><span>Kind Regards,</span><br /><span>{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(48, 'tasks', 'task-commented-to-contacts', 'english', 'New Comment on Task (Sent to Customer Contacts)', 'New Comment on Task - {task_name}', '<span>Dear {contact_firstname} {contact_lastname}</span><br /><br /><span>A comment has been made on the following task:</span><br /><br /><strong>Name:</strong><span> {task_name}</span><br /><strong>Comment:</strong><span> {task_comment}</span><br /><br /><span>You can view the task on the following link: </span><a href=\"{task_link}\">{task_name}</a><br /><br /><span>Kind Regards,</span><br /><span>{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(49, 'leads', 'new-lead-assigned', 'english', 'New Lead Assigned to Staff Member', 'New lead assigned to you', '<p>Hello {lead_assigned}<br /><br />New lead is assigned to you.<br /><br /><strong>Lead Name:</strong>&nbsp;{lead_name}<br /><strong>Lead Email:</strong>&nbsp;{lead_email}<br /><br />You can view the lead on the following link: <a href=\"{lead_link}\">{lead_name}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(50, 'client', 'client-statement', 'english', 'Statement - Account Summary', 'Account Statement from {statement_from} to {statement_to}', 'Dear {contact_firstname} {contact_lastname}, <br /><br />Its been a great experience working with you.<br /><br />Attached with this email is a list of all transactions for the period between {statement_from} to {statement_to}<br /><br />For your information your account balance due is total:&nbsp;{statement_balance_due}<br /><br />Please contact us if you need more information.<br /> <br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(51, 'ticket', 'ticket-assigned-to-admin', 'english', 'New Ticket Assigned (Sent to Staff)', 'New support ticket has been assigned to you', '<p><span style=\"font-size: 12pt;\">Hi</span></p>\r\n<p><span style=\"font-size: 12pt;\">A new support ticket&nbsp;has been assigned to you.</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject</strong>: {ticket_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Department</strong>: {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority</strong>: {ticket_priority}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_url}\">#{ticket_id}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(52, 'client', 'new-client-registered-to-admin', 'english', 'New Customer Registration (Sent to admins)', 'New Customer Registration', 'Hello.<br /><br />New customer registration on your customer portal:<br /><br /><strong>Firstname:</strong>&nbsp;{contact_firstname}<br /><strong>Lastname:</strong>&nbsp;{contact_lastname}<br /><strong>Company:</strong>&nbsp;{client_company}<br /><strong>Email:</strong>&nbsp;{contact_email}<br /><br />Best Regards', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(53, 'leads', 'new-web-to-lead-form-submitted', 'english', 'Web to lead form submitted - Sent to lead', '{lead_name} - We Received Your Request', 'Hello {lead_name}.<br /><br /><strong>Your request has been received.</strong><br /><br />This email is to let you know that we received your request and we will get back to you as soon as possible with more information.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 0, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(54, 'staff', 'two-factor-authentication', 'english', 'Two Factor Authentication', 'Confirm Your Login', '<p>Hi {staff_firstname}</p>\r\n<p style=\"text-align: left;\">You received this email because you have enabled two factor authentication in your account.<br />Use the following code to confirm your login:</p>\r\n<p style=\"text-align: left;\"><span style=\"font-size: 18pt;\"><strong>{two_factor_auth_code}<br /><br /></strong><span style=\"font-size: 12pt;\">{email_signature}</span><strong><br /><br /><br /><br /></strong></span></p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(55, 'project', 'project-finished-to-customer', 'english', 'Project Marked as Finished (Sent to Customer Contacts)', 'Project Marked as Finished', '<p>Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}</p>\r\n<p>You are receiving this email because project&nbsp;<strong>{project_name}</strong> has been marked as finished. This project is assigned under your company and we just wanted to keep you up to date.<br /><br />You can view the project on the following link:&nbsp;<a href=\"{project_link}\">{project_name}</a></p>\r\n<p>If you have any questions don\'t hesitate to contact us.<br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(56, 'credit_note', 'credit-note-send-to-client', 'english', 'Send Credit Note To Email', 'Credit Note With Number #{credit_note_number} Created', 'Dear&nbsp;{contact_firstname}&nbsp;{contact_lastname}<br /><br />We have attached the credit note with number <strong>#{credit_note_number} </strong>for your reference.<br /><br /><strong>Date:</strong>&nbsp;{credit_note_date}<br /><strong>Total Amount:</strong>&nbsp;{credit_note_total}<br /><br /><span style=\"font-size: 12pt;\">Please contact us for more information.</span><br /> <br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(57, 'tasks', 'task-status-change-to-staff', 'english', 'Task Status Changed (Sent to Staff)', 'Task Status Changed', '<span style=\"font-size: 12pt;\">Hi {staff_firstname}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>{task_user_take_action}</strong> marked task as <strong>{task_status}</strong></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Name:</strong> {task_name}</span><br /><span style=\"font-size: 12pt;\"><strong>Due date:</strong> {task_duedate}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the task on the following link: <a href=\"{task_link}\">{task_name}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(58, 'tasks', 'task-status-change-to-contacts', 'english', 'Task Status Changed (Sent to Customer Contacts)', 'Task Status Changed', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>{task_user_take_action}</strong> marked task as <strong>{task_status}</strong></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Name:</strong> {task_name}</span><br /><span style=\"font-size: 12pt;\"><strong>Due date:</strong> {task_duedate}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the task on the following link: <a href=\"{task_link}\">{task_name}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(59, 'staff', 'reminder-email-staff', 'english', 'Staff Reminder Email', 'You Have a New Reminder!', '<p>Hello&nbsp;{staff_firstname}<br /><br /><strong>You have a new reminder&nbsp;linked to&nbsp;{staff_reminder_relation_name}!<br /><br />Reminder description:</strong><br />{staff_reminder_description}<br /><br />Click <a href=\"{staff_reminder_relation_link}\">here</a> to view&nbsp;<a href=\"{staff_reminder_relation_link}\">{staff_reminder_relation_name}</a><br /><br />Best Regards<br /><br /></p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(60, 'contract', 'contract-comment-to-client', 'english', 'New Comment  (Sent to Customer Contacts)', 'New Contract Comment', 'Dear {contact_firstname} {contact_lastname}<br /> <br />A new comment has been made on the following contract: <strong>{contract_subject}</strong><br /> <br />You can view and reply to the comment on the following link: <a href=\"{contract_link}\">{contract_subject}</a><br /> <br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(61, 'contract', 'contract-comment-to-admin', 'english', 'New Comment (Sent to Staff) ', 'New Contract Comment', 'Hi {staff_firstname}<br /><br />A new comment has been made to the contract&nbsp;<strong>{contract_subject}</strong><br /><br />You can view and reply to the comment on the following link: <a href=\"{contract_link}\">{contract_subject}</a>&nbsp;or from the admin area.<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(62, 'subscriptions', 'send-subscription', 'english', 'Send Subscription to Customer', 'Subscription Created', 'Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}<br /><br />We have prepared the subscription&nbsp;<strong>{subscription_name}</strong> for your company.<br /><br />Click <a href=\"{subscription_link}\">here</a> to review the subscription and subscribe.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(63, 'subscriptions', 'subscription-payment-failed', 'english', 'Subscription Payment Failed', 'Your most recent invoice payment failed', 'Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}<br /><br br=\"\" />Unfortunately, your most recent invoice payment for&nbsp;<strong>{subscription_name}</strong> was declined.<br /><br />This could be due to a change in your card number, your card expiring,<br />cancellation of your credit card, or the card issuer not recognizing the<br />payment and therefore taking action to prevent it.<br /><br />Please update your payment information as soon as possible by logging in here:<br /><a href=\"{crm_url}/login\">{crm_url}/login</a><br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(64, 'subscriptions', 'subscription-canceled', 'english', 'Subscription Canceled (Sent to customer primary contact)', 'Your subscription has been canceled', 'Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}<br /><br />Your subscription&nbsp;<strong>{subscription_name} </strong>has been canceled, if you have any questions don\'t hesitate to contact us.<br /><br />It was a pleasure doing business with you.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(65, 'subscriptions', 'subscription-payment-succeeded', 'english', 'Subscription Payment Succeeded (Sent to customer primary contact)', 'Subscription  Payment Receipt - {subscription_name}', 'Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}<br /><br />This email is to let you know that we received your payment for subscription&nbsp;<strong>{subscription_name}&nbsp;</strong>of&nbsp;<strong><span>{payment_total}<br /><br /></span></strong>The invoice associated with it is now with status&nbsp;<strong>{invoice_status}<br /></strong><br />Thank you for your confidence.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(66, 'contract', 'contract-expiration-to-staff', 'english', 'Contract Expiration Reminder (Sent to Staff)', 'Contract Expiration Reminder', 'Hi {staff_firstname}<br /><br /><span style=\"font-size: 12pt;\">This is a reminder that the following contract will expire soon:</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject:</strong> {contract_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Description:</strong> {contract_description}</span><br /><span style=\"font-size: 12pt;\"><strong>Date Start:</strong> {contract_datestart}</span><br /><span style=\"font-size: 12pt;\"><strong>Date End:</strong> {contract_dateend}</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(67, 'gdpr', 'gdpr-removal-request', 'english', 'Removal Request From Contact (Sent to administrators)', 'Data Removal Request Received', 'Hello&nbsp;{staff_firstname}&nbsp;{staff_lastname}<br /><br />Data removal has been requested by&nbsp;{contact_firstname} {contact_lastname}<br /><br />You can review this request and take proper actions directly from the admin area.', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(68, 'gdpr', 'gdpr-removal-request-lead', 'english', 'Removal Request From Lead (Sent to administrators)', 'Data Removal Request Received', 'Hello&nbsp;{staff_firstname}&nbsp;{staff_lastname}<br /><br />Data removal has been requested by {lead_name}<br /><br />You can review this request and take proper actions directly from the admin area.<br /><br />To view the lead inside the admin area click here:&nbsp;<a href=\"{lead_link}\">{lead_link}</a>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(69, 'client', 'client-registration-confirmed', 'english', 'Customer Registration Confirmed', 'Your registration is confirmed', '<p>Dear {contact_firstname} {contact_lastname}<br /><br />We just wanted to let you know that your registration at&nbsp;{companyname} is successfully confirmed and your account is now active.<br /><br />You can login at&nbsp;<a href=\"{crm_url}\">{crm_url}</a> with the email and password you provided during registration.<br /><br />Please contact us if you need any help.<br /><br />Kind Regards, <br />{email_signature}</p>\r\n<p><br />(This is an automated email, so please don\'t reply to this email address)</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(70, 'contract', 'contract-signed-to-staff', 'english', 'Contract Signed (Sent to Staff)', 'Customer Signed a Contract', 'Hi {staff_firstname}<br /><br />A contract with subject&nbsp;<strong>{contract_subject} </strong>has been successfully signed by the customer.<br /><br />You can view the contract at the following link: <a href=\"{contract_link}\">{contract_subject}</a>&nbsp;or from the admin area.<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34');
-INSERT INTO `tblemailtemplates` (`emailtemplateid`, `type`, `slug`, `language`, `name`, `subject`, `message`, `fromname`, `fromemail`, `plaintext`, `active`, `order`, `created_at`, `updated_at`) VALUES
-(71, 'subscriptions', 'customer-subscribed-to-staff', 'english', 'Customer Subscribed to a Subscription (Sent to administrators and subscription creator)', 'Customer Subscribed to a Subscription', 'The customer <strong>{client_company}</strong> subscribed to a subscription with name&nbsp;<strong>{subscription_name}</strong><br /><br /><strong>ID</strong>:&nbsp;{subscription_id}<br /><strong>Subscription name</strong>:&nbsp;{subscription_name}<br /><strong>Subscription description</strong>:&nbsp;{subscription_description}<br /><br />You can view the subscription by clicking <a href=\"{subscription_link}\">here</a><br />\r\n<div style=\"text-align: center;\"><span style=\"font-size: 10pt;\">&nbsp;</span></div>\r\nBest Regards,<br />{email_signature}<br /><br /><span style=\"font-size: 10pt;\"><span style=\"color: #999999;\">You are receiving this email because you are either administrator or you are creator of the subscription.</span></span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(72, 'client', 'contact-verification-email', 'english', 'Email Verification (Sent to Contact After Registration)', 'Verify Email Address', '<p>Hello&nbsp;{contact_firstname}<br /><br />Please click the button below to verify your email address.<br /><br /><a href=\"{email_verification_url}\">Verify Email Address</a><br /><br />If you did not create an account, no further action is required</p>\r\n<p><br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(73, 'client', 'new-customer-profile-file-uploaded-to-staff', 'english', 'New Customer Profile File(s) Uploaded (Sent to Staff)', 'Customer Uploaded New File(s) in Profile', 'Hi!<br /><br />New file(s) is uploaded into the customer ({client_company}) profile by&nbsp;{contact_firstname}<br /><br />You can check the uploaded files into the admin area by clicking <a href=\"{customer_profile_files_admin_link}\">here</a> or at the following link:&nbsp;{customer_profile_files_admin_link}<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(74, 'staff', 'event-notification-to-staff', 'english', 'Event Notification (Calendar)', 'Upcoming Event - {event_title}', 'Hi {staff_firstname}! <br /><br />This is a reminder for event <a href=\\\"{event_link}\\\">{event_title}</a> scheduled at {event_start_date}. <br /><br />Regards.', '', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(75, 'subscriptions', 'subscription-payment-requires-action', 'english', 'Credit Card Authorization Required - SCA', 'Important: Confirm your subscription {subscription_name} payment', '<p>Hello {contact_firstname}</p>\r\n<p><strong>Your bank sometimes requires an additional step to make sure an online transaction was authorized.</strong><br /><br />Because of European regulation to protect consumers, many online payments now require two-factor authentication. Your bank ultimately decides when authentication is required to confirm a payment, but you may notice this step when you start paying for a service or when the cost changes.<br /><br />In order to pay the subscription <strong>{subscription_name}</strong>, you will need to&nbsp;confirm your payment by clicking on the follow link: <strong><a href=\"{subscription_authorize_payment_link}\">{subscription_authorize_payment_link}</a></strong><br /><br />To view the subscription, please click at the following link: <a href=\"{subscription_link}\"><span>{subscription_link}</span></a><br />or you can login in our dedicated area here: <a href=\"{crm_url}/login\">{crm_url}/login</a> in case you want to update your credit card or view the subscriptions you are subscribed.<br /><br />Best Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(76, 'invoice', 'invoice-due-notice', 'english', 'Invoice Due Notice', 'Your {invoice_number} will be due soon', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}<br /><br /></span>You invoice <span style=\"font-size: 12pt;\"><strong># {invoice_number} </strong>will be due on <strong>{invoice_duedate}</strong></span><br /><br /><span style=\"font-size: 12pt;\">You can view the invoice on the following link: <a href=\"{invoice_link}\">{invoice_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(77, 'estimate_request', 'estimate-request-submitted-to-staff', 'english', 'Estimate Request Submitted (Sent to Staff)', 'New Estimate Request Submitted', '<span> Hello,&nbsp;</span><br /><br />{estimate_request_email} submitted an estimate request via the {estimate_request_form_name} form.<br /><br />You can view the request at the following link: <a href=\"{estimate_request_link}\">{estimate_request_link}</a><br /><br />==<br /><br />{estimate_request_submitted_data}<br /><br />Kind Regards,<br /><span>{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(78, 'estimate_request', 'estimate-request-assigned', 'english', 'Estimate Request Assigned (Sent to Staff)', 'New Estimate Request Assigned', '<span> Hello {estimate_request_assigned},&nbsp;</span><br /><br />Estimate request #{estimate_request_id} has been assigned to you.<br /><br />You can view the request at the following link: <a href=\"{estimate_request_link}\">{estimate_request_link}</a><br /><br />Kind Regards,<br /><span>{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(79, 'estimate_request', 'estimate-request-received-to-user', 'english', 'Estimate Request Received (Sent to User)', 'Estimate Request Received', 'Hello,<br /><br /><strong>Your request has been received.</strong><br /><br />This email is to let you know that we received your request and we will get back to you as soon as possible with more information.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 0, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(80, 'notifications', 'non-billed-tasks-reminder', 'english', 'Non-billed tasks reminder (sent to selected staff members)', 'Action required: Completed tasks are not billed', 'Hello {staff_firstname}<br><br>The following tasks are marked as complete but not yet billed:<br><br>{unbilled_tasks_list}<br><br>Kind Regards,<br><br>{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(81, 'invoice', 'invoices-batch-payments', 'english', 'Invoices Payments Recorded in Batch (Sent to Customer)', 'We have received your payments', 'Hello {contact_firstname} {contact_lastname}<br><br>Thank you for the payments. Please find the payments details below:<br><br>{batch_payments_list}<br><br>We are looking forward working with you.<br><br>Kind Regards,<br><br>{email_signature}', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34'),
-(82, 'contract', 'contract-sign-reminder', 'english', 'Contract Sign Reminder (Sent to Customer)', 'Contract Sign Reminder', '<p>Hello {contact_firstname} {contact_lastname}<br /><br />This is a reminder to review and sign the contract:<a href=\"{contract_link}\">{contract_subject}</a></p><p>You can view and sign by visiting: <a href=\"{contract_link}\">{contract_subject}</a></p><p><br />We are looking forward working with you.<br /><br />Kind Regards,<br /><br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0, '2024-05-10 11:25:34', '2024-05-10 11:25:34');
+INSERT INTO `tblemailtemplates` (`emailtemplateid`, `type`, `slug`, `language`, `name`, `subject`, `message`, `fromname`, `fromemail`, `plaintext`, `active`, `order`) VALUES
+(1, 'client', 'new-client-created', 'english', 'New Contact Added/Registered (Welcome Email)', 'Welcome aboard', 'Dear {contact_firstname} {contact_lastname}<br /><br />Thank you for registering on the <strong>{companyname}</strong> CRM System.<br /><br />We just wanted to say welcome.<br /><br />Please contact us if you need any help.<br /><br />Click here to view your profile: <a href=\"{crm_url}\">{crm_url}</a><br /><br />Kind Regards, <br />{email_signature}<br /><br />(This is an automated email, so please don\'t reply to this email address)', '{companyname} | CRM', '', 0, 1, 0),
+(2, 'invoice', 'invoice-send-to-client', 'english', 'Send Invoice to Customer', 'Invoice with number {invoice_number} created', '<span style=\"font-size: 12pt;\">Dear {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">We have prepared the following invoice for you: <strong># {invoice_number}</strong></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Invoice status</strong>: {invoice_status}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the invoice on the following link: <a href=\"{invoice_link}\">{invoice_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">Please contact us for more information.</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(3, 'ticket', 'new-ticket-opened-admin', 'english', 'New Ticket Opened (Opened by Staff, Sent to Customer)', 'New Support Ticket Opened', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">New support ticket has been opened.</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject:</strong> {ticket_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Department:</strong> {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority:</strong> {ticket_priority}<br /></span><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_public_url}\">#{ticket_id}</a><br /><br />Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(4, 'ticket', 'ticket-reply', 'english', 'Ticket Reply (Sent to Customer)', 'New Ticket Reply', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">You have a new ticket reply to ticket <a href=\"{ticket_public_url}\">#{ticket_id}</a></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Ticket Subject:</strong> {ticket_subject}<br /></span><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_public_url}\">#{ticket_id}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(5, 'ticket', 'ticket-autoresponse', 'english', 'New Ticket Opened - Autoresponse', 'New Support Ticket Opened', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">Thank you for contacting our support team. A support ticket has now been opened for your request. You will be notified when a response is made by email.</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject:</strong> {ticket_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Department</strong>: {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority:</strong> {ticket_priority}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_public_url}\">#{ticket_id}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(6, 'invoice', 'invoice-payment-recorded', 'english', 'Invoice Payment Recorded (Sent to Customer)', 'Invoice Payment Recorded', '<span style=\"font-size: 12pt;\">Hello {contact_firstname}&nbsp;{contact_lastname}<br /><br /></span>Thank you for the payment. Find the payment details below:<br /><br />-------------------------------------------------<br /><br />Amount:&nbsp;<strong>{payment_total}<br /></strong>Date:&nbsp;<strong>{payment_date}</strong><br />Invoice number:&nbsp;<span style=\"font-size: 12pt;\"><strong># {invoice_number}<br /><br /></strong></span>-------------------------------------------------<br /><br />You can always view the invoice for this payment at the following link:&nbsp;<a href=\"{invoice_link}\"><span style=\"font-size: 12pt;\">{invoice_number}</span></a><br /><br />We are looking forward working with you.<br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(7, 'invoice', 'invoice-overdue-notice', 'english', 'Invoice Overdue Notice', 'Invoice Overdue Notice - {invoice_number}', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">This is an overdue notice for invoice <strong># {invoice_number}</strong></span><br /><br /><span style=\"font-size: 12pt;\">This invoice was due: {invoice_duedate}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the invoice on the following link: <a href=\"{invoice_link}\">{invoice_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(8, 'invoice', 'invoice-already-send', 'english', 'Invoice Already Sent to Customer', 'Invoice # {invoice_number} ', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">At your request, here is the invoice with number <strong># {invoice_number}</strong></span><br /><br /><span style=\"font-size: 12pt;\">You can view the invoice on the following link: <a href=\"{invoice_link}\">{invoice_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">Please contact us for more information.</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(9, 'ticket', 'new-ticket-created-staff', 'english', 'New Ticket Created (Opened by Customer, Sent to Staff Members)', 'New Ticket Created', '<p><span style=\"font-size: 12pt;\">A new support ticket has been opened.</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject</strong>: {ticket_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Department</strong>: {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority</strong>: {ticket_priority}<br /></span><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_url}\">#{ticket_id}</a></span><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0),
+(10, 'estimate', 'estimate-send-to-client', 'english', 'Send Estimate to Customer', 'Estimate # {estimate_number} created', '<span style=\"font-size: 12pt;\">Dear {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">Please find the attached estimate <strong># {estimate_number}</strong></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Estimate status:</strong> {estimate_status}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the estimate on the following link: <a href=\"{estimate_link}\">{estimate_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">We look forward to your communication.</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}<br /></span>', '{companyname} | CRM', '', 0, 1, 0),
+(11, 'ticket', 'ticket-reply-to-admin', 'english', 'Ticket Reply (Sent to Staff)', 'New Support Ticket Reply', '<span style=\"font-size: 12pt;\">A new support ticket reply from {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject</strong>: {ticket_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Department</strong>: {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority</strong>: {ticket_priority}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_url}\">#{ticket_id}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(12, 'estimate', 'estimate-already-send', 'english', 'Estimate Already Sent to Customer', 'Estimate # {estimate_number} ', '<span style=\"font-size: 12pt;\">Dear {contact_firstname} {contact_lastname}</span><br /> <br /><span style=\"font-size: 12pt;\">Thank you for your estimate request.</span><br /> <br /><span style=\"font-size: 12pt;\">You can view the estimate on the following link: <a href=\"{estimate_link}\">{estimate_number}</a></span><br /> <br /><span style=\"font-size: 12pt;\">Please contact us for more information.</span><br /> <br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(13, 'contract', 'contract-expiration', 'english', 'Contract Expiration Reminder (Sent to Customer Contacts)', 'Contract Expiration Reminder', '<span style=\"font-size: 12pt;\">Dear {client_company}</span><br /><br /><span style=\"font-size: 12pt;\">This is a reminder that the following contract will expire soon:</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject:</strong> {contract_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Description:</strong> {contract_description}</span><br /><span style=\"font-size: 12pt;\"><strong>Date Start:</strong> {contract_datestart}</span><br /><span style=\"font-size: 12pt;\"><strong>Date End:</strong> {contract_dateend}</span><br /><br /><span style=\"font-size: 12pt;\">Please contact us for more information.</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(14, 'tasks', 'task-assigned', 'english', 'New Task Assigned (Sent to Staff)', 'New Task Assigned to You - {task_name}', '<span style=\"font-size: 12pt;\">Dear {staff_firstname}</span><br /><br /><span style=\"font-size: 12pt;\">You have been assigned to a new task:</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Name:</strong> {task_name}<br /></span><strong>Start Date:</strong> {task_startdate}<br /><span style=\"font-size: 12pt;\"><strong>Due date:</strong> {task_duedate}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority:</strong> {task_priority}<br /><br /></span><span style=\"font-size: 12pt;\"><span>You can view the task on the following link</span>: <a href=\"{task_link}\">{task_name}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(15, 'tasks', 'task-added-as-follower', 'english', 'Staff Member Added as Follower on Task (Sent to Staff)', 'You are added as follower on task - {task_name}', '<span style=\"font-size: 12pt;\">Hi {staff_firstname}<br /></span><br /><span style=\"font-size: 12pt;\">You have been added as follower on the following task:</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Name:</strong> {task_name}</span><br /><span style=\"font-size: 12pt;\"><strong>Start date:</strong> {task_startdate}</span><br /><br /><span>You can view the task on the following link</span><span>: </span><a href=\"{task_link}\">{task_name}</a><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(16, 'tasks', 'task-commented', 'english', 'New Comment on Task (Sent to Staff)', 'New Comment on Task - {task_name}', 'Dear {staff_firstname}<br /><br />A comment has been made on the following task:<br /><br /><strong>Name:</strong> {task_name}<br /><strong>Comment:</strong> {task_comment}<br /><br />You can view the task on the following link: <a href=\"{task_link}\">{task_name}</a><br /><br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(17, 'tasks', 'task-added-attachment', 'english', 'New Attachment(s) on Task (Sent to Staff)', 'New Attachment on Task - {task_name}', 'Hi {staff_firstname}<br /><br /><strong>{task_user_take_action}</strong> added an attachment on the following task:<br /><br /><strong>Name:</strong> {task_name}<br /><br />You can view the task on the following link: <a href=\"{task_link}\">{task_name}</a><br /><br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(18, 'estimate', 'estimate-declined-to-staff', 'english', 'Estimate Declined (Sent to Staff)', 'Customer Declined Estimate', '<span style=\"font-size: 12pt;\">Hi</span><br /> <br /><span style=\"font-size: 12pt;\">Customer ({client_company}) declined estimate with number <strong># {estimate_number}</strong></span><br /> <br /><span style=\"font-size: 12pt;\">You can view the estimate on the following link: <a href=\"{estimate_link}\">{estimate_number}</a></span><br /> <br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(19, 'estimate', 'estimate-accepted-to-staff', 'english', 'Estimate Accepted (Sent to Staff)', 'Customer Accepted Estimate', '<span style=\"font-size: 12pt;\">Hi</span><br /> <br /><span style=\"font-size: 12pt;\">Customer ({client_company}) accepted estimate with number <strong># {estimate_number}</strong></span><br /> <br /><span style=\"font-size: 12pt;\">You can view the estimate on the following link: <a href=\"{estimate_link}\">{estimate_number}</a></span><br /> <br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(20, 'proposals', 'proposal-client-accepted', 'english', 'Customer Action - Accepted (Sent to Staff)', 'Customer Accepted Proposal', '<div>Hi<br /> <br />Client <strong>{proposal_proposal_to}</strong> accepted the following proposal:<br /> <br /><strong>Number:</strong> {proposal_number}<br /><strong>Subject</strong>: {proposal_subject}<br /><strong>Total</strong>: {proposal_total}<br /> <br />View the proposal on the following link: <a href=\"{proposal_link}\">{proposal_number}</a><br /> <br />Kind Regards,<br />{email_signature}</div>\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>\r\n<div>&nbsp;</div>', '{companyname} | CRM', '', 0, 1, 0),
+(21, 'proposals', 'proposal-send-to-customer', 'english', 'Send Proposal to Customer', 'Proposal With Number {proposal_number} Created', 'Dear {proposal_proposal_to}<br /><br />Please find our attached proposal.<br /><br />This proposal is valid until: {proposal_open_till}<br />You can view the proposal on the following link: <a href=\"{proposal_link}\">{proposal_number}</a><br /><br />Please don\'t hesitate to comment online if you have any questions.<br /><br />We look forward to your communication.<br /><br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(22, 'proposals', 'proposal-client-declined', 'english', 'Customer Action - Declined (Sent to Staff)', 'Client Declined Proposal', 'Hi<br /> <br />Customer <strong>{proposal_proposal_to}</strong> declined the proposal <strong>{proposal_subject}</strong><br /> <br />View the proposal on the following link <a href=\"{proposal_link}\">{proposal_number}</a>&nbsp;or from the admin area.<br /> <br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(23, 'proposals', 'proposal-client-thank-you', 'english', 'Thank You Email (Sent to Customer After Accept)', 'Thank for you accepting proposal', 'Dear {proposal_proposal_to}<br /> <br />Thank for for accepting the proposal.<br /> <br />We look forward to doing business with you.<br /> <br />We will contact you as soon as possible<br /> <br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(24, 'proposals', 'proposal-comment-to-client', 'english', 'New Comment  (Sent to Customer/Lead)', 'New Proposal Comment', 'Dear {proposal_proposal_to}<br /> <br />A new comment has been made on the following proposal: <strong>{proposal_number}</strong><br /> <br />You can view and reply to the comment on the following link: <a href=\"{proposal_link}\">{proposal_number}</a><br /> <br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(25, 'proposals', 'proposal-comment-to-admin', 'english', 'New Comment (Sent to Staff) ', 'New Proposal Comment', 'Hi<br /> <br />A new comment has been made to the proposal <strong>{proposal_subject}</strong><br /> <br />You can view and reply to the comment on the following link: <a href=\"{proposal_link}\">{proposal_number}</a>&nbsp;or from the admin area.<br /> <br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(26, 'estimate', 'estimate-thank-you-to-customer', 'english', 'Thank You Email (Sent to Customer After Accept)', 'Thank for you accepting estimate', '<span style=\"font-size: 12pt;\">Dear {contact_firstname} {contact_lastname}</span><br /> <br /><span style=\"font-size: 12pt;\">Thank for for accepting the estimate.</span><br /> <br /><span style=\"font-size: 12pt;\">We look forward to doing business with you.</span><br /> <br /><span style=\"font-size: 12pt;\">We will contact you as soon as possible.</span><br /> <br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(27, 'tasks', 'task-deadline-notification', 'english', 'Task Deadline Reminder - Sent to Assigned Members', 'Task Deadline Reminder', 'Hi {staff_firstname}&nbsp;{staff_lastname}<br /><br />This is an automated email from {companyname}.<br /><br />The task <strong>{task_name}</strong> deadline is on <strong>{task_duedate}</strong>. <br />This task is still not finished.<br /><br />You can view the task on the following link: <a href=\"{task_link}\">{task_name}</a><br /><br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(28, 'contract', 'send-contract', 'english', 'Send Contract to Customer', 'Contract - {contract_subject}', '<p><span style=\"font-size: 12pt;\">Hi&nbsp;{contact_firstname}&nbsp;{contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">Please find the <a href=\"{contract_link}\">{contract_subject}</a> attached.<br /><br />Description: {contract_description}<br /><br /></span><span style=\"font-size: 12pt;\">Looking forward to hear from you.</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0),
+(29, 'invoice', 'invoice-payment-recorded-to-staff', 'english', 'Invoice Payment Recorded (Sent to Staff)', 'New Invoice Payment', '<span style=\"font-size: 12pt;\">Hi</span><br /><br /><span style=\"font-size: 12pt;\">Customer recorded payment for invoice <strong># {invoice_number}</strong></span><br /> <br /><span style=\"font-size: 12pt;\">You can view the invoice on the following link: <a href=\"{invoice_link}\">{invoice_number}</a></span><br /> <br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(30, 'ticket', 'auto-close-ticket', 'english', 'Auto Close Ticket', 'Ticket Auto Closed', '<p><span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">Ticket {ticket_subject} has been auto close due to inactivity.</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Ticket #</strong>: <a href=\"{ticket_public_url}\">{ticket_id}</a></span><br /><span style=\"font-size: 12pt;\"><strong>Department</strong>: {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority:</strong> {ticket_priority}</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0),
+(31, 'project', 'new-project-discussion-created-to-staff', 'english', 'New Project Discussion (Sent to Project Members)', 'New Project Discussion Created - {project_name}', '<p>Hi {staff_firstname}<br /><br />New project discussion created from <strong>{discussion_creator}</strong><br /><br /><strong>Subject:</strong> {discussion_subject}<br /><strong>Description:</strong> {discussion_description}<br /><br />You can view the discussion on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(32, 'project', 'new-project-discussion-created-to-customer', 'english', 'New Project Discussion (Sent to Customer Contacts)', 'New Project Discussion Created - {project_name}', '<p>Hello {contact_firstname} {contact_lastname}<br /><br />New project discussion created from <strong>{discussion_creator}</strong><br /><br /><strong>Subject:</strong> {discussion_subject}<br /><strong>Description:</strong> {discussion_description}<br /><br />You can view the discussion on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(33, 'project', 'new-project-file-uploaded-to-customer', 'english', 'New Project File(s) Uploaded (Sent to Customer Contacts)', 'New Project File(s) Uploaded - {project_name}', '<p>Hello {contact_firstname} {contact_lastname}<br /><br />New project file is uploaded on <strong>{project_name}</strong> from <strong>{file_creator}</strong><br /><br />You can view the project on the following link: <a href=\"{project_link}\">{project_name}</a><br /><br />To view the file in our CRM you can click on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(34, 'project', 'new-project-file-uploaded-to-staff', 'english', 'New Project File(s) Uploaded (Sent to Project Members)', 'New Project File(s) Uploaded - {project_name}', '<p>Hello&nbsp;{staff_firstname}</p>\r\n<p>New project&nbsp;file is uploaded on&nbsp;<strong>{project_name}</strong> from&nbsp;<strong>{file_creator}</strong></p>\r\n<p>You can view the project on the following link: <a href=\"{project_link}\">{project_name}<br /></a><br />To view&nbsp;the file you can click on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a></p>\r\n<p>Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(35, 'project', 'new-project-discussion-comment-to-customer', 'english', 'New Discussion Comment  (Sent to Customer Contacts)', 'New Discussion Comment', '<p><span style=\"font-size: 12pt;\">Hello {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">New discussion comment has been made on <strong>{discussion_subject}</strong> from <strong>{comment_creator}</strong></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Discussion subject:</strong> {discussion_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Comment</strong>: {discussion_comment}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the discussion on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0),
+(36, 'project', 'new-project-discussion-comment-to-staff', 'english', 'New Discussion Comment (Sent to Project Members)', 'New Discussion Comment', '<p>Hi {staff_firstname}<br /><br />New discussion comment has been made on <strong>{discussion_subject}</strong> from <strong>{comment_creator}</strong><br /><br /><strong>Discussion subject:</strong> {discussion_subject}<br /><strong>Comment:</strong> {discussion_comment}<br /><br />You can view the discussion on the following link: <a href=\"{discussion_link}\">{discussion_subject}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(37, 'project', 'staff-added-as-project-member', 'english', 'Staff Added as Project Member', 'New project assigned to you', '<p>Hi {staff_firstname}<br /><br />New project has been assigned to you.<br /><br />You can view the project on the following link <a href=\"{project_link}\">{project_name}</a><br /><br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(38, 'estimate', 'estimate-expiry-reminder', 'english', 'Estimate Expiration Reminder', 'Estimate Expiration Reminder', '<p><span style=\"font-size: 12pt;\">Hello {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\">The estimate with <strong># {estimate_number}</strong> will expire on <strong>{estimate_expirydate}</strong></span><br /><br /><span style=\"font-size: 12pt;\">You can view the estimate on the following link: <a href=\"{estimate_link}\">{estimate_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0),
+(39, 'proposals', 'proposal-expiry-reminder', 'english', 'Proposal Expiration Reminder', 'Proposal Expiration Reminder', '<p>Hello {proposal_proposal_to}<br /><br />The proposal {proposal_number}&nbsp;will expire on <strong>{proposal_open_till}</strong><br /><br />You can view the proposal on the following link: <a href=\"{proposal_link}\">{proposal_number}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(40, 'staff', 'new-staff-created', 'english', 'New Staff Created (Welcome Email)', 'You are added as staff member', 'Hi {staff_firstname}<br /><br />You are added as member on our CRM.<br /><br />Please use the following logic credentials:<br /><br /><strong>Email:</strong> {staff_email}<br /><strong>Password:</strong> {password}<br /><br />Click <a href=\"{admin_url}\">here </a>to login in the dashboard.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(41, 'client', 'contact-forgot-password', 'english', 'Forgot Password', 'Create New Password', '<h2>Create a new password</h2>\r\nForgot your password?<br /> To create a new password, just follow this link:<br /> <br /><a href=\"{reset_password_url}\">Reset Password</a><br /> <br /> You received this email, because it was requested by a {companyname}&nbsp;user. This is part of the procedure to create a new password on the system. If you DID NOT request a new password then please ignore this email and your password will remain the same. <br /><br /> {email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(42, 'client', 'contact-password-reseted', 'english', 'Password Reset - Confirmation', 'Your password has been changed', '<strong><span style=\"font-size: 14pt;\">You have changed your password.</span><br /></strong><br /> Please, keep it in your records so you don\'t forget it.<br /> <br /> Your email address for login is: {contact_email}<br /><br />If this wasnt you, please contact us.<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(43, 'client', 'contact-set-password', 'english', 'Set New Password', 'Set new password on {companyname} ', '<h2><span style=\"font-size: 14pt;\">Setup your new password on {companyname}</span></h2>\r\nPlease use the following link to set up your new password:<br /><br /><a href=\"{set_password_url}\">Set new password</a><br /><br />Keep it in your records so you don\'t forget it.<br /><br />Please set your new password in <strong>48 hours</strong>. After that, you won\'t be able to set your password because this link will expire.<br /><br />You can login at: <a href=\"{crm_url}\">{crm_url}</a><br />Your email address for login: {contact_email}<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(44, 'staff', 'staff-forgot-password', 'english', 'Forgot Password', 'Create New Password', '<h2><span style=\"font-size: 14pt;\">Create a new password</span></h2>\r\nForgot your password?<br /> To create a new password, just follow this link:<br /> <br /><a href=\"{reset_password_url}\">Reset Password</a><br /> <br /> You received this email, because it was requested by a <strong>{companyname}</strong>&nbsp;user. This is part of the procedure to create a new password on the system. If you DID NOT request a new password then please ignore this email and your password will remain the same. <br /><br /> {email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(45, 'staff', 'staff-password-reseted', 'english', 'Password Reset - Confirmation', 'Your password has been changed', '<span style=\"font-size: 14pt;\"><strong>You have changed your password.<br /></strong></span><br /> Please, keep it in your records so you don\'t forget it.<br /> <br /> Your email address for login is: {staff_email}<br /><br /> If this wasnt you, please contact us.<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(46, 'project', 'assigned-to-project', 'english', 'New Project Created (Sent to Customer Contacts)', 'New Project Created', '<p>Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}</p>\r\n<p>New project is assigned to your company.<br /><br /><strong>Project Name:</strong>&nbsp;{project_name}<br /><strong>Project Start Date:</strong>&nbsp;{project_start_date}</p>\r\n<p>You can view the project on the following link:&nbsp;<a href=\"{project_link}\">{project_name}</a></p>\r\n<p>We are looking forward hearing from you.<br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(47, 'tasks', 'task-added-attachment-to-contacts', 'english', 'New Attachment(s) on Task (Sent to Customer Contacts)', 'New Attachment on Task - {task_name}', '<span>Hi {contact_firstname} {contact_lastname}</span><br /><br /><strong>{task_user_take_action}</strong><span> added an attachment on the following task:</span><br /><br /><strong>Name:</strong><span> {task_name}</span><br /><br /><span>You can view the task on the following link: </span><a href=\"{task_link}\">{task_name}</a><br /><br /><span>Kind Regards,</span><br /><span>{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(48, 'tasks', 'task-commented-to-contacts', 'english', 'New Comment on Task (Sent to Customer Contacts)', 'New Comment on Task - {task_name}', '<span>Dear {contact_firstname} {contact_lastname}</span><br /><br /><span>A comment has been made on the following task:</span><br /><br /><strong>Name:</strong><span> {task_name}</span><br /><strong>Comment:</strong><span> {task_comment}</span><br /><br /><span>You can view the task on the following link: </span><a href=\"{task_link}\">{task_name}</a><br /><br /><span>Kind Regards,</span><br /><span>{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(49, 'leads', 'new-lead-assigned', 'english', 'New Lead Assigned to Staff Member', 'New lead assigned to you', '<p>Hello {lead_assigned}<br /><br />New lead is assigned to you.<br /><br /><strong>Lead Name:</strong>&nbsp;{lead_name}<br /><strong>Lead Email:</strong>&nbsp;{lead_email}<br /><br />You can view the lead on the following link: <a href=\"{lead_link}\">{lead_name}</a><br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(50, 'client', 'client-statement', 'english', 'Statement - Account Summary', 'Account Statement from {statement_from} to {statement_to}', 'Dear {contact_firstname} {contact_lastname}, <br /><br />Its been a great experience working with you.<br /><br />Attached with this email is a list of all transactions for the period between {statement_from} to {statement_to}<br /><br />For your information your account balance due is total:&nbsp;{statement_balance_due}<br /><br />Please contact us if you need more information.<br /> <br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(51, 'ticket', 'ticket-assigned-to-admin', 'english', 'New Ticket Assigned (Sent to Staff)', 'New support ticket has been assigned to you', '<p><span style=\"font-size: 12pt;\">Hi</span></p>\r\n<p><span style=\"font-size: 12pt;\">A new support ticket&nbsp;has been assigned to you.</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject</strong>: {ticket_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Department</strong>: {ticket_department}</span><br /><span style=\"font-size: 12pt;\"><strong>Priority</strong>: {ticket_priority}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Ticket message:</strong></span><br /><span style=\"font-size: 12pt;\">{ticket_message}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the ticket on the following link: <a href=\"{ticket_url}\">#{ticket_id}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span></p>', '{companyname} | CRM', '', 0, 1, 0),
+(52, 'client', 'new-client-registered-to-admin', 'english', 'New Customer Registration (Sent to admins)', 'New Customer Registration', 'Hello.<br /><br />New customer registration on your customer portal:<br /><br /><strong>Firstname:</strong>&nbsp;{contact_firstname}<br /><strong>Lastname:</strong>&nbsp;{contact_lastname}<br /><strong>Company:</strong>&nbsp;{client_company}<br /><strong>Email:</strong>&nbsp;{contact_email}<br /><br />Best Regards', '{companyname} | CRM', '', 0, 1, 0),
+(53, 'leads', 'new-web-to-lead-form-submitted', 'english', 'Web to lead form submitted - Sent to lead', '{lead_name} - We Received Your Request', 'Hello {lead_name}.<br /><br /><strong>Your request has been received.</strong><br /><br />This email is to let you know that we received your request and we will get back to you as soon as possible with more information.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 0, 0),
+(54, 'staff', 'two-factor-authentication', 'english', 'Two Factor Authentication', 'Confirm Your Login', '<p>Hi {staff_firstname}</p>\r\n<p style=\"text-align: left;\">You received this email because you have enabled two factor authentication in your account.<br />Use the following code to confirm your login:</p>\r\n<p style=\"text-align: left;\"><span style=\"font-size: 18pt;\"><strong>{two_factor_auth_code}<br /><br /></strong><span style=\"font-size: 12pt;\">{email_signature}</span><strong><br /><br /><br /><br /></strong></span></p>', '{companyname} | CRM', '', 0, 1, 0),
+(55, 'project', 'project-finished-to-customer', 'english', 'Project Marked as Finished (Sent to Customer Contacts)', 'Project Marked as Finished', '<p>Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}</p>\r\n<p>You are receiving this email because project&nbsp;<strong>{project_name}</strong> has been marked as finished. This project is assigned under your company and we just wanted to keep you up to date.<br /><br />You can view the project on the following link:&nbsp;<a href=\"{project_link}\">{project_name}</a></p>\r\n<p>If you have any questions don\'t hesitate to contact us.<br /><br />Kind Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(56, 'credit_note', 'credit-note-send-to-client', 'english', 'Send Credit Note To Email', 'Credit Note With Number #{credit_note_number} Created', 'Dear&nbsp;{contact_firstname}&nbsp;{contact_lastname}<br /><br />We have attached the credit note with number <strong>#{credit_note_number} </strong>for your reference.<br /><br /><strong>Date:</strong>&nbsp;{credit_note_date}<br /><strong>Total Amount:</strong>&nbsp;{credit_note_total}<br /><br /><span style=\"font-size: 12pt;\">Please contact us for more information.</span><br /> <br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(57, 'tasks', 'task-status-change-to-staff', 'english', 'Task Status Changed (Sent to Staff)', 'Task Status Changed', '<span style=\"font-size: 12pt;\">Hi {staff_firstname}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>{task_user_take_action}</strong> marked task as <strong>{task_status}</strong></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Name:</strong> {task_name}</span><br /><span style=\"font-size: 12pt;\"><strong>Due date:</strong> {task_duedate}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the task on the following link: <a href=\"{task_link}\">{task_name}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(58, 'tasks', 'task-status-change-to-contacts', 'english', 'Task Status Changed (Sent to Customer Contacts)', 'Task Status Changed', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}</span><br /><br /><span style=\"font-size: 12pt;\"><strong>{task_user_take_action}</strong> marked task as <strong>{task_status}</strong></span><br /><br /><span style=\"font-size: 12pt;\"><strong>Name:</strong> {task_name}</span><br /><span style=\"font-size: 12pt;\"><strong>Due date:</strong> {task_duedate}</span><br /><br /><span style=\"font-size: 12pt;\">You can view the task on the following link: <a href=\"{task_link}\">{task_name}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(59, 'staff', 'reminder-email-staff', 'english', 'Staff Reminder Email', 'You Have a New Reminder!', '<p>Hello&nbsp;{staff_firstname}<br /><br /><strong>You have a new reminder&nbsp;linked to&nbsp;{staff_reminder_relation_name}!<br /><br />Reminder description:</strong><br />{staff_reminder_description}<br /><br />Click <a href=\"{staff_reminder_relation_link}\">here</a> to view&nbsp;<a href=\"{staff_reminder_relation_link}\">{staff_reminder_relation_name}</a><br /><br />Best Regards<br /><br /></p>', '{companyname} | CRM', '', 0, 1, 0),
+(60, 'contract', 'contract-comment-to-client', 'english', 'New Comment  (Sent to Customer Contacts)', 'New Contract Comment', 'Dear {contact_firstname} {contact_lastname}<br /> <br />A new comment has been made on the following contract: <strong>{contract_subject}</strong><br /> <br />You can view and reply to the comment on the following link: <a href=\"{contract_link}\">{contract_subject}</a><br /> <br />Kind Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(61, 'contract', 'contract-comment-to-admin', 'english', 'New Comment (Sent to Staff) ', 'New Contract Comment', 'Hi {staff_firstname}<br /><br />A new comment has been made to the contract&nbsp;<strong>{contract_subject}</strong><br /><br />You can view and reply to the comment on the following link: <a href=\"{contract_link}\">{contract_subject}</a>&nbsp;or from the admin area.<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(62, 'subscriptions', 'send-subscription', 'english', 'Send Subscription to Customer', 'Subscription Created', 'Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}<br /><br />We have prepared the subscription&nbsp;<strong>{subscription_name}</strong> for your company.<br /><br />Click <a href=\"{subscription_link}\">here</a> to review the subscription and subscribe.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(63, 'subscriptions', 'subscription-payment-failed', 'english', 'Subscription Payment Failed', 'Your most recent invoice payment failed', 'Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}<br /><br br=\"\" />Unfortunately, your most recent invoice payment for&nbsp;<strong>{subscription_name}</strong> was declined.<br /><br />This could be due to a change in your card number, your card expiring,<br />cancellation of your credit card, or the card issuer not recognizing the<br />payment and therefore taking action to prevent it.<br /><br />Please update your payment information as soon as possible by logging in here:<br /><a href=\"{crm_url}/login\">{crm_url}/login</a><br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(64, 'subscriptions', 'subscription-canceled', 'english', 'Subscription Canceled (Sent to customer primary contact)', 'Your subscription has been canceled', 'Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}<br /><br />Your subscription&nbsp;<strong>{subscription_name} </strong>has been canceled, if you have any questions don\'t hesitate to contact us.<br /><br />It was a pleasure doing business with you.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(65, 'subscriptions', 'subscription-payment-succeeded', 'english', 'Subscription Payment Succeeded (Sent to customer primary contact)', 'Subscription  Payment Receipt - {subscription_name}', 'Hello&nbsp;{contact_firstname}&nbsp;{contact_lastname}<br /><br />This email is to let you know that we received your payment for subscription&nbsp;<strong>{subscription_name}&nbsp;</strong>of&nbsp;<strong><span>{payment_total}<br /><br /></span></strong>The invoice associated with it is now with status&nbsp;<strong>{invoice_status}<br /></strong><br />Thank you for your confidence.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(66, 'contract', 'contract-expiration-to-staff', 'english', 'Contract Expiration Reminder (Sent to Staff)', 'Contract Expiration Reminder', 'Hi {staff_firstname}<br /><br /><span style=\"font-size: 12pt;\">This is a reminder that the following contract will expire soon:</span><br /><br /><span style=\"font-size: 12pt;\"><strong>Subject:</strong> {contract_subject}</span><br /><span style=\"font-size: 12pt;\"><strong>Description:</strong> {contract_description}</span><br /><span style=\"font-size: 12pt;\"><strong>Date Start:</strong> {contract_datestart}</span><br /><span style=\"font-size: 12pt;\"><strong>Date End:</strong> {contract_dateend}</span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(67, 'gdpr', 'gdpr-removal-request', 'english', 'Removal Request From Contact (Sent to administrators)', 'Data Removal Request Received', 'Hello&nbsp;{staff_firstname}&nbsp;{staff_lastname}<br /><br />Data removal has been requested by&nbsp;{contact_firstname} {contact_lastname}<br /><br />You can review this request and take proper actions directly from the admin area.', '{companyname} | CRM', '', 0, 1, 0),
+(68, 'gdpr', 'gdpr-removal-request-lead', 'english', 'Removal Request From Lead (Sent to administrators)', 'Data Removal Request Received', 'Hello&nbsp;{staff_firstname}&nbsp;{staff_lastname}<br /><br />Data removal has been requested by {lead_name}<br /><br />You can review this request and take proper actions directly from the admin area.<br /><br />To view the lead inside the admin area click here:&nbsp;<a href=\"{lead_link}\">{lead_link}</a>', '{companyname} | CRM', '', 0, 1, 0),
+(69, 'client', 'client-registration-confirmed', 'english', 'Customer Registration Confirmed', 'Your registration is confirmed', '<p>Dear {contact_firstname} {contact_lastname}<br /><br />We just wanted to let you know that your registration at&nbsp;{companyname} is successfully confirmed and your account is now active.<br /><br />You can login at&nbsp;<a href=\"{crm_url}\">{crm_url}</a> with the email and password you provided during registration.<br /><br />Please contact us if you need any help.<br /><br />Kind Regards, <br />{email_signature}</p>\r\n<p><br />(This is an automated email, so please don\'t reply to this email address)</p>', '{companyname} | CRM', '', 0, 1, 0),
+(70, 'contract', 'contract-signed-to-staff', 'english', 'Contract Signed (Sent to Staff)', 'Customer Signed a Contract', 'Hi {staff_firstname}<br /><br />A contract with subject&nbsp;<strong>{contract_subject} </strong>has been successfully signed by the customer.<br /><br />You can view the contract at the following link: <a href=\"{contract_link}\">{contract_subject}</a>&nbsp;or from the admin area.<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(71, 'subscriptions', 'customer-subscribed-to-staff', 'english', 'Customer Subscribed to a Subscription (Sent to administrators and subscription creator)', 'Customer Subscribed to a Subscription', 'The customer <strong>{client_company}</strong> subscribed to a subscription with name&nbsp;<strong>{subscription_name}</strong><br /><br /><strong>ID</strong>:&nbsp;{subscription_id}<br /><strong>Subscription name</strong>:&nbsp;{subscription_name}<br /><strong>Subscription description</strong>:&nbsp;{subscription_description}<br /><br />You can view the subscription by clicking <a href=\"{subscription_link}\">here</a><br />\r\n<div style=\"text-align: center;\"><span style=\"font-size: 10pt;\">&nbsp;</span></div>\r\nBest Regards,<br />{email_signature}<br /><br /><span style=\"font-size: 10pt;\"><span style=\"color: #999999;\">You are receiving this email because you are either administrator or you are creator of the subscription.</span></span>', '{companyname} | CRM', '', 0, 1, 0),
+(72, 'client', 'contact-verification-email', 'english', 'Email Verification (Sent to Contact After Registration)', 'Verify Email Address', '<p>Hello&nbsp;{contact_firstname}<br /><br />Please click the button below to verify your email address.<br /><br /><a href=\"{email_verification_url}\">Verify Email Address</a><br /><br />If you did not create an account, no further action is required</p>\r\n<p><br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0),
+(73, 'client', 'new-customer-profile-file-uploaded-to-staff', 'english', 'New Customer Profile File(s) Uploaded (Sent to Staff)', 'Customer Uploaded New File(s) in Profile', 'Hi!<br /><br />New file(s) is uploaded into the customer ({client_company}) profile by&nbsp;{contact_firstname}<br /><br />You can check the uploaded files into the admin area by clicking <a href=\"{customer_profile_files_admin_link}\">here</a> or at the following link:&nbsp;{customer_profile_files_admin_link}<br /><br />{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(74, 'staff', 'event-notification-to-staff', 'english', 'Event Notification (Calendar)', 'Upcoming Event - {event_title}', 'Hi {staff_firstname}! <br /><br />This is a reminder for event <a href=\\\"{event_link}\\\">{event_title}</a> scheduled at {event_start_date}. <br /><br />Regards.', '', '', 0, 1, 0),
+(75, 'subscriptions', 'subscription-payment-requires-action', 'english', 'Credit Card Authorization Required - SCA', 'Important: Confirm your subscription {subscription_name} payment', '<p>Hello {contact_firstname}</p>\r\n<p><strong>Your bank sometimes requires an additional step to make sure an online transaction was authorized.</strong><br /><br />Because of European regulation to protect consumers, many online payments now require two-factor authentication. Your bank ultimately decides when authentication is required to confirm a payment, but you may notice this step when you start paying for a service or when the cost changes.<br /><br />In order to pay the subscription <strong>{subscription_name}</strong>, you will need to&nbsp;confirm your payment by clicking on the follow link: <strong><a href=\"{subscription_authorize_payment_link}\">{subscription_authorize_payment_link}</a></strong><br /><br />To view the subscription, please click at the following link: <a href=\"{subscription_link}\"><span>{subscription_link}</span></a><br />or you can login in our dedicated area here: <a href=\"{crm_url}/login\">{crm_url}/login</a> in case you want to update your credit card or view the subscriptions you are subscribed.<br /><br />Best Regards,<br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0);
+INSERT INTO `tblemailtemplates` (`emailtemplateid`, `type`, `slug`, `language`, `name`, `subject`, `message`, `fromname`, `fromemail`, `plaintext`, `active`, `order`) VALUES
+(76, 'invoice', 'invoice-due-notice', 'english', 'Invoice Due Notice', 'Your {invoice_number} will be due soon', '<span style=\"font-size: 12pt;\">Hi {contact_firstname} {contact_lastname}<br /><br /></span>You invoice <span style=\"font-size: 12pt;\"><strong># {invoice_number} </strong>will be due on <strong>{invoice_duedate}</strong></span><br /><br /><span style=\"font-size: 12pt;\">You can view the invoice on the following link: <a href=\"{invoice_link}\">{invoice_number}</a></span><br /><br /><span style=\"font-size: 12pt;\">Kind Regards,</span><br /><span style=\"font-size: 12pt;\">{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(77, 'estimate_request', 'estimate-request-submitted-to-staff', 'english', 'Estimate Request Submitted (Sent to Staff)', 'New Estimate Request Submitted', '<span> Hello,&nbsp;</span><br /><br />{estimate_request_email} submitted an estimate request via the {estimate_request_form_name} form.<br /><br />You can view the request at the following link: <a href=\"{estimate_request_link}\">{estimate_request_link}</a><br /><br />==<br /><br />{estimate_request_submitted_data}<br /><br />Kind Regards,<br /><span>{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(78, 'estimate_request', 'estimate-request-assigned', 'english', 'Estimate Request Assigned (Sent to Staff)', 'New Estimate Request Assigned', '<span> Hello {estimate_request_assigned},&nbsp;</span><br /><br />Estimate request #{estimate_request_id} has been assigned to you.<br /><br />You can view the request at the following link: <a href=\"{estimate_request_link}\">{estimate_request_link}</a><br /><br />Kind Regards,<br /><span>{email_signature}</span>', '{companyname} | CRM', '', 0, 1, 0),
+(79, 'estimate_request', 'estimate-request-received-to-user', 'english', 'Estimate Request Received (Sent to User)', 'Estimate Request Received', 'Hello,<br /><br /><strong>Your request has been received.</strong><br /><br />This email is to let you know that we received your request and we will get back to you as soon as possible with more information.<br /><br />Best Regards,<br />{email_signature}', '{companyname} | CRM', '', 0, 0, 0),
+(80, 'notifications', 'non-billed-tasks-reminder', 'english', 'Non-billed tasks reminder (sent to selected staff members)', 'Action required: Completed tasks are not billed', 'Hello {staff_firstname}<br><br>The following tasks are marked as complete but not yet billed:<br><br>{unbilled_tasks_list}<br><br>Kind Regards,<br><br>{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(81, 'invoice', 'invoices-batch-payments', 'english', 'Invoices Payments Recorded in Batch (Sent to Customer)', 'We have received your payments', 'Hello {contact_firstname} {contact_lastname}<br><br>Thank you for the payments. Please find the payments details below:<br><br>{batch_payments_list}<br><br>We are looking forward working with you.<br><br>Kind Regards,<br><br>{email_signature}', '{companyname} | CRM', '', 0, 1, 0),
+(82, 'contract', 'contract-sign-reminder', 'english', 'Contract Sign Reminder (Sent to Customer)', 'Contract Sign Reminder', '<p>Hello {contact_firstname} {contact_lastname}<br /><br />This is a reminder to review and sign the contract:<a href=\"{contract_link}\">{contract_subject}</a></p><p>You can view and sign by visiting: <a href=\"{contract_link}\">{contract_subject}</a></p><p><br />We are looking forward working with you.<br /><br />Kind Regards,<br /><br />{email_signature}</p>', '{companyname} | CRM', '', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -969,9 +917,7 @@ CREATE TABLE `tblestimates` (
   `acceptance_date` datetime DEFAULT NULL,
   `acceptance_ip` varchar(40) DEFAULT NULL,
   `signature` varchar(40) DEFAULT NULL,
-  `short_link` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `short_link` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -990,9 +936,7 @@ CREATE TABLE `tblestimate_requests` (
   `assigned` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `default_language` int(11) NOT NULL,
-  `date_added` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date_added` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1020,9 +964,7 @@ CREATE TABLE `tblestimate_request_forms` (
   `notify_type` varchar(100) DEFAULT NULL,
   `notify_ids` longtext DEFAULT NULL,
   `responsible` int(11) DEFAULT NULL,
-  `notify_request_submitted` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `notify_request_submitted` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1036,19 +978,17 @@ CREATE TABLE `tblestimate_request_status` (
   `name` varchar(50) NOT NULL,
   `statusorder` int(11) DEFAULT NULL,
   `color` varchar(10) DEFAULT NULL,
-  `flag` varchar(30) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `flag` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblestimate_request_status`
 --
 
-INSERT INTO `tblestimate_request_status` (`id`, `name`, `statusorder`, `color`, `flag`, `created_at`, `updated_at`) VALUES
-(1, 'Cancelled', 1, '#808080', 'cancelled', '2024-05-10 11:29:10', '2024-05-10 11:29:10'),
-(2, 'Processing', 2, '#007bff', 'processing', '2024-05-10 11:29:10', '2024-05-10 11:29:10'),
-(3, 'Completed', 3, '#28a745', 'completed', '2024-05-10 11:29:10', '2024-05-10 11:29:10');
+INSERT INTO `tblestimate_request_status` (`id`, `name`, `statusorder`, `color`, `flag`) VALUES
+(1, 'Cancelled', 1, '#808080', 'cancelled'),
+(2, 'Processing', 2, '#007bff', 'processing'),
+(3, 'Completed', 3, '#28a745', 'completed');
 
 -- --------------------------------------------------------
 
@@ -1067,9 +1007,7 @@ CREATE TABLE `tblevents` (
   `color` varchar(10) DEFAULT NULL,
   `isstartnotified` tinyint(1) NOT NULL DEFAULT 0,
   `reminder_before` int(11) NOT NULL DEFAULT 0,
-  `reminder_before_type` varchar(10) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `reminder_before_type` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1105,9 +1043,7 @@ CREATE TABLE `tblexpenses` (
   `send_invoice_to_customer` tinyint(1) NOT NULL,
   `recurring_from` int(11) DEFAULT NULL,
   `dateadded` datetime NOT NULL,
-  `addedfrom` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `addedfrom` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1119,9 +1055,7 @@ CREATE TABLE `tblexpenses` (
 CREATE TABLE `tblexpenses_categories` (
   `id` int(11) NOT NULL,
   `name` varchar(191) NOT NULL,
-  `description` mediumtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `description` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1144,9 +1078,7 @@ CREATE TABLE `tblfiles` (
   `staffid` int(11) NOT NULL,
   `contact_id` int(11) DEFAULT 0,
   `task_comment_id` int(11) NOT NULL DEFAULT 0,
-  `dateadded` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateadded` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1161,9 +1093,7 @@ CREATE TABLE `tblfilters` (
   `builder` mediumtext NOT NULL,
   `staff_id` int(10) UNSIGNED NOT NULL,
   `identifier` varchar(191) NOT NULL,
-  `is_shared` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `is_shared` tinyint(3) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1176,9 +1106,7 @@ CREATE TABLE `tblfilter_defaults` (
   `filter_id` int(10) UNSIGNED NOT NULL,
   `staff_id` int(11) NOT NULL,
   `identifier` varchar(191) NOT NULL,
-  `view` varchar(191) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `view` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1193,9 +1121,7 @@ CREATE TABLE `tblform_questions` (
   `rel_type` varchar(20) DEFAULT NULL,
   `question` longtext NOT NULL,
   `required` tinyint(1) NOT NULL DEFAULT 0,
-  `question_order` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `question_order` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1207,9 +1133,7 @@ CREATE TABLE `tblform_questions` (
 CREATE TABLE `tblform_question_box` (
   `boxid` int(11) NOT NULL,
   `boxtype` varchar(10) NOT NULL,
-  `questionid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `questionid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1222,9 +1146,7 @@ CREATE TABLE `tblform_question_box_description` (
   `questionboxdescriptionid` int(11) NOT NULL,
   `description` longtext NOT NULL,
   `boxid` longtext NOT NULL,
-  `questionid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `questionid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1241,9 +1163,7 @@ CREATE TABLE `tblform_results` (
   `rel_type` varchar(20) DEFAULT NULL,
   `questionid` int(11) NOT NULL,
   `answer` mediumtext DEFAULT NULL,
-  `resultsetid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `resultsetid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1261,9 +1181,7 @@ CREATE TABLE `tblgdpr_requests` (
   `status` varchar(40) DEFAULT NULL,
   `request_date` datetime NOT NULL,
   `request_from` varchar(150) DEFAULT NULL,
-  `description` mediumtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `description` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1281,9 +1199,7 @@ CREATE TABLE `tblinvoicepaymentrecords` (
   `date` date NOT NULL,
   `daterecorded` datetime NOT NULL,
   `note` mediumtext DEFAULT NULL,
-  `transactionid` longtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `transactionid` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1346,9 +1262,7 @@ CREATE TABLE `tblinvoices` (
   `show_quantity_as` int(11) NOT NULL DEFAULT 1,
   `project_id` int(11) DEFAULT 0,
   `subscription_id` int(11) NOT NULL DEFAULT 0,
-  `short_link` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `short_link` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1366,9 +1280,7 @@ CREATE TABLE `tblitemable` (
   `qty` decimal(15,2) NOT NULL,
   `rate` decimal(15,2) NOT NULL,
   `unit` varchar(40) DEFAULT NULL,
-  `item_order` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `item_order` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1385,9 +1297,7 @@ CREATE TABLE `tblitems` (
   `tax` int(11) DEFAULT NULL,
   `tax2` int(11) DEFAULT NULL,
   `unit` varchar(40) DEFAULT NULL,
-  `group_id` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `group_id` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1398,9 +1308,7 @@ CREATE TABLE `tblitems` (
 
 CREATE TABLE `tblitems_groups` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1415,9 +1323,7 @@ CREATE TABLE `tblitem_tax` (
   `rel_id` int(11) NOT NULL,
   `rel_type` varchar(20) NOT NULL,
   `taxrate` decimal(15,2) NOT NULL,
-  `taxname` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `taxname` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1431,9 +1337,7 @@ CREATE TABLE `tblknowedge_base_article_feedback` (
   `articleid` int(11) NOT NULL,
   `answer` int(11) NOT NULL,
   `ip` varchar(40) NOT NULL,
-  `date` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1451,9 +1355,7 @@ CREATE TABLE `tblknowledge_base` (
   `active` tinyint(4) NOT NULL,
   `datecreated` datetime NOT NULL,
   `article_order` int(11) NOT NULL DEFAULT 0,
-  `staff_article` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `staff_article` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1469,9 +1371,7 @@ CREATE TABLE `tblknowledge_base_groups` (
   `description` longtext DEFAULT NULL,
   `active` tinyint(4) NOT NULL,
   `color` varchar(10) DEFAULT '#28B8DA',
-  `group_order` int(11) DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `group_order` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1514,9 +1414,7 @@ CREATE TABLE `tblleads` (
   `is_public` tinyint(1) NOT NULL DEFAULT 0,
   `default_language` varchar(40) DEFAULT NULL,
   `client_id` int(11) NOT NULL DEFAULT 0,
-  `lead_value` decimal(15,2) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `lead_value` decimal(15,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1545,17 +1443,15 @@ CREATE TABLE `tblleads_email_integration` (
   `mark_public` int(11) NOT NULL DEFAULT 0,
   `only_loop_on_unseen_emails` tinyint(1) NOT NULL DEFAULT 1,
   `delete_after_import` int(11) NOT NULL DEFAULT 0,
-  `create_task_if_customer` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `create_task_if_customer` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblleads_email_integration`
 --
 
-INSERT INTO `tblleads_email_integration` (`id`, `active`, `email`, `imap_server`, `password`, `check_every`, `responsible`, `lead_source`, `lead_status`, `encryption`, `folder`, `last_run`, `notify_lead_imported`, `notify_lead_contact_more_times`, `notify_type`, `notify_ids`, `mark_public`, `only_loop_on_unseen_emails`, `delete_after_import`, `create_task_if_customer`, `created_at`, `updated_at`) VALUES
-(1, 0, '', '', '', 10, 0, 0, 0, 'tls', 'INBOX', '', 1, 1, 'assigned', '', 0, 1, 0, 1, '2024-05-10 11:36:31', '2024-05-10 11:36:31');
+INSERT INTO `tblleads_email_integration` (`id`, `active`, `email`, `imap_server`, `password`, `check_every`, `responsible`, `lead_source`, `lead_status`, `encryption`, `folder`, `last_run`, `notify_lead_imported`, `notify_lead_contact_more_times`, `notify_type`, `notify_ids`, `mark_public`, `only_loop_on_unseen_emails`, `delete_after_import`, `create_task_if_customer`) VALUES
+(1, 0, '', '', '', 10, 0, 0, 0, 'tls', 'INBOX', '', 1, 1, 'assigned', '', 0, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1565,18 +1461,16 @@ INSERT INTO `tblleads_email_integration` (`id`, `active`, `email`, `imap_server`
 
 CREATE TABLE `tblleads_sources` (
   `id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `name` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblleads_sources`
 --
 
-INSERT INTO `tblleads_sources` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Google', '2024-05-10 11:39:05', '2024-05-10 11:39:05'),
-(2, 'Facebook', '2024-05-10 11:39:05', '2024-05-10 11:39:05');
+INSERT INTO `tblleads_sources` (`id`, `name`) VALUES
+(2, 'Facebook'),
+(1, 'Google');
 
 -- --------------------------------------------------------
 
@@ -1589,17 +1483,15 @@ CREATE TABLE `tblleads_status` (
   `name` varchar(50) NOT NULL,
   `statusorder` int(11) DEFAULT NULL,
   `color` varchar(10) DEFAULT '#28B8DA',
-  `isdefault` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `isdefault` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblleads_status`
 --
 
-INSERT INTO `tblleads_status` (`id`, `name`, `statusorder`, `color`, `isdefault`, `created_at`, `updated_at`) VALUES
-(1, 'Customer', 1000, '#7cb342', 1, '2024-05-10 11:39:16', '2024-05-10 11:39:16');
+INSERT INTO `tblleads_status` (`id`, `name`, `statusorder`, `color`, `isdefault`) VALUES
+(1, 'Customer', 1000, '#7cb342', 1);
 
 -- --------------------------------------------------------
 
@@ -1615,9 +1507,7 @@ CREATE TABLE `tbllead_activity_log` (
   `date` datetime NOT NULL,
   `staffid` int(11) NOT NULL,
   `full_name` varchar(100) DEFAULT NULL,
-  `custom_activity` tinyint(1) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `custom_activity` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1632,9 +1522,7 @@ CREATE TABLE `tbllead_integration_emails` (
   `body` longtext DEFAULT NULL,
   `dateadded` datetime NOT NULL,
   `leadid` int(11) NOT NULL,
-  `emailid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `emailid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1654,9 +1542,7 @@ CREATE TABLE `tblmail_queue` (
   `status` enum('pending','sending','sent','failed') DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `headers` mediumtext DEFAULT NULL,
-  `attachments` longtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `attachments` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1666,17 +1552,15 @@ CREATE TABLE `tblmail_queue` (
 --
 
 CREATE TABLE `tblmigrations` (
-  `version` bigint(20) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `version` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblmigrations`
 --
 
-INSERT INTO `tblmigrations` (`version`, `created_at`, `updated_at`) VALUES
-(314, '2024-05-10 11:39:59', '2024-05-10 11:39:59');
+INSERT INTO `tblmigrations` (`version`) VALUES
+(314);
 
 -- --------------------------------------------------------
 
@@ -1695,9 +1579,7 @@ CREATE TABLE `tblmilestones` (
   `color` varchar(10) DEFAULT NULL,
   `milestone_order` int(11) NOT NULL DEFAULT 0,
   `datecreated` date NOT NULL,
-  `hide_from_customer` int(11) DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `hide_from_customer` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1710,9 +1592,7 @@ CREATE TABLE `tblmodules` (
   `id` int(11) NOT NULL,
   `module_name` varchar(55) NOT NULL,
   `installed_version` varchar(11) NOT NULL,
-  `active` tinyint(1) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1726,9 +1606,7 @@ CREATE TABLE `tblnewsfeed_comment_likes` (
   `postid` int(11) NOT NULL,
   `commentid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
-  `dateliked` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateliked` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1744,9 +1622,7 @@ CREATE TABLE `tblnewsfeed_posts` (
   `visibility` varchar(100) NOT NULL,
   `content` mediumtext NOT NULL,
   `pinned` int(11) NOT NULL,
-  `datepinned` datetime DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `datepinned` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1760,9 +1636,7 @@ CREATE TABLE `tblnewsfeed_post_comments` (
   `content` mediumtext DEFAULT NULL,
   `userid` int(11) NOT NULL,
   `postid` int(11) NOT NULL,
-  `dateadded` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateadded` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1775,9 +1649,7 @@ CREATE TABLE `tblnewsfeed_post_likes` (
   `id` int(11) NOT NULL,
   `postid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
-  `dateliked` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateliked` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1793,9 +1665,7 @@ CREATE TABLE `tblnotes` (
   `description` mediumtext DEFAULT NULL,
   `date_contacted` datetime DEFAULT NULL,
   `addedfrom` int(11) NOT NULL,
-  `dateadded` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateadded` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1816,9 +1686,7 @@ CREATE TABLE `tblnotifications` (
   `touserid` int(11) NOT NULL,
   `fromcompany` int(11) DEFAULT NULL,
   `link` longtext DEFAULT NULL,
-  `additional_data` mediumtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `additional_data` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1831,364 +1699,362 @@ CREATE TABLE `tbloptions` (
   `id` int(11) NOT NULL,
   `name` varchar(191) NOT NULL,
   `value` longtext NOT NULL,
-  `autoload` tinyint(1) NOT NULL DEFAULT 1,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `autoload` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tbloptions`
 --
 
-INSERT INTO `tbloptions` (`id`, `name`, `value`, `autoload`, `created_at`, `updated_at`) VALUES
-(1, 'dateformat', 'Y-m-d|%Y-%m-%d', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(2, 'companyname', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(3, 'services', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(4, 'maximum_allowed_ticket_attachments', '4', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(5, 'ticket_attachments_file_extensions', '.jpg,.png,.pdf,.doc,.zip,.rar', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(6, 'staff_access_only_assigned_departments', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(7, 'use_knowledge_base', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(8, 'smtp_email', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(9, 'smtp_password', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(10, 'company_info_format', '{company_name}<br />\r\n      {address}<br />\r\n      {city} {state}<br />\r\n      {country_code} {zip_code}<br />\r\n      {vat_number_with_label}', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(11, 'smtp_port', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(12, 'smtp_host', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(13, 'smtp_email_charset', 'utf-8', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(14, 'default_timezone', 'Asia/Karachi', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(15, 'clients_default_theme', 'perfex', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(16, 'company_logo', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(17, 'tables_pagination_limit', '25', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(18, 'main_domain', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(19, 'allow_registration', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(20, 'knowledge_base_without_registration', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(21, 'email_signature', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(22, 'default_staff_role', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(23, 'newsfeed_maximum_files_upload', '10', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(24, 'contract_expiration_before', '4', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(25, 'invoice_prefix', 'INV-', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(26, 'decimal_separator', '.', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(27, 'thousand_separator', ',', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(28, 'invoice_company_name', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(29, 'invoice_company_address', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(30, 'invoice_company_city', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(31, 'invoice_company_country_code', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(32, 'invoice_company_postal_code', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(33, 'invoice_company_phonenumber', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(34, 'view_invoice_only_logged_in', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(35, 'invoice_number_format', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(36, 'next_invoice_number', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(37, 'active_language', 'english', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(38, 'invoice_number_decrement_on_delete', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(39, 'automatically_send_invoice_overdue_reminder_after', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(40, 'automatically_resend_invoice_overdue_reminder_after', '3', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(41, 'expenses_auto_operations_hour', '21', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(42, 'delete_only_on_last_invoice', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(43, 'delete_only_on_last_estimate', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(44, 'create_invoice_from_recurring_only_on_paid_invoices', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(45, 'allow_payment_amount_to_be_modified', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(46, 'rtl_support_client', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(47, 'limit_top_search_bar_results_to', '10', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(48, 'estimate_prefix', 'EST-', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(49, 'next_estimate_number', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(50, 'estimate_number_decrement_on_delete', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(51, 'estimate_number_format', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(52, 'estimate_auto_convert_to_invoice_on_client_accept', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(53, 'exclude_estimate_from_client_area_with_draft_status', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(54, 'rtl_support_admin', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(55, 'last_cron_run', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(56, 'show_sale_agent_on_estimates', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(57, 'show_sale_agent_on_invoices', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(58, 'predefined_terms_invoice', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(59, 'predefined_terms_estimate', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(60, 'default_task_priority', '2', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(61, 'dropbox_app_key', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(62, 'show_expense_reminders_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(63, 'only_show_contact_tickets', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(64, 'predefined_clientnote_invoice', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(65, 'predefined_clientnote_estimate', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(66, 'custom_pdf_logo_image_url', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(67, 'favicon', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(68, 'invoice_due_after', '30', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(69, 'google_api_key', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(70, 'google_calendar_main_calendar', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(71, 'default_tax', 'a:0:{}', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(72, 'show_invoices_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(73, 'show_estimates_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(74, 'show_contracts_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(75, 'show_tasks_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(76, 'show_customer_reminders_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(77, 'output_client_pdfs_from_admin_area_in_client_language', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(78, 'show_lead_reminders_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(79, 'send_estimate_expiry_reminder_before', '4', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(80, 'leads_default_source', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(81, 'leads_default_status', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(82, 'proposal_expiry_reminder_enabled', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(83, 'send_proposal_expiry_reminder_before', '4', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(84, 'default_contact_permissions', 'a:6:{i:0;s:1:\"1\";i:1;s:1:\"2\";i:2;s:1:\"3\";i:3;s:1:\"4\";i:4;s:1:\"5\";i:5;s:1:\"6\";}', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(85, 'pdf_logo_width', '150', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(86, 'access_tickets_to_none_staff_members', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(87, 'customer_default_country', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(88, 'view_estimate_only_logged_in', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(89, 'show_status_on_pdf_ei', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(90, 'email_piping_only_replies', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(91, 'email_piping_only_registered', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(92, 'default_view_calendar', 'dayGridMonth', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(93, 'email_piping_default_priority', '2', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(94, 'total_to_words_lowercase', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(95, 'show_tax_per_item', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(96, 'total_to_words_enabled', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(97, 'receive_notification_on_new_ticket', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(98, 'autoclose_tickets_after', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(99, 'media_max_file_size_upload', '10', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(100, 'client_staff_add_edit_delete_task_comments_first_hour', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(101, 'show_projects_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(102, 'leads_kanban_limit', '50', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(103, 'tasks_reminder_notification_before', '2', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(104, 'pdf_font', 'freesans', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(105, 'pdf_table_heading_color', '#323a45', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(106, 'pdf_table_heading_text_color', '#ffffff', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(107, 'pdf_font_size', '10', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(108, 'default_leads_kanban_sort', 'leadorder', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(109, 'default_leads_kanban_sort_type', 'asc', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(110, 'allowed_files', '.png,.jpg,.pdf,.doc,.docx,.xls,.xlsx,.zip,.rar,.txt', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(111, 'show_all_tasks_for_project_member', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(112, 'email_protocol', 'smtp', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(113, 'calendar_first_day', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(114, 'recaptcha_secret_key', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(115, 'show_help_on_setup_menu', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(116, 'show_proposals_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(117, 'smtp_encryption', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(118, 'recaptcha_site_key', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(119, 'smtp_username', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(120, 'auto_stop_tasks_timers_on_new_timer', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(121, 'notification_when_customer_pay_invoice', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(122, 'calendar_invoice_color', '#FF6F00', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(123, 'calendar_estimate_color', '#FF6F00', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(124, 'calendar_proposal_color', '#84c529', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(125, 'new_task_auto_assign_current_member', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(126, 'calendar_reminder_color', '#03A9F4', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(127, 'calendar_contract_color', '#B72974', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(128, 'calendar_project_color', '#B72974', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(129, 'update_info_message', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(130, 'show_estimate_reminders_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(131, 'show_invoice_reminders_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(132, 'show_proposal_reminders_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(133, 'proposal_due_after', '7', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(134, 'allow_customer_to_change_ticket_status', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(135, 'lead_lock_after_convert_to_customer', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(136, 'default_proposals_pipeline_sort', 'pipeline_order', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(137, 'default_proposals_pipeline_sort_type', 'asc', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(138, 'default_estimates_pipeline_sort', 'pipeline_order', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(139, 'default_estimates_pipeline_sort_type', 'asc', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(140, 'use_recaptcha_customers_area', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(141, 'remove_decimals_on_zero', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(142, 'remove_tax_name_from_item_table', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(143, 'pdf_format_invoice', 'A4-PORTRAIT', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(144, 'pdf_format_estimate', 'A4-PORTRAIT', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(145, 'pdf_format_proposal', 'A4-PORTRAIT', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(146, 'pdf_format_payment', 'A4-PORTRAIT', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(147, 'pdf_format_contract', 'A4-PORTRAIT', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(148, 'swap_pdf_info', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(149, 'exclude_invoice_from_client_area_with_draft_status', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(150, 'cron_has_run_from_cli', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(151, 'hide_cron_is_required_message', '0', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(152, 'auto_assign_customer_admin_after_lead_convert', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(153, 'show_transactions_on_invoice_pdf', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(154, 'show_pay_link_to_invoice_pdf', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(155, 'tasks_kanban_limit', '50', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(156, 'purchase_key', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(157, 'estimates_pipeline_limit', '50', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(158, 'proposals_pipeline_limit', '50', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(159, 'proposal_number_prefix', 'PRO-', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(160, 'number_padding_prefixes', '6', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(161, 'show_page_number_on_pdf', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(162, 'calendar_events_limit', '4', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(163, 'show_setup_menu_item_only_on_hover', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(164, 'company_requires_vat_number_field', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(165, 'company_is_required', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(166, 'allow_contact_to_delete_files', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(167, 'company_vat', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(168, 'di', '1715166992', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(169, 'invoice_auto_operations_hour', '21', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(170, 'use_minified_files', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(171, 'only_own_files_contacts', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(172, 'allow_primary_contact_to_view_edit_billing_and_shipping', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(173, 'estimate_due_after', '7', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(174, 'staff_members_open_tickets_to_all_contacts', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(175, 'time_format', '24', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(176, 'delete_activity_log_older_then', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(177, 'disable_language', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(178, 'company_state', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(179, 'email_header', '<!doctype html>\r\n      <html>\r\n      <head>\r\n      <meta name=\"viewport\" content=\"width=device-width\" />\r\n      <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\r\n      <style>\r\n      body {\r\n        background-color: #f6f6f6;\r\n        font-family: sans-serif;\r\n        -webkit-font-smoothing: antialiased;\r\n        font-size: 14px;\r\n        line-height: 1.4;\r\n        margin: 0;\r\n        padding: 0;\r\n        -ms-text-size-adjust: 100%;\r\n        -webkit-text-size-adjust: 100%;\r\n      }\r\n      table {\r\n        border-collapse: separate;\r\n        mso-table-lspace: 0pt;\r\n        mso-table-rspace: 0pt;\r\n        width: 100%;\r\n      }\r\n      table td {\r\n        font-family: sans-serif;\r\n        font-size: 14px;\r\n        vertical-align: top;\r\n      }\r\n      /* -------------------------------------\r\n      BODY & CONTAINER\r\n      ------------------------------------- */\r\n      .body {\r\n        background-color: #f6f6f6;\r\n        width: 100%;\r\n      }\r\n      /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */\r\n      \r\n      .container {\r\n        display: block;\r\n        margin: 0 auto !important;\r\n        /* makes it centered */\r\n        max-width: 680px;\r\n        padding: 10px;\r\n        width: 680px;\r\n      }\r\n      /* This should also be a block element, so that it will fill 100% of the .container */\r\n      \r\n      .content {\r\n        box-sizing: border-box;\r\n        display: block;\r\n        margin: 0 auto;\r\n        max-width: 680px;\r\n        padding: 10px;\r\n      }\r\n      /* -------------------------------------\r\n      HEADER, FOOTER, MAIN\r\n      ------------------------------------- */\r\n      \r\n      .main {\r\n        background: #fff;\r\n        border-radius: 3px;\r\n        width: 100%;\r\n      }\r\n      .wrapper {\r\n        box-sizing: border-box;\r\n        padding: 20px;\r\n      }\r\n      .footer {\r\n        clear: both;\r\n        padding-top: 10px;\r\n        text-align: center;\r\n        width: 100%;\r\n      }\r\n      .footer td,\r\n      .footer p,\r\n      .footer span,\r\n      .footer a {\r\n        color: #999999;\r\n        font-size: 12px;\r\n        text-align: center;\r\n      }\r\n      hr {\r\n        border: 0;\r\n        border-bottom: 1px solid #f6f6f6;\r\n        margin: 20px 0;\r\n      }\r\n      /* -------------------------------------\r\n      RESPONSIVE AND MOBILE FRIENDLY STYLES\r\n      ------------------------------------- */\r\n      \r\n      @media only screen and (max-width: 620px) {\r\n        table[class=body] .content {\r\n          padding: 0 !important;\r\n        }\r\n        table[class=body] .container {\r\n          padding: 0 !important;\r\n          width: 100% !important;\r\n        }\r\n        table[class=body] .main {\r\n          border-left-width: 0 !important;\r\n          border-radius: 0 !important;\r\n          border-right-width: 0 !important;\r\n        }\r\n      }\r\n      </style>\r\n      </head>\r\n      <body class=\"\">\r\n      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"body\">\r\n      <tr>\r\n      <td>&nbsp;</td>\r\n      <td class=\"container\">\r\n      <div class=\"content\">\r\n      <!-- START CENTERED WHITE CONTAINER -->\r\n      <table class=\"main\">\r\n      <!-- START MAIN CONTENT AREA -->\r\n      <tr>\r\n      <td class=\"wrapper\">\r\n      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\r\n      <tr>\r\n      <td>', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(180, 'show_pdf_signature_invoice', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(181, 'show_pdf_signature_estimate', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(182, 'signature_image', '', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(183, 'email_footer', '</td>\r\n      </tr>\r\n      </table>\r\n      </td>\r\n      </tr>\r\n      <!-- END MAIN CONTENT AREA -->\r\n      </table>\r\n      <!-- START FOOTER -->\r\n      <div class=\"footer\">\r\n      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\r\n      <tr>\r\n      <td class=\"content-block\">\r\n      <span>{companyname}</span>\r\n      </td>\r\n      </tr>\r\n      </table>\r\n      </div>\r\n      <!-- END FOOTER -->\r\n      <!-- END CENTERED WHITE CONTAINER -->\r\n      </div>\r\n      </td>\r\n      <td>&nbsp;</td>\r\n      </tr>\r\n      </table>\r\n      </body>\r\n      </html>', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(184, 'exclude_proposal_from_client_area_with_draft_status', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(185, 'pusher_app_key', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(186, 'pusher_app_secret', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(187, 'pusher_app_id', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(188, 'pusher_realtime_notifications', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(189, 'pdf_format_statement', 'A4-PORTRAIT', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(190, 'pusher_cluster', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(191, 'show_table_export_button', 'to_all', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(192, 'allow_staff_view_proposals_assigned', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(193, 'show_cloudflare_notice', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(194, 'task_modal_class', 'modal-lg', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(195, 'lead_modal_class', 'modal-lg', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(196, 'show_timesheets_overview_all_members_notice_admins', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(197, 'desktop_notifications', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(198, 'hide_notified_reminders_from_calendar', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(199, 'customer_info_format', '{company_name}<br />\r\n      {street}<br />\r\n      {city} {state}<br />\r\n      {country_code} {zip_code}<br />\r\n      {vat_number_with_label}', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(200, 'timer_started_change_status_in_progress', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(201, 'default_ticket_reply_status', '3', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(202, 'default_task_status', 'auto', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(203, 'email_queue_skip_with_attachments', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(204, 'email_queue_enabled', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(205, 'last_email_queue_retry', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(206, 'auto_dismiss_desktop_notifications_after', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(207, 'proposal_info_format', '{proposal_to}<br />\r\n      {address}<br />\r\n      {city} {state}<br />\r\n      {country_code} {zip_code}<br />\r\n      {phone}<br />\r\n      {email}', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(208, 'ticket_replies_order', 'asc', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(209, 'new_recurring_invoice_action', 'generate_and_send', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(210, 'bcc_emails', '', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(211, 'email_templates_language_checks', '', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(212, 'proposal_accept_identity_confirmation', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(213, 'estimate_accept_identity_confirmation', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(214, 'new_task_auto_follower_current_member', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(215, 'task_biillable_checked_on_creation', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(216, 'predefined_clientnote_credit_note', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(217, 'predefined_terms_credit_note', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(218, 'next_credit_note_number', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(219, 'credit_note_prefix', 'CN-', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(220, 'credit_note_number_decrement_on_delete', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(221, 'pdf_format_credit_note', 'A4-PORTRAIT', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(222, 'show_pdf_signature_credit_note', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(223, 'show_credit_note_reminders_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(224, 'show_amount_due_on_invoice', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(225, 'show_total_paid_on_invoice', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(226, 'show_credits_applied_on_invoice', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(227, 'staff_members_create_inline_lead_status', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(228, 'staff_members_create_inline_customer_groups', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(229, 'staff_members_create_inline_ticket_services', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(230, 'staff_members_save_tickets_predefined_replies', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(231, 'staff_members_create_inline_contract_types', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(232, 'staff_members_create_inline_expense_categories', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(233, 'show_project_on_credit_note', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(234, 'proposals_auto_operations_hour', '21', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(235, 'estimates_auto_operations_hour', '21', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(236, 'contracts_auto_operations_hour', '21', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(237, 'credit_note_number_format', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(238, 'allow_non_admin_members_to_import_leads', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(239, 'e_sign_legal_text', 'By clicking on \"Sign\", I consent to be legally bound by this electronic representation of my signature.', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(240, 'show_pdf_signature_contract', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(241, 'view_contract_only_logged_in', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(242, 'show_subscriptions_in_customers_area', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(243, 'calendar_only_assigned_tasks', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(244, 'after_subscription_payment_captured', 'send_invoice_and_receipt', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(245, 'mail_engine', 'phpmailer', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(246, 'gdpr_enable_terms_and_conditions', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(247, 'privacy_policy', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(248, 'terms_and_conditions', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(249, 'gdpr_enable_terms_and_conditions_lead_form', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(250, 'gdpr_enable_terms_and_conditions_ticket_form', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(251, 'gdpr_contact_enable_right_to_be_forgotten', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(252, 'show_gdpr_in_customers_menu', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(253, 'show_gdpr_link_in_footer', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(254, 'enable_gdpr', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(255, 'gdpr_on_forgotten_remove_invoices_credit_notes', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(256, 'gdpr_on_forgotten_remove_estimates', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(257, 'gdpr_enable_consent_for_contacts', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(258, 'gdpr_consent_public_page_top_block', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(259, 'gdpr_page_top_information_block', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(260, 'gdpr_enable_lead_public_form', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(261, 'gdpr_show_lead_custom_fields_on_public_form', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(262, 'gdpr_lead_attachments_on_public_form', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(263, 'gdpr_enable_consent_for_leads', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(264, 'gdpr_lead_enable_right_to_be_forgotten', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(265, 'allow_staff_view_invoices_assigned', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(266, 'gdpr_data_portability_leads', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(267, 'gdpr_lead_data_portability_allowed', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(268, 'gdpr_contact_data_portability_allowed', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(269, 'gdpr_data_portability_contacts', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(270, 'allow_staff_view_estimates_assigned', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(271, 'gdpr_after_lead_converted_delete', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(272, 'gdpr_show_terms_and_conditions_in_footer', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(273, 'save_last_order_for_tables', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(274, 'company_logo_dark', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(275, 'customers_register_require_confirmation', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(276, 'allow_non_admin_staff_to_delete_ticket_attachments', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(277, 'receive_notification_on_new_ticket_replies', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(278, 'google_client_id', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(279, 'enable_google_picker', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(280, 'show_ticket_reminders_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(281, 'ticket_import_reply_only', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(282, 'visible_customer_profile_tabs', 'all', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(283, 'show_project_on_invoice', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(284, 'show_project_on_estimate', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(285, 'staff_members_create_inline_lead_source', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(286, 'lead_unique_validation', '[\"email\"]', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(287, 'last_upgrade_copy_data', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(288, 'custom_js_admin_scripts', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(289, 'custom_js_customer_scripts', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(290, 'stripe_webhook_id', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(291, 'stripe_webhook_signing_secret', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(292, 'stripe_ideal_webhook_id', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(293, 'stripe_ideal_webhook_signing_secret', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(294, 'show_php_version_notice', '1', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(295, 'recaptcha_ignore_ips', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(296, 'show_task_reminders_on_calendar', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(297, 'customer_settings', 'true', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(298, 'tasks_reminder_notification_hour', '21', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(299, 'allow_primary_contact_to_manage_other_contacts', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(300, 'items_table_amounts_exclude_currency_symbol', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(301, 'round_off_task_timer_option', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(302, 'round_off_task_timer_time', '5', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(303, 'bitly_access_token', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(304, 'enable_support_menu_badges', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(305, 'attach_invoice_to_payment_receipt_email', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(306, 'invoice_due_notice_before', '2', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(307, 'invoice_due_notice_resend_after', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(308, '_leads_settings', 'true', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(309, 'show_estimate_request_in_customers_area', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(310, 'gdpr_enable_terms_and_conditions_estimate_request_form', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(311, 'identification_key', '12227928791715167387663b609bebb94', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(312, 'automatically_stop_task_timer_after_hours', '8', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(313, 'automatically_assign_ticket_to_first_staff_responding', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(314, 'reminder_for_completed_but_not_billed_tasks', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(315, 'staff_notify_completed_but_not_billed_tasks', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(316, 'reminder_for_completed_but_not_billed_tasks_days', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(317, 'tasks_reminder_notification_last_notified_day', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(318, 'staff_related_ticket_notification_to_assignee_only', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(319, 'show_pdf_signature_proposal', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(320, 'enable_honeypot_spam_validation', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(321, 'microsoft_mail_client_id', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(322, 'microsoft_mail_client_secret', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(323, 'microsoft_mail_azure_tenant_id', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(324, 'google_mail_client_id', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(325, 'google_mail_client_secret', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(326, 'google_mail_refresh_token', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(327, 'microsoft_mail_refresh_token', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(328, 'automatically_set_logged_in_staff_sales_agent', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(329, 'contract_sign_reminder_every_days', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(330, 'last_updated_date', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(331, 'v310_incompatible_tables', '[]', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(332, 'required_register_fields', '[]', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(333, 'allow_non_admin_members_to_delete_tickets_and_replies', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(334, 'upgraded_from_version', '', 0, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(335, 'sms_clickatell_api_key', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(336, 'sms_clickatell_active', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(337, 'sms_clickatell_initialized', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(338, 'sms_msg91_sender_id', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(339, 'sms_msg91_api_type', 'api', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(340, 'sms_msg91_auth_key', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(341, 'sms_msg91_active', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(342, 'sms_msg91_initialized', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(343, 'sms_twilio_account_sid', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(344, 'sms_twilio_auth_token', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(345, 'sms_twilio_phone_number', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(346, 'sms_twilio_sender_id', '', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(347, 'sms_twilio_active', '0', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04'),
-(348, 'sms_twilio_initialized', '1', 1, '2024-05-10 11:42:04', '2024-05-10 11:42:04');
+INSERT INTO `tbloptions` (`id`, `name`, `value`, `autoload`) VALUES
+(1, 'dateformat', 'Y-m-d|%Y-%m-%d', 1),
+(2, 'companyname', '', 1),
+(3, 'services', '1', 1),
+(4, 'maximum_allowed_ticket_attachments', '4', 1),
+(5, 'ticket_attachments_file_extensions', '.jpg,.png,.pdf,.doc,.zip,.rar', 1),
+(6, 'staff_access_only_assigned_departments', '1', 1),
+(7, 'use_knowledge_base', '1', 1),
+(8, 'smtp_email', '', 1),
+(9, 'smtp_password', '', 1),
+(10, 'company_info_format', '{company_name}<br />\r\n      {address}<br />\r\n      {city} {state}<br />\r\n      {country_code} {zip_code}<br />\r\n      {vat_number_with_label}', 0),
+(11, 'smtp_port', '', 1),
+(12, 'smtp_host', '', 1),
+(13, 'smtp_email_charset', 'utf-8', 1),
+(14, 'default_timezone', 'Asia/Karachi', 1),
+(15, 'clients_default_theme', 'perfex', 1),
+(16, 'company_logo', '', 1),
+(17, 'tables_pagination_limit', '25', 1),
+(18, 'main_domain', '', 1),
+(19, 'allow_registration', '0', 1),
+(20, 'knowledge_base_without_registration', '1', 1),
+(21, 'email_signature', '', 1),
+(22, 'default_staff_role', '1', 1),
+(23, 'newsfeed_maximum_files_upload', '10', 1),
+(24, 'contract_expiration_before', '4', 1),
+(25, 'invoice_prefix', 'INV-', 1),
+(26, 'decimal_separator', '.', 1),
+(27, 'thousand_separator', ',', 1),
+(28, 'invoice_company_name', '', 1),
+(29, 'invoice_company_address', '', 1),
+(30, 'invoice_company_city', '', 1),
+(31, 'invoice_company_country_code', '', 1),
+(32, 'invoice_company_postal_code', '', 1),
+(33, 'invoice_company_phonenumber', '', 1),
+(34, 'view_invoice_only_logged_in', '0', 1),
+(35, 'invoice_number_format', '1', 1),
+(36, 'next_invoice_number', '1', 0),
+(37, 'active_language', 'english', 1),
+(38, 'invoice_number_decrement_on_delete', '1', 1),
+(39, 'automatically_send_invoice_overdue_reminder_after', '1', 1),
+(40, 'automatically_resend_invoice_overdue_reminder_after', '3', 1),
+(41, 'expenses_auto_operations_hour', '21', 1),
+(42, 'delete_only_on_last_invoice', '1', 1),
+(43, 'delete_only_on_last_estimate', '1', 1),
+(44, 'create_invoice_from_recurring_only_on_paid_invoices', '0', 1),
+(45, 'allow_payment_amount_to_be_modified', '1', 1),
+(46, 'rtl_support_client', '0', 1),
+(47, 'limit_top_search_bar_results_to', '10', 1),
+(48, 'estimate_prefix', 'EST-', 1),
+(49, 'next_estimate_number', '1', 0),
+(50, 'estimate_number_decrement_on_delete', '1', 1),
+(51, 'estimate_number_format', '1', 1),
+(52, 'estimate_auto_convert_to_invoice_on_client_accept', '1', 1),
+(53, 'exclude_estimate_from_client_area_with_draft_status', '1', 1),
+(54, 'rtl_support_admin', '0', 1),
+(55, 'last_cron_run', '', 1),
+(56, 'show_sale_agent_on_estimates', '1', 1),
+(57, 'show_sale_agent_on_invoices', '1', 1),
+(58, 'predefined_terms_invoice', '', 1),
+(59, 'predefined_terms_estimate', '', 1),
+(60, 'default_task_priority', '2', 1),
+(61, 'dropbox_app_key', '', 1),
+(62, 'show_expense_reminders_on_calendar', '1', 1),
+(63, 'only_show_contact_tickets', '1', 1),
+(64, 'predefined_clientnote_invoice', '', 1),
+(65, 'predefined_clientnote_estimate', '', 1),
+(66, 'custom_pdf_logo_image_url', '', 1),
+(67, 'favicon', '', 1),
+(68, 'invoice_due_after', '30', 1),
+(69, 'google_api_key', '', 1),
+(70, 'google_calendar_main_calendar', '', 1),
+(71, 'default_tax', 'a:0:{}', 1),
+(72, 'show_invoices_on_calendar', '1', 1),
+(73, 'show_estimates_on_calendar', '1', 1),
+(74, 'show_contracts_on_calendar', '1', 1),
+(75, 'show_tasks_on_calendar', '1', 1),
+(76, 'show_customer_reminders_on_calendar', '1', 1),
+(77, 'output_client_pdfs_from_admin_area_in_client_language', '0', 1),
+(78, 'show_lead_reminders_on_calendar', '1', 1),
+(79, 'send_estimate_expiry_reminder_before', '4', 1),
+(80, 'leads_default_source', '', 1),
+(81, 'leads_default_status', '', 1),
+(82, 'proposal_expiry_reminder_enabled', '1', 1),
+(83, 'send_proposal_expiry_reminder_before', '4', 1),
+(84, 'default_contact_permissions', 'a:6:{i:0;s:1:\"1\";i:1;s:1:\"2\";i:2;s:1:\"3\";i:3;s:1:\"4\";i:4;s:1:\"5\";i:5;s:1:\"6\";}', 1),
+(85, 'pdf_logo_width', '150', 1),
+(86, 'access_tickets_to_none_staff_members', '0', 1),
+(87, 'customer_default_country', '', 1),
+(88, 'view_estimate_only_logged_in', '0', 1),
+(89, 'show_status_on_pdf_ei', '1', 1),
+(90, 'email_piping_only_replies', '0', 1),
+(91, 'email_piping_only_registered', '0', 1),
+(92, 'default_view_calendar', 'dayGridMonth', 1),
+(93, 'email_piping_default_priority', '2', 1),
+(94, 'total_to_words_lowercase', '0', 1),
+(95, 'show_tax_per_item', '1', 1),
+(96, 'total_to_words_enabled', '0', 1),
+(97, 'receive_notification_on_new_ticket', '1', 0),
+(98, 'autoclose_tickets_after', '0', 1),
+(99, 'media_max_file_size_upload', '10', 1),
+(100, 'client_staff_add_edit_delete_task_comments_first_hour', '0', 1),
+(101, 'show_projects_on_calendar', '1', 1),
+(102, 'leads_kanban_limit', '50', 1),
+(103, 'tasks_reminder_notification_before', '2', 1),
+(104, 'pdf_font', 'freesans', 1),
+(105, 'pdf_table_heading_color', '#323a45', 1),
+(106, 'pdf_table_heading_text_color', '#ffffff', 1),
+(107, 'pdf_font_size', '10', 1),
+(108, 'default_leads_kanban_sort', 'leadorder', 1),
+(109, 'default_leads_kanban_sort_type', 'asc', 1),
+(110, 'allowed_files', '.png,.jpg,.pdf,.doc,.docx,.xls,.xlsx,.zip,.rar,.txt', 1),
+(111, 'show_all_tasks_for_project_member', '1', 1),
+(112, 'email_protocol', 'smtp', 1),
+(113, 'calendar_first_day', '0', 1),
+(114, 'recaptcha_secret_key', '', 1),
+(115, 'show_help_on_setup_menu', '1', 1),
+(116, 'show_proposals_on_calendar', '1', 1),
+(117, 'smtp_encryption', '', 1),
+(118, 'recaptcha_site_key', '', 1),
+(119, 'smtp_username', '', 1),
+(120, 'auto_stop_tasks_timers_on_new_timer', '1', 1),
+(121, 'notification_when_customer_pay_invoice', '1', 1),
+(122, 'calendar_invoice_color', '#FF6F00', 1),
+(123, 'calendar_estimate_color', '#FF6F00', 1),
+(124, 'calendar_proposal_color', '#84c529', 1),
+(125, 'new_task_auto_assign_current_member', '1', 1),
+(126, 'calendar_reminder_color', '#03A9F4', 1),
+(127, 'calendar_contract_color', '#B72974', 1),
+(128, 'calendar_project_color', '#B72974', 1),
+(129, 'update_info_message', '<div class=\"col-md-12\"><div class=\"alert alert-success\"><h4 class=\"bold\">Congratulation on your installation!</h4><p>Now, you can activate modules that comes with the installation in <b>Setup->Modules<b>.</p></div></div>', 1),
+(130, 'show_estimate_reminders_on_calendar', '1', 1),
+(131, 'show_invoice_reminders_on_calendar', '1', 1),
+(132, 'show_proposal_reminders_on_calendar', '1', 1),
+(133, 'proposal_due_after', '7', 1),
+(134, 'allow_customer_to_change_ticket_status', '0', 1),
+(135, 'lead_lock_after_convert_to_customer', '0', 1),
+(136, 'default_proposals_pipeline_sort', 'pipeline_order', 1),
+(137, 'default_proposals_pipeline_sort_type', 'asc', 1),
+(138, 'default_estimates_pipeline_sort', 'pipeline_order', 1),
+(139, 'default_estimates_pipeline_sort_type', 'asc', 1),
+(140, 'use_recaptcha_customers_area', '0', 1),
+(141, 'remove_decimals_on_zero', '0', 1),
+(142, 'remove_tax_name_from_item_table', '0', 1),
+(143, 'pdf_format_invoice', 'A4-PORTRAIT', 1),
+(144, 'pdf_format_estimate', 'A4-PORTRAIT', 1),
+(145, 'pdf_format_proposal', 'A4-PORTRAIT', 1),
+(146, 'pdf_format_payment', 'A4-PORTRAIT', 1),
+(147, 'pdf_format_contract', 'A4-PORTRAIT', 1),
+(148, 'swap_pdf_info', '0', 1),
+(149, 'exclude_invoice_from_client_area_with_draft_status', '1', 1),
+(150, 'cron_has_run_from_cli', '0', 1),
+(151, 'hide_cron_is_required_message', '0', 0),
+(152, 'auto_assign_customer_admin_after_lead_convert', '1', 1),
+(153, 'show_transactions_on_invoice_pdf', '1', 1),
+(154, 'show_pay_link_to_invoice_pdf', '1', 1),
+(155, 'tasks_kanban_limit', '50', 1),
+(156, 'purchase_key', '', 1),
+(157, 'estimates_pipeline_limit', '50', 1),
+(158, 'proposals_pipeline_limit', '50', 1),
+(159, 'proposal_number_prefix', 'PRO-', 1),
+(160, 'number_padding_prefixes', '6', 1),
+(161, 'show_page_number_on_pdf', '0', 1),
+(162, 'calendar_events_limit', '4', 1),
+(163, 'show_setup_menu_item_only_on_hover', '0', 1),
+(164, 'company_requires_vat_number_field', '1', 1),
+(165, 'company_is_required', '1', 1),
+(166, 'allow_contact_to_delete_files', '0', 1),
+(167, 'company_vat', '', 1),
+(168, 'di', '1715346998', 1),
+(169, 'invoice_auto_operations_hour', '21', 1),
+(170, 'use_minified_files', '1', 1),
+(171, 'only_own_files_contacts', '0', 1),
+(172, 'allow_primary_contact_to_view_edit_billing_and_shipping', '0', 1),
+(173, 'estimate_due_after', '7', 1),
+(174, 'staff_members_open_tickets_to_all_contacts', '1', 1),
+(175, 'time_format', '24', 1),
+(176, 'delete_activity_log_older_then', '1', 1),
+(177, 'disable_language', '0', 1),
+(178, 'company_state', '', 1),
+(179, 'email_header', '<!doctype html>\r\n      <html>\r\n      <head>\r\n      <meta name=\"viewport\" content=\"width=device-width\" />\r\n      <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\r\n      <style>\r\n      body {\r\n        background-color: #f6f6f6;\r\n        font-family: sans-serif;\r\n        -webkit-font-smoothing: antialiased;\r\n        font-size: 14px;\r\n        line-height: 1.4;\r\n        margin: 0;\r\n        padding: 0;\r\n        -ms-text-size-adjust: 100%;\r\n        -webkit-text-size-adjust: 100%;\r\n      }\r\n      table {\r\n        border-collapse: separate;\r\n        mso-table-lspace: 0pt;\r\n        mso-table-rspace: 0pt;\r\n        width: 100%;\r\n      }\r\n      table td {\r\n        font-family: sans-serif;\r\n        font-size: 14px;\r\n        vertical-align: top;\r\n      }\r\n      /* -------------------------------------\r\n      BODY & CONTAINER\r\n      ------------------------------------- */\r\n      .body {\r\n        background-color: #f6f6f6;\r\n        width: 100%;\r\n      }\r\n      /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */\r\n      \r\n      .container {\r\n        display: block;\r\n        margin: 0 auto !important;\r\n        /* makes it centered */\r\n        max-width: 680px;\r\n        padding: 10px;\r\n        width: 680px;\r\n      }\r\n      /* This should also be a block element, so that it will fill 100% of the .container */\r\n      \r\n      .content {\r\n        box-sizing: border-box;\r\n        display: block;\r\n        margin: 0 auto;\r\n        max-width: 680px;\r\n        padding: 10px;\r\n      }\r\n      /* -------------------------------------\r\n      HEADER, FOOTER, MAIN\r\n      ------------------------------------- */\r\n      \r\n      .main {\r\n        background: #fff;\r\n        border-radius: 3px;\r\n        width: 100%;\r\n      }\r\n      .wrapper {\r\n        box-sizing: border-box;\r\n        padding: 20px;\r\n      }\r\n      .footer {\r\n        clear: both;\r\n        padding-top: 10px;\r\n        text-align: center;\r\n        width: 100%;\r\n      }\r\n      .footer td,\r\n      .footer p,\r\n      .footer span,\r\n      .footer a {\r\n        color: #999999;\r\n        font-size: 12px;\r\n        text-align: center;\r\n      }\r\n      hr {\r\n        border: 0;\r\n        border-bottom: 1px solid #f6f6f6;\r\n        margin: 20px 0;\r\n      }\r\n      /* -------------------------------------\r\n      RESPONSIVE AND MOBILE FRIENDLY STYLES\r\n      ------------------------------------- */\r\n      \r\n      @media only screen and (max-width: 620px) {\r\n        table[class=body] .content {\r\n          padding: 0 !important;\r\n        }\r\n        table[class=body] .container {\r\n          padding: 0 !important;\r\n          width: 100% !important;\r\n        }\r\n        table[class=body] .main {\r\n          border-left-width: 0 !important;\r\n          border-radius: 0 !important;\r\n          border-right-width: 0 !important;\r\n        }\r\n      }\r\n      </style>\r\n      </head>\r\n      <body class=\"\">\r\n      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"body\">\r\n      <tr>\r\n      <td>&nbsp;</td>\r\n      <td class=\"container\">\r\n      <div class=\"content\">\r\n      <!-- START CENTERED WHITE CONTAINER -->\r\n      <table class=\"main\">\r\n      <!-- START MAIN CONTENT AREA -->\r\n      <tr>\r\n      <td class=\"wrapper\">\r\n      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\r\n      <tr>\r\n      <td>', 1),
+(180, 'show_pdf_signature_invoice', '1', 0),
+(181, 'show_pdf_signature_estimate', '1', 0),
+(182, 'signature_image', '', 0),
+(183, 'email_footer', '</td>\r\n      </tr>\r\n      </table>\r\n      </td>\r\n      </tr>\r\n      <!-- END MAIN CONTENT AREA -->\r\n      </table>\r\n      <!-- START FOOTER -->\r\n      <div class=\"footer\">\r\n      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\r\n      <tr>\r\n      <td class=\"content-block\">\r\n      <span>{companyname}</span>\r\n      </td>\r\n      </tr>\r\n      </table>\r\n      </div>\r\n      <!-- END FOOTER -->\r\n      <!-- END CENTERED WHITE CONTAINER -->\r\n      </div>\r\n      </td>\r\n      <td>&nbsp;</td>\r\n      </tr>\r\n      </table>\r\n      </body>\r\n      </html>', 1),
+(184, 'exclude_proposal_from_client_area_with_draft_status', '1', 1),
+(185, 'pusher_app_key', '', 1),
+(186, 'pusher_app_secret', '', 1),
+(187, 'pusher_app_id', '', 1),
+(188, 'pusher_realtime_notifications', '0', 1),
+(189, 'pdf_format_statement', 'A4-PORTRAIT', 1),
+(190, 'pusher_cluster', '', 1),
+(191, 'show_table_export_button', 'to_all', 1),
+(192, 'allow_staff_view_proposals_assigned', '1', 1),
+(193, 'show_cloudflare_notice', '1', 0),
+(194, 'task_modal_class', 'modal-lg', 1),
+(195, 'lead_modal_class', 'modal-lg', 1),
+(196, 'show_timesheets_overview_all_members_notice_admins', '0', 1),
+(197, 'desktop_notifications', '0', 1),
+(198, 'hide_notified_reminders_from_calendar', '1', 0),
+(199, 'customer_info_format', '{company_name}<br />\r\n      {street}<br />\r\n      {city} {state}<br />\r\n      {country_code} {zip_code}<br />\r\n      {vat_number_with_label}', 0),
+(200, 'timer_started_change_status_in_progress', '1', 0),
+(201, 'default_ticket_reply_status', '3', 1),
+(202, 'default_task_status', 'auto', 1),
+(203, 'email_queue_skip_with_attachments', '1', 1),
+(204, 'email_queue_enabled', '0', 1),
+(205, 'last_email_queue_retry', '', 1),
+(206, 'auto_dismiss_desktop_notifications_after', '0', 1),
+(207, 'proposal_info_format', '{proposal_to}<br />\r\n      {address}<br />\r\n      {city} {state}<br />\r\n      {country_code} {zip_code}<br />\r\n      {phone}<br />\r\n      {email}', 0),
+(208, 'ticket_replies_order', 'asc', 1),
+(209, 'new_recurring_invoice_action', 'generate_and_send', 0),
+(210, 'bcc_emails', '', 0),
+(211, 'email_templates_language_checks', '', 0),
+(212, 'proposal_accept_identity_confirmation', '1', 0),
+(213, 'estimate_accept_identity_confirmation', '1', 0),
+(214, 'new_task_auto_follower_current_member', '0', 1),
+(215, 'task_biillable_checked_on_creation', '1', 1),
+(216, 'predefined_clientnote_credit_note', '', 1),
+(217, 'predefined_terms_credit_note', '', 1),
+(218, 'next_credit_note_number', '1', 1),
+(219, 'credit_note_prefix', 'CN-', 1),
+(220, 'credit_note_number_decrement_on_delete', '1', 1),
+(221, 'pdf_format_credit_note', 'A4-PORTRAIT', 1),
+(222, 'show_pdf_signature_credit_note', '1', 0),
+(223, 'show_credit_note_reminders_on_calendar', '1', 1),
+(224, 'show_amount_due_on_invoice', '1', 1),
+(225, 'show_total_paid_on_invoice', '1', 1),
+(226, 'show_credits_applied_on_invoice', '1', 1),
+(227, 'staff_members_create_inline_lead_status', '1', 1),
+(228, 'staff_members_create_inline_customer_groups', '1', 1),
+(229, 'staff_members_create_inline_ticket_services', '1', 1),
+(230, 'staff_members_save_tickets_predefined_replies', '1', 1),
+(231, 'staff_members_create_inline_contract_types', '1', 1),
+(232, 'staff_members_create_inline_expense_categories', '1', 1),
+(233, 'show_project_on_credit_note', '1', 1),
+(234, 'proposals_auto_operations_hour', '21', 1),
+(235, 'estimates_auto_operations_hour', '21', 1),
+(236, 'contracts_auto_operations_hour', '21', 1),
+(237, 'credit_note_number_format', '1', 1),
+(238, 'allow_non_admin_members_to_import_leads', '0', 1),
+(239, 'e_sign_legal_text', 'By clicking on \"Sign\", I consent to be legally bound by this electronic representation of my signature.', 1),
+(240, 'show_pdf_signature_contract', '1', 1),
+(241, 'view_contract_only_logged_in', '0', 1),
+(242, 'show_subscriptions_in_customers_area', '1', 1),
+(243, 'calendar_only_assigned_tasks', '0', 1),
+(244, 'after_subscription_payment_captured', 'send_invoice_and_receipt', 1),
+(245, 'mail_engine', 'phpmailer', 1),
+(246, 'gdpr_enable_terms_and_conditions', '0', 1),
+(247, 'privacy_policy', '', 1),
+(248, 'terms_and_conditions', '', 1),
+(249, 'gdpr_enable_terms_and_conditions_lead_form', '0', 1),
+(250, 'gdpr_enable_terms_and_conditions_ticket_form', '0', 1),
+(251, 'gdpr_contact_enable_right_to_be_forgotten', '0', 1),
+(252, 'show_gdpr_in_customers_menu', '1', 1),
+(253, 'show_gdpr_link_in_footer', '1', 1),
+(254, 'enable_gdpr', '0', 1),
+(255, 'gdpr_on_forgotten_remove_invoices_credit_notes', '0', 1),
+(256, 'gdpr_on_forgotten_remove_estimates', '0', 1),
+(257, 'gdpr_enable_consent_for_contacts', '0', 1),
+(258, 'gdpr_consent_public_page_top_block', '', 1),
+(259, 'gdpr_page_top_information_block', '', 1),
+(260, 'gdpr_enable_lead_public_form', '0', 1),
+(261, 'gdpr_show_lead_custom_fields_on_public_form', '0', 1),
+(262, 'gdpr_lead_attachments_on_public_form', '0', 1),
+(263, 'gdpr_enable_consent_for_leads', '0', 1),
+(264, 'gdpr_lead_enable_right_to_be_forgotten', '0', 1),
+(265, 'allow_staff_view_invoices_assigned', '1', 1),
+(266, 'gdpr_data_portability_leads', '0', 1),
+(267, 'gdpr_lead_data_portability_allowed', '', 1),
+(268, 'gdpr_contact_data_portability_allowed', '', 1),
+(269, 'gdpr_data_portability_contacts', '0', 1),
+(270, 'allow_staff_view_estimates_assigned', '1', 1),
+(271, 'gdpr_after_lead_converted_delete', '0', 1),
+(272, 'gdpr_show_terms_and_conditions_in_footer', '0', 1),
+(273, 'save_last_order_for_tables', '0', 1),
+(274, 'company_logo_dark', '', 1),
+(275, 'customers_register_require_confirmation', '0', 1),
+(276, 'allow_non_admin_staff_to_delete_ticket_attachments', '0', 1),
+(277, 'receive_notification_on_new_ticket_replies', '1', 0),
+(278, 'google_client_id', '', 1),
+(279, 'enable_google_picker', '1', 1),
+(280, 'show_ticket_reminders_on_calendar', '1', 1),
+(281, 'ticket_import_reply_only', '0', 1),
+(282, 'visible_customer_profile_tabs', 'all', 0),
+(283, 'show_project_on_invoice', '1', 1),
+(284, 'show_project_on_estimate', '1', 1),
+(285, 'staff_members_create_inline_lead_source', '1', 1),
+(286, 'lead_unique_validation', '[\"email\"]', 1),
+(287, 'last_upgrade_copy_data', '', 1),
+(288, 'custom_js_admin_scripts', '', 1),
+(289, 'custom_js_customer_scripts', '0', 1),
+(290, 'stripe_webhook_id', '', 1),
+(291, 'stripe_webhook_signing_secret', '', 1),
+(292, 'stripe_ideal_webhook_id', '', 1),
+(293, 'stripe_ideal_webhook_signing_secret', '', 1),
+(294, 'show_php_version_notice', '1', 0),
+(295, 'recaptcha_ignore_ips', '', 1),
+(296, 'show_task_reminders_on_calendar', '1', 1),
+(297, 'customer_settings', 'true', 1),
+(298, 'tasks_reminder_notification_hour', '21', 1),
+(299, 'allow_primary_contact_to_manage_other_contacts', '0', 1),
+(300, 'items_table_amounts_exclude_currency_symbol', '1', 1),
+(301, 'round_off_task_timer_option', '0', 1),
+(302, 'round_off_task_timer_time', '5', 1),
+(303, 'bitly_access_token', '', 1),
+(304, 'enable_support_menu_badges', '0', 1),
+(305, 'attach_invoice_to_payment_receipt_email', '0', 1),
+(306, 'invoice_due_notice_before', '2', 1),
+(307, 'invoice_due_notice_resend_after', '0', 1),
+(308, '_leads_settings', 'true', 1),
+(309, 'show_estimate_request_in_customers_area', '0', 1),
+(310, 'gdpr_enable_terms_and_conditions_estimate_request_form', '0', 1),
+(311, 'identification_key', '10981446841715347052663e1e6cdb98f', 1),
+(312, 'automatically_stop_task_timer_after_hours', '8', 1),
+(313, 'automatically_assign_ticket_to_first_staff_responding', '0', 1),
+(314, 'reminder_for_completed_but_not_billed_tasks', '0', 1),
+(315, 'staff_notify_completed_but_not_billed_tasks', '', 1),
+(316, 'reminder_for_completed_but_not_billed_tasks_days', '', 1),
+(317, 'tasks_reminder_notification_last_notified_day', '', 1),
+(318, 'staff_related_ticket_notification_to_assignee_only', '0', 1),
+(319, 'show_pdf_signature_proposal', '1', 1),
+(320, 'enable_honeypot_spam_validation', '0', 1),
+(321, 'microsoft_mail_client_id', '', 1),
+(322, 'microsoft_mail_client_secret', '', 1),
+(323, 'microsoft_mail_azure_tenant_id', '', 1),
+(324, 'google_mail_client_id', '', 1),
+(325, 'google_mail_client_secret', '', 1),
+(326, 'google_mail_refresh_token', '', 1),
+(327, 'microsoft_mail_refresh_token', '', 1),
+(328, 'automatically_set_logged_in_staff_sales_agent', '1', 1),
+(329, 'contract_sign_reminder_every_days', '0', 1),
+(330, 'last_updated_date', '', 1),
+(331, 'v310_incompatible_tables', '[]', 1),
+(332, 'required_register_fields', '[]', 0),
+(333, 'allow_non_admin_members_to_delete_tickets_and_replies', '0', 1),
+(334, 'upgraded_from_version', '', 0),
+(335, 'sms_clickatell_api_key', '', 1),
+(336, 'sms_clickatell_active', '0', 1),
+(337, 'sms_clickatell_initialized', '1', 1),
+(338, 'sms_msg91_sender_id', '', 1),
+(339, 'sms_msg91_api_type', 'api', 1),
+(340, 'sms_msg91_auth_key', '', 1),
+(341, 'sms_msg91_active', '0', 1),
+(342, 'sms_msg91_initialized', '1', 1),
+(343, 'sms_twilio_account_sid', '', 1),
+(344, 'sms_twilio_auth_token', '', 1),
+(345, 'sms_twilio_phone_number', '', 1),
+(346, 'sms_twilio_sender_id', '', 1),
+(347, 'sms_twilio_active', '0', 1),
+(348, 'sms_twilio_initialized', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -2204,7 +2070,6 @@ CREATE TABLE `tblpayment_attempts` (
   `fee` double NOT NULL,
   `payment_gateway` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2221,17 +2086,15 @@ CREATE TABLE `tblpayment_modes` (
   `invoices_only` int(11) NOT NULL DEFAULT 0,
   `expenses_only` int(11) NOT NULL DEFAULT 0,
   `selected_by_default` int(11) NOT NULL DEFAULT 1,
-  `active` tinyint(1) NOT NULL DEFAULT 1,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `active` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblpayment_modes`
 --
 
-INSERT INTO `tblpayment_modes` (`id`, `name`, `description`, `show_on_pdf`, `invoices_only`, `expenses_only`, `selected_by_default`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'Bank', NULL, 0, 0, 0, 1, 1, '2024-05-10 11:42:31', '2024-05-10 11:42:31');
+INSERT INTO `tblpayment_modes` (`id`, `name`, `description`, `show_on_pdf`, `invoices_only`, `expenses_only`, `selected_by_default`, `active`) VALUES
+(1, 'Bank', NULL, 0, 0, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2242,9 +2105,7 @@ INSERT INTO `tblpayment_modes` (`id`, `name`, `description`, `show_on_pdf`, `inv
 CREATE TABLE `tblpinned_projects` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `staff_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2265,9 +2126,7 @@ CREATE TABLE `tblprojectdiscussioncomments` (
   `contact_id` int(11) DEFAULT 0,
   `fullname` varchar(191) DEFAULT NULL,
   `file_name` varchar(191) DEFAULT NULL,
-  `file_mime_type` varchar(70) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `file_mime_type` varchar(70) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2285,9 +2144,7 @@ CREATE TABLE `tblprojectdiscussions` (
   `datecreated` datetime NOT NULL,
   `last_activity` datetime DEFAULT NULL,
   `staff_id` int(11) NOT NULL DEFAULT 0,
-  `contact_id` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `contact_id` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2314,9 +2171,7 @@ CREATE TABLE `tblprojects` (
   `estimated_hours` decimal(15,2) DEFAULT NULL,
   `addedfrom` int(11) NOT NULL,
   `contact_notification` int(11) DEFAULT 1,
-  `notify_contacts` mediumtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `notify_contacts` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2334,9 +2189,7 @@ CREATE TABLE `tblproject_activity` (
   `visible_to_customer` int(11) NOT NULL DEFAULT 0,
   `description_key` varchar(191) NOT NULL COMMENT 'Language file key',
   `additional_data` mediumtext DEFAULT NULL,
-  `dateadded` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateadded` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2360,9 +2213,7 @@ CREATE TABLE `tblproject_files` (
   `contact_id` int(11) NOT NULL DEFAULT 0,
   `external` varchar(40) DEFAULT NULL,
   `external_link` mediumtext DEFAULT NULL,
-  `thumbnail_link` mediumtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `thumbnail_link` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2374,9 +2225,7 @@ CREATE TABLE `tblproject_files` (
 CREATE TABLE `tblproject_members` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `staff_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2389,9 +2238,7 @@ CREATE TABLE `tblproject_notes` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
   `content` mediumtext NOT NULL,
-  `staff_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `staff_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2404,9 +2251,7 @@ CREATE TABLE `tblproject_settings` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `value` mediumtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `value` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2458,9 +2303,7 @@ CREATE TABLE `tblproposals` (
   `acceptance_date` datetime DEFAULT NULL,
   `acceptance_ip` varchar(40) DEFAULT NULL,
   `signature` varchar(40) DEFAULT NULL,
-  `short_link` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `short_link` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2474,9 +2317,7 @@ CREATE TABLE `tblproposal_comments` (
   `content` longtext DEFAULT NULL,
   `proposalid` int(11) NOT NULL,
   `staffid` int(11) NOT NULL,
-  `dateadded` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateadded` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2489,9 +2330,7 @@ CREATE TABLE `tblrelated_items` (
   `id` int(11) NOT NULL,
   `rel_id` int(11) NOT NULL,
   `rel_type` varchar(30) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2509,9 +2348,7 @@ CREATE TABLE `tblreminders` (
   `staff` int(11) NOT NULL,
   `rel_type` varchar(40) NOT NULL,
   `notify_by_email` int(11) NOT NULL DEFAULT 1,
-  `creator` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `creator` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2523,17 +2360,15 @@ CREATE TABLE `tblreminders` (
 CREATE TABLE `tblroles` (
   `roleid` int(11) NOT NULL,
   `name` varchar(150) NOT NULL,
-  `permissions` longtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `permissions` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblroles`
 --
 
-INSERT INTO `tblroles` (`roleid`, `name`, `permissions`, `created_at`, `updated_at`) VALUES
-(1, 'Employee', NULL, '2024-05-10 11:45:23', '2024-05-10 11:45:23');
+INSERT INTO `tblroles` (`roleid`, `name`, `permissions`) VALUES
+(1, 'Employee', NULL);
 
 -- --------------------------------------------------------
 
@@ -2549,9 +2384,7 @@ CREATE TABLE `tblsales_activity` (
   `additional_data` mediumtext DEFAULT NULL,
   `staffid` varchar(11) DEFAULT NULL,
   `full_name` varchar(100) DEFAULT NULL,
-  `date` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2568,9 +2401,7 @@ CREATE TABLE `tblscheduled_emails` (
   `contacts` varchar(197) NOT NULL,
   `cc` mediumtext DEFAULT NULL,
   `attach_pdf` tinyint(1) NOT NULL DEFAULT 1,
-  `template` varchar(197) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `template` varchar(197) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2581,9 +2412,7 @@ CREATE TABLE `tblscheduled_emails` (
 
 CREATE TABLE `tblservices` (
   `serviceid` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2596,35 +2425,15 @@ CREATE TABLE `tblsessions` (
   `id` varchar(128) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `data` blob NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblsessions`
 --
 
-INSERT INTO `tblsessions` (`id`, `ip_address`, `timestamp`, `data`, `created_at`, `updated_at`) VALUES
-('17fpdr11dtqc927hc4ofsu5c1n8mjtmu', '::1', 1715174019, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353137343031393b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('1t5umdnc3av1f15ehdeboelohp1nbvpv', '::1', 1715167379, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353136373337393b7265645f75726c7c733a33333a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e223b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('2r0t7dicd7cfo4pvrj62i3tg5crv2jpj', '::1', 1715249940, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353234393934303b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('4q8ckc25dqrk1bpatjgv6rklpfi3cb5v', '::1', 1715167912, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353136373931313b5f707265765f75726c7c733a33333a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e223b73746166665f757365725f69647c733a313a2231223b73746166665f6c6f676765645f696e7c623a313b73657475702d6d656e752d6f70656e7c733a303a22223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('6ralpfuvbgevjquee262arvh4221case', '::1', 1715239936, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353233393933363b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('7rq645rdcptoclcjs35sjunjrjmcstg6', '::1', 1715182584, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353138323538333b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b7265645f75726c7c733a34313a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f636c69656e7473223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('870858knb531ngul28a1n19seo4bgsa2', '::1', 1715241671, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353234313637313b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b7265645f75726c7c733a34313a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f636c69656e7473223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('a4ft14fqbc4em2mevd26jvmhcgetjdr8', '::1', 1715250157, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353234393934303b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('aknr7fp75asrjiuqssblsjt17nks62n6', '::1', 1715249441, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353234393434313b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('b028ivpl8muai1j6gtbasvvdud93lb2c', '::1', 1715241321, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353234313332313b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('hc1fnepecfd5n7ov952b6m96dtdkgcm4', '::1', 1715327103, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353332373130333b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f73746166662f6d656d6265722f32223b73746166665f757365725f69647c733a313a2231223b73746166665f6c6f676765645f696e7c623a313b73657475702d6d656e752d6f70656e7c623a313b6d6573736167652d737563636573737c733a33343a225374616666204d656d6265722075706461746564207375636365737366756c6c792e223b5f5f63695f766172737c613a313a7b733a31353a226d6573736167652d73756363657373223b733a333a226e6577223b7d, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('jap9mq5pomeukddh0igjqm9455shfmi8', '::1', 1715182583, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353138323538333b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b7265645f75726c7c733a34313a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f636c69656e7473223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('khd9t2tputet36esuqq3vkio3ti34a1j', '::1', 1715327193, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353332373130333b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f73746166662f6d656d6265722f32223b73746166665f757365725f69647c733a313a2231223b73746166665f6c6f676765645f696e7c623a313b73657475702d6d656e752d6f70656e7c623a313b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('lpkkjmbjj236l7614qtm829hc1gao7tr', '::1', 1715248313, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353234383331323b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('pnudkr2ou10ajf6vccis8j5do7joam2r', '::1', 1715248305, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353234383330353b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b7265645f75726c7c733a34313a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f636c69656e7473223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('ppm5iocg6r4ack7d22p0eftjhniot3t0', '::1', 1715173639, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353137333633393b5f707265765f75726c7c733a34313a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f636c69656e7473223b73746166665f757365725f69647c733a313a2231223b73746166665f6c6f676765645f696e7c623a313b73657475702d6d656e752d6f70656e7c733a303a22223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('r3fn8mkpebo2cj869bsajamopeh55356', '::1', 1715242000, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353234323030303b5f707265765f75726c7c733a34383a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f61757468656e7469636174696f6e223b7265645f75726c7c733a34313a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f636c69656e7473223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('rba0h187l1uled98q46uml7jup00ki9u', '::1', 1715170084, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353137303038343b5f707265765f75726c7c733a33333a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e223b73746166665f757365725f69647c733a313a2231223b73746166665f6c6f676765645f696e7c623a313b73657475702d6d656e752d6f70656e7c733a303a22223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02'),
-('v9sc6calukb41kkubqbk1j49k6sf5l22', '::1', 1715173149, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353137333134393b5f707265765f75726c7c733a33333a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e223b73746166665f757365725f69647c733a313a2231223b73746166665f6c6f676765645f696e7c623a313b73657475702d6d656e752d6f70656e7c733a303a22223b, '2024-05-10 11:46:02', '2024-05-10 11:46:02');
+INSERT INTO `tblsessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('khd9t2tputet36esuqq3vkio3ti34a1j', '::1', 1715347061, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731353334373031393b5f707265765f75726c7c733a33393a22687474703a2f2f6c6f63616c686f73742f6f66666c696e656170702f61646d696e2f7374616666223b73746166665f757365725f69647c733a313a2231223b73746166665f6c6f676765645f696e7c623a313b);
 
 -- --------------------------------------------------------
 
@@ -2634,9 +2443,7 @@ INSERT INTO `tblsessions` (`id`, `ip_address`, `timestamp`, `data`, `created_at`
 
 CREATE TABLE `tblshared_customer_files` (
   `file_id` int(11) NOT NULL,
-  `contact_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `contact_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2649,9 +2456,7 @@ CREATE TABLE `tblspam_filters` (
   `id` int(11) NOT NULL,
   `type` varchar(40) NOT NULL,
   `rel_type` varchar(10) NOT NULL,
-  `value` mediumtext NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `value` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2690,18 +2495,15 @@ CREATE TABLE `tblstaff` (
   `two_factor_auth_code` varchar(100) DEFAULT NULL,
   `two_factor_auth_code_requested` datetime DEFAULT NULL,
   `email_signature` mediumtext DEFAULT NULL,
-  `google_auth_secret` mediumtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `google_auth_secret` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tblstaff`
 --
 
-INSERT INTO `tblstaff` (`staffid`, `email`, `firstname`, `lastname`, `facebook`, `linkedin`, `phonenumber`, `skype`, `password`, `datecreated`, `profile_image`, `last_ip`, `last_login`, `last_activity`, `last_password_change`, `new_pass_key`, `new_pass_key_requested`, `admin`, `role`, `active`, `default_language`, `direction`, `media_path_slug`, `is_not_staff`, `hourly_rate`, `two_factor_auth_enabled`, `two_factor_auth_code`, `two_factor_auth_code_requested`, `email_signature`, `google_auth_secret`, `created_at`, `updated_at`) VALUES
-(1, 'admin@gmail.com', 'Majid', 'ali', NULL, NULL, NULL, NULL, '$2a$08$BOmVaj2j2zgrjvhjfZtW4uxXXUzGimYu09NtynclfkZdl2lFMOdPa', '2024-05-08 13:16:32', NULL, '::1', '2024-05-10 12:40:21', '2024-05-10 12:46:32', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, NULL, 0, 0.00, 0, NULL, NULL, NULL, NULL, '2024-05-10 07:39:44', '2024-05-10 07:46:32'),
-(2, 'ma5788s678@gmail.com', 'Majid', 'ali', '', '', '', '', '$2a$08$V5VpX7PLEYMiTNgS8IFfpeisUdJE8iz4yNQAnMLc4xz3Ut0f59jHK', '2024-05-10 12:43:32', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 1, '', '', 'majid-ali', 0, 0.00, 0, NULL, NULL, '', NULL, '2024-05-10 07:43:32', '2024-05-10 07:46:15');
+INSERT INTO `tblstaff` (`staffid`, `email`, `firstname`, `lastname`, `facebook`, `linkedin`, `phonenumber`, `skype`, `password`, `datecreated`, `profile_image`, `last_ip`, `last_login`, `last_activity`, `last_password_change`, `new_pass_key`, `new_pass_key_requested`, `admin`, `role`, `active`, `default_language`, `direction`, `media_path_slug`, `is_not_staff`, `hourly_rate`, `two_factor_auth_enabled`, `two_factor_auth_code`, `two_factor_auth_code_requested`, `email_signature`, `google_auth_secret`) VALUES
+(1, 'ma5788678@gmail.com', 'majid', 'ali', NULL, NULL, NULL, NULL, '$2a$08$sxS7lMSrw3da5TDEfQ2hZ.btXwTUZpPrd/pWMLIrgRqhSfufy.3wO', '2024-05-10 15:16:38', NULL, '::1', '2024-05-10 18:17:25', '2024-05-10 18:17:41', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, NULL, 0, 0.00, 0, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2712,9 +2514,7 @@ INSERT INTO `tblstaff` (`staffid`, `email`, `firstname`, `lastname`, `facebook`,
 CREATE TABLE `tblstaff_departments` (
   `staffdepartmentid` int(11) NOT NULL,
   `staffid` int(11) NOT NULL,
-  `departmentid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `departmentid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2726,9 +2526,7 @@ CREATE TABLE `tblstaff_departments` (
 CREATE TABLE `tblstaff_permissions` (
   `staff_id` int(11) NOT NULL,
   `feature` varchar(40) NOT NULL,
-  `capability` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `capability` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2762,9 +2560,7 @@ CREATE TABLE `tblsubscriptions` (
   `created_from` int(11) NOT NULL,
   `date_subscribed` datetime DEFAULT NULL,
   `in_test_environment` int(11) DEFAULT NULL,
-  `last_sent_at` datetime DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `last_sent_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2777,9 +2573,7 @@ CREATE TABLE `tbltaggables` (
   `rel_id` int(11) NOT NULL,
   `rel_type` varchar(20) NOT NULL,
   `tag_id` int(11) NOT NULL,
-  `tag_order` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `tag_order` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2790,9 +2584,7 @@ CREATE TABLE `tbltaggables` (
 
 CREATE TABLE `tbltags` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2832,9 +2624,7 @@ CREATE TABLE `tbltasks` (
   `kanban_order` int(11) DEFAULT 1,
   `milestone_order` int(11) NOT NULL DEFAULT 0,
   `visible_to_client` tinyint(1) NOT NULL DEFAULT 0,
-  `deadline_notified` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `deadline_notified` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2850,9 +2640,7 @@ CREATE TABLE `tbltaskstimers` (
   `end_time` varchar(64) DEFAULT NULL,
   `staff_id` int(11) NOT NULL,
   `hourly_rate` decimal(15,2) NOT NULL DEFAULT 0.00,
-  `note` mediumtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `note` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2863,9 +2651,7 @@ CREATE TABLE `tbltaskstimers` (
 
 CREATE TABLE `tbltasks_checklist_templates` (
   `id` int(11) NOT NULL,
-  `description` mediumtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `description` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2879,9 +2665,7 @@ CREATE TABLE `tbltask_assigned` (
   `staffid` int(11) NOT NULL,
   `taskid` int(11) NOT NULL,
   `assigned_from` int(11) NOT NULL DEFAULT 0,
-  `is_assigned_from_contact` tinyint(1) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `is_assigned_from_contact` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2899,9 +2683,7 @@ CREATE TABLE `tbltask_checklist_items` (
   `addedfrom` int(11) NOT NULL,
   `finished_from` int(11) DEFAULT 0,
   `list_order` int(11) NOT NULL DEFAULT 0,
-  `assigned` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `assigned` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2917,9 +2699,7 @@ CREATE TABLE `tbltask_comments` (
   `staffid` int(11) NOT NULL,
   `contact_id` int(11) NOT NULL DEFAULT 0,
   `file_id` int(11) NOT NULL DEFAULT 0,
-  `dateadded` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateadded` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2931,9 +2711,7 @@ CREATE TABLE `tbltask_comments` (
 CREATE TABLE `tbltask_followers` (
   `id` int(11) NOT NULL,
   `staffid` int(11) NOT NULL,
-  `taskid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `taskid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2945,9 +2723,7 @@ CREATE TABLE `tbltask_followers` (
 CREATE TABLE `tbltaxes` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `taxrate` decimal(15,2) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `taxrate` decimal(15,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2961,9 +2737,7 @@ CREATE TABLE `tbltemplates` (
   `name` varchar(255) NOT NULL,
   `type` varchar(100) NOT NULL,
   `addedfrom` int(11) NOT NULL,
-  `content` longtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `content` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2995,9 +2769,7 @@ CREATE TABLE `tbltickets` (
   `adminread` int(11) NOT NULL DEFAULT 0,
   `assigned` int(11) NOT NULL DEFAULT 0,
   `staff_id_replying` int(11) DEFAULT NULL,
-  `cc` varchar(191) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `cc` varchar(191) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3014,9 +2786,7 @@ CREATE TABLE `tbltickets_pipe_log` (
   `subject` varchar(191) NOT NULL,
   `message` longtext NOT NULL,
   `email` varchar(100) NOT NULL,
-  `status` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3028,9 +2798,7 @@ CREATE TABLE `tbltickets_pipe_log` (
 CREATE TABLE `tbltickets_predefined_replies` (
   `id` int(11) NOT NULL,
   `name` varchar(191) NOT NULL,
-  `message` mediumtext NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `message` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3041,19 +2809,17 @@ CREATE TABLE `tbltickets_predefined_replies` (
 
 CREATE TABLE `tbltickets_priorities` (
   `priorityid` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tbltickets_priorities`
 --
 
-INSERT INTO `tbltickets_priorities` (`priorityid`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Low', '2024-05-10 11:57:36', '2024-05-10 11:57:36'),
-(2, 'Medium', '2024-05-10 11:57:36', '2024-05-10 11:57:36'),
-(3, 'High', '2024-05-10 11:57:36', '2024-05-10 11:57:36');
+INSERT INTO `tbltickets_priorities` (`priorityid`, `name`) VALUES
+(1, 'Low'),
+(2, 'Medium'),
+(3, 'High');
 
 -- --------------------------------------------------------
 
@@ -3066,21 +2832,19 @@ CREATE TABLE `tbltickets_status` (
   `name` varchar(50) NOT NULL,
   `isdefault` int(11) NOT NULL DEFAULT 0,
   `statuscolor` varchar(7) DEFAULT NULL,
-  `statusorder` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `statusorder` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tbltickets_status`
 --
 
-INSERT INTO `tbltickets_status` (`ticketstatusid`, `name`, `isdefault`, `statuscolor`, `statusorder`, `created_at`, `updated_at`) VALUES
-(1, 'Open', 1, '#ff2d42', 1, '2024-05-10 11:57:43', '2024-05-10 11:57:43'),
-(2, 'In progress', 1, '#22c55e', 2, '2024-05-10 11:57:43', '2024-05-10 11:57:43'),
-(3, 'Answered', 1, '#2563eb', 3, '2024-05-10 11:57:43', '2024-05-10 11:57:43'),
-(4, 'On Hold', 1, '#64748b', 4, '2024-05-10 11:57:43', '2024-05-10 11:57:43'),
-(5, 'Closed', 1, '#03a9f4', 5, '2024-05-10 11:57:43', '2024-05-10 11:57:43');
+INSERT INTO `tbltickets_status` (`ticketstatusid`, `name`, `isdefault`, `statuscolor`, `statusorder`) VALUES
+(1, 'Open', 1, '#ff2d42', 1),
+(2, 'In progress', 1, '#22c55e', 2),
+(3, 'Answered', 1, '#2563eb', 3),
+(4, 'On Hold', 1, '#64748b', 4),
+(5, 'Closed', 1, '#03a9f4', 5);
 
 -- --------------------------------------------------------
 
@@ -3094,9 +2858,7 @@ CREATE TABLE `tblticket_attachments` (
   `replyid` int(11) DEFAULT NULL,
   `file_name` varchar(191) NOT NULL,
   `filetype` varchar(50) DEFAULT NULL,
-  `dateadded` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateadded` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3115,9 +2877,7 @@ CREATE TABLE `tblticket_replies` (
   `date` datetime NOT NULL,
   `message` mediumtext DEFAULT NULL,
   `attachment` int(11) DEFAULT NULL,
-  `admin` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `admin` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3133,9 +2893,7 @@ CREATE TABLE `tbltodos` (
   `dateadded` datetime NOT NULL,
   `finished` tinyint(1) NOT NULL,
   `datefinished` datetime DEFAULT NULL,
-  `item_order` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `item_order` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3153,9 +2911,7 @@ CREATE TABLE `tbltracked_mails` (
   `email` varchar(100) NOT NULL,
   `opened` tinyint(1) NOT NULL DEFAULT 0,
   `date_opened` datetime DEFAULT NULL,
-  `subject` longtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `subject` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3170,7 +2926,6 @@ CREATE TABLE `tbltwocheckout_log` (
   `invoice_id` int(11) NOT NULL,
   `amount` varchar(25) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
   `attempt_reference` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -3186,9 +2941,7 @@ CREATE TABLE `tbluser_auto_login` (
   `user_agent` varchar(150) NOT NULL,
   `last_ip` varchar(40) NOT NULL,
   `last_login` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `staff` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `staff` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3203,9 +2956,7 @@ CREATE TABLE `tbluser_meta` (
   `client_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `contact_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `meta_key` varchar(191) DEFAULT NULL,
-  `meta_value` longtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `meta_value` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3228,9 +2979,7 @@ CREATE TABLE `tblvault` (
   `share_in_projects` tinyint(1) NOT NULL DEFAULT 0,
   `last_updated` datetime DEFAULT NULL,
   `last_updated_from` varchar(100) DEFAULT NULL,
-  `date_created` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3244,9 +2993,7 @@ CREATE TABLE `tblviews_tracking` (
   `rel_id` int(11) NOT NULL,
   `rel_type` varchar(40) NOT NULL,
   `date` datetime NOT NULL,
-  `view_ip` varchar(40) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `view_ip` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3280,9 +3027,7 @@ CREATE TABLE `tblweb_to_lead` (
   `track_duplicate_field` varchar(20) DEFAULT NULL,
   `track_duplicate_field_and` varchar(20) DEFAULT NULL,
   `create_task_on_duplicate` int(11) NOT NULL DEFAULT 0,
-  `dateadded` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dateadded` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -4087,7 +3832,7 @@ ALTER TABLE `tblweb_to_lead`
 -- AUTO_INCREMENT for table `tblactivity_log`
 --
 ALTER TABLE `tblactivity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblannouncements`
@@ -4579,7 +4324,7 @@ ALTER TABLE `tblspam_filters`
 -- AUTO_INCREMENT for table `tblstaff`
 --
 ALTER TABLE `tblstaff`
-  MODIFY `staffid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `staffid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblstaff_departments`
