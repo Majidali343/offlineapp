@@ -195,6 +195,8 @@ CREATE TABLE `tblcontact_permissions` (
   `id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL,
   `userid` int(11) NOT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -232,6 +234,8 @@ CREATE TABLE `tblcontracts` (
   `last_sent_at` datetime DEFAULT NULL,
   `contacts_sent_to` mediumtext DEFAULT NULL,
   `last_sign_reminder_at` datetime DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -302,6 +306,8 @@ CREATE TABLE `tblcountries` (
   `un_member` varchar(12) DEFAULT NULL,
   `calling_code` varchar(8) DEFAULT NULL,
   `cctld` varchar(5) DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -622,6 +628,7 @@ CREATE TABLE `tblcreditnote_refunds` (
   `note` mediumtext DEFAULT NULL,
   `amount` decimal(15,2) NOT NULL,
   `created_at` datetime DEFAULT NULL
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -638,6 +645,8 @@ CREATE TABLE `tblcredits` (
   `date` date NOT NULL,
   `date_applied` datetime NOT NULL,
   `amount` decimal(15,2) NOT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -675,6 +684,8 @@ INSERT INTO `tblcurrencies` (`id`, `symbol`, `name`, `decimal_separator`, `thous
 CREATE TABLE `tblcustomers_groups` (
   `id` int(11) NOT NULL,
   `name` varchar(191) NOT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1388,6 +1399,8 @@ CREATE TABLE `tblitems` (
 CREATE TABLE `tblitems_groups` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2191,6 +2204,7 @@ CREATE TABLE `tblpayment_attempts` (
   `fee` double NOT NULL,
   `payment_gateway` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2948,6 +2962,8 @@ CREATE TABLE `tbltemplates` (
   `type` varchar(100) NOT NULL,
   `addedfrom` int(11) NOT NULL,
   `content` longtext DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3154,6 +3170,7 @@ CREATE TABLE `tbltwocheckout_log` (
   `invoice_id` int(11) NOT NULL,
   `amount` varchar(25) NOT NULL,
   `created_at` datetime NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
   `attempt_reference` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
