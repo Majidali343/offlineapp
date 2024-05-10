@@ -7,6 +7,9 @@ class Migration_Version_101 extends CI_Migration
     {
         parent::__construct();
     }
+    // ALTER TABLE your_table
+    // ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    // ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
     public function up()
     {

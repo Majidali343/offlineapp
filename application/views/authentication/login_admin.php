@@ -1,16 +1,16 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <?php $this->load->view('authentication/includes/head.php'); ?>
 <script>
-       function checkOnlineStatus() {
-            var onlineUrl = 'https://google.com';
+    //    function checkOnlineStatus() {
+    //         var onlineUrl = 'https://google.com';
 
-            // Check if the browser is online
-            if (navigator.onLine) {
-                // Redirect to online URL
-                window.location.href = onlineUrl;
-            } 
-        }
-        checkOnlineStatus();
+    //         // Check if the browser is online
+    //         if (navigator.onLine) {
+    //             // Redirect to online URL
+    //             window.location.href = onlineUrl;
+    //         } 
+    //     }
+    //     checkOnlineStatus();
 </script>
     
 <body class="tw-bg-neutral-100 login_admin">
