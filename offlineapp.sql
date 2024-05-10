@@ -33,7 +33,7 @@ CREATE TABLE `tblactivity_log` (
   `date` datetime NOT NULL,
   `staffid` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -194,7 +194,7 @@ CREATE TABLE `tblcontacts` (
 CREATE TABLE `tblcontact_permissions` (
   `id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL,
-  `userid` int(11) NOT NULL
+  `userid` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -233,7 +233,7 @@ CREATE TABLE `tblcontracts` (
   `short_link` varchar(100) DEFAULT NULL,
   `last_sent_at` datetime DEFAULT NULL,
   `contacts_sent_to` mediumtext DEFAULT NULL,
-  `last_sign_reminder_at` datetime DEFAULT NULL
+  `last_sign_reminder_at` datetime DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1398,7 +1398,7 @@ CREATE TABLE `tblitems` (
 
 CREATE TABLE `tblitems_groups` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2961,7 +2961,7 @@ CREATE TABLE `tbltemplates` (
   `name` varchar(255) NOT NULL,
   `type` varchar(100) NOT NULL,
   `addedfrom` int(11) NOT NULL,
-  `content` longtext DEFAULT NULL
+  `content` longtext DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
