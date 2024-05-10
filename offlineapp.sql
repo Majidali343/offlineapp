@@ -31,7 +31,9 @@ CREATE TABLE `tblactivity_log` (
   `id` int(11) NOT NULL,
   `description` longtext NOT NULL,
   `date` datetime NOT NULL,
-  `staffid` varchar(100) DEFAULT NULL
+  `staffid` varchar(100) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -55,7 +57,9 @@ CREATE TABLE `tblannouncements` (
   `showtostaff` int(11) NOT NULL,
   `showname` int(11) NOT NULL,
   `dateadded` datetime NOT NULL,
-  `userid` varchar(100) NOT NULL
+  `userid` varchar(100) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -95,7 +99,9 @@ CREATE TABLE `tblclients` (
   `show_primary_contact` int(11) NOT NULL DEFAULT 0,
   `stripe_id` varchar(40) DEFAULT NULL,
   `registration_confirmed` int(11) NOT NULL DEFAULT 1,
-  `addedfrom` int(11) NOT NULL DEFAULT 0
+  `addedfrom` int(11) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -114,7 +120,9 @@ CREATE TABLE `tblconsents` (
   `description` mediumtext DEFAULT NULL,
   `opt_in_purpose_description` mediumtext DEFAULT NULL,
   `purpose_id` int(11) NOT NULL,
-  `staff_name` varchar(100) DEFAULT NULL
+  `staff_name` varchar(100) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -128,7 +136,9 @@ CREATE TABLE `tblconsent_purposes` (
   `name` varchar(100) NOT NULL,
   `description` mediumtext DEFAULT NULL,
   `date_created` datetime NOT NULL,
-  `last_updated` datetime DEFAULT NULL
+  `last_updated` datetime DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -165,7 +175,9 @@ CREATE TABLE `tblcontacts` (
   `contract_emails` tinyint(1) NOT NULL DEFAULT 1,
   `task_emails` tinyint(1) NOT NULL DEFAULT 1,
   `project_emails` tinyint(1) NOT NULL DEFAULT 1,
-  `ticket_emails` tinyint(1) NOT NULL DEFAULT 1
+  `ticket_emails` tinyint(1) NOT NULL DEFAULT 1,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -177,7 +189,9 @@ CREATE TABLE `tblcontacts` (
 CREATE TABLE `tblcontact_permissions` (
   `id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL,
-  `userid` int(11) NOT NULL
+  `userid` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -214,7 +228,9 @@ CREATE TABLE `tblcontracts` (
   `short_link` varchar(100) DEFAULT NULL,
   `last_sent_at` datetime DEFAULT NULL,
   `contacts_sent_to` mediumtext DEFAULT NULL,
-  `last_sign_reminder_at` datetime DEFAULT NULL
+  `last_sign_reminder_at` datetime DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -225,7 +241,9 @@ CREATE TABLE `tblcontracts` (
 
 CREATE TABLE `tblcontracts_types` (
   `id` int(11) NOT NULL,
-  `name` longtext NOT NULL
+  `name` longtext NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -239,7 +257,9 @@ CREATE TABLE `tblcontract_comments` (
   `content` longtext DEFAULT NULL,
   `contract_id` int(11) NOT NULL,
   `staffid` int(11) NOT NULL,
-  `dateadded` datetime NOT NULL
+  `dateadded` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -260,7 +280,9 @@ CREATE TABLE `tblcontract_renewals` (
   `date_renewed` datetime NOT NULL,
   `renewed_by` varchar(100) NOT NULL,
   `renewed_by_staff_id` int(11) NOT NULL DEFAULT 0,
-  `is_on_old_expiry_notified` int(11) DEFAULT 0
+  `is_on_old_expiry_notified` int(11) DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -278,7 +300,9 @@ CREATE TABLE `tblcountries` (
   `numcode` varchar(6) DEFAULT NULL,
   `un_member` varchar(12) DEFAULT NULL,
   `calling_code` varchar(8) DEFAULT NULL,
-  `cctld` varchar(5) DEFAULT NULL
+  `cctld` varchar(5) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -579,7 +603,9 @@ CREATE TABLE `tblcreditnotes` (
   `include_shipping` tinyint(1) NOT NULL,
   `show_shipping_on_credit_note` tinyint(1) NOT NULL DEFAULT 1,
   `show_quantity_as` int(11) NOT NULL DEFAULT 1,
-  `reference_no` varchar(100) DEFAULT NULL
+  `reference_no` varchar(100) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -596,7 +622,8 @@ CREATE TABLE `tblcreditnote_refunds` (
   `payment_mode` varchar(40) NOT NULL,
   `note` mediumtext DEFAULT NULL,
   `amount` decimal(15,2) NOT NULL,
-  `created_at` datetime DEFAULT NULL
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -612,7 +639,9 @@ CREATE TABLE `tblcredits` (
   `staff_id` int(11) NOT NULL,
   `date` date NOT NULL,
   `date_applied` datetime NOT NULL,
-  `amount` decimal(15,2) NOT NULL
+  `amount` decimal(15,2) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -628,7 +657,9 @@ CREATE TABLE `tblcurrencies` (
   `decimal_separator` varchar(5) DEFAULT NULL,
   `thousand_separator` varchar(5) DEFAULT NULL,
   `placement` varchar(10) DEFAULT NULL,
-  `isdefault` tinyint(1) NOT NULL DEFAULT 0
+  `isdefault` tinyint(1) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -647,7 +678,9 @@ INSERT INTO `tblcurrencies` (`id`, `symbol`, `name`, `decimal_separator`, `thous
 
 CREATE TABLE `tblcustomers_groups` (
   `id` int(11) NOT NULL,
-  `name` varchar(191) NOT NULL
+  `name` varchar(191) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -659,7 +692,9 @@ CREATE TABLE `tblcustomers_groups` (
 CREATE TABLE `tblcustomer_admins` (
   `staff_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `date_assigned` mediumtext NOT NULL
+  `date_assigned` mediumtext NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -671,7 +706,9 @@ CREATE TABLE `tblcustomer_admins` (
 CREATE TABLE `tblcustomer_groups` (
   `id` int(11) NOT NULL,
   `groupid` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL
+  `customer_id` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -698,7 +735,9 @@ CREATE TABLE `tblcustomfields` (
   `show_on_client_portal` int(11) NOT NULL DEFAULT 0,
   `disalow_client_to_edit` int(11) NOT NULL DEFAULT 0,
   `bs_column` int(11) NOT NULL DEFAULT 12,
-  `default_value` mediumtext DEFAULT NULL
+  `default_value` mediumtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -712,7 +751,9 @@ CREATE TABLE `tblcustomfieldsvalues` (
   `relid` int(11) NOT NULL,
   `fieldid` int(11) NOT NULL,
   `fieldto` varchar(15) NOT NULL,
-  `value` mediumtext NOT NULL
+  `value` mediumtext NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -733,7 +774,9 @@ CREATE TABLE `tbldepartments` (
   `folder` varchar(191) NOT NULL DEFAULT 'INBOX',
   `delete_after_import` int(11) NOT NULL DEFAULT 0,
   `calendar_id` longtext DEFAULT NULL,
-  `hidefromclient` tinyint(1) NOT NULL DEFAULT 0
+  `hidefromclient` tinyint(1) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -746,7 +789,9 @@ CREATE TABLE `tbldismissed_announcements` (
   `dismissedannouncementid` int(11) NOT NULL,
   `announcementid` int(11) NOT NULL,
   `staff` int(11) NOT NULL,
-  `userid` int(11) NOT NULL
+  `userid` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -767,7 +812,9 @@ CREATE TABLE `tblemailtemplates` (
   `fromemail` varchar(100) DEFAULT NULL,
   `plaintext` int(11) NOT NULL DEFAULT 0,
   `active` tinyint(4) NOT NULL DEFAULT 0,
-  `order` int(11) NOT NULL
+  `order` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -917,7 +964,9 @@ CREATE TABLE `tblestimates` (
   `acceptance_date` datetime DEFAULT NULL,
   `acceptance_ip` varchar(40) DEFAULT NULL,
   `signature` varchar(40) DEFAULT NULL,
-  `short_link` varchar(100) DEFAULT NULL
+  `short_link` varchar(100) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -936,7 +985,9 @@ CREATE TABLE `tblestimate_requests` (
   `assigned` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `default_language` int(11) NOT NULL,
-  `date_added` datetime NOT NULL
+  `date_added` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -978,7 +1029,9 @@ CREATE TABLE `tblestimate_request_status` (
   `name` varchar(50) NOT NULL,
   `statusorder` int(11) DEFAULT NULL,
   `color` varchar(10) DEFAULT NULL,
-  `flag` varchar(30) DEFAULT NULL
+  `flag` varchar(30) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1007,7 +1060,9 @@ CREATE TABLE `tblevents` (
   `color` varchar(10) DEFAULT NULL,
   `isstartnotified` tinyint(1) NOT NULL DEFAULT 0,
   `reminder_before` int(11) NOT NULL DEFAULT 0,
-  `reminder_before_type` varchar(10) DEFAULT NULL
+  `reminder_before_type` varchar(10) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1043,7 +1098,9 @@ CREATE TABLE `tblexpenses` (
   `send_invoice_to_customer` tinyint(1) NOT NULL,
   `recurring_from` int(11) DEFAULT NULL,
   `dateadded` datetime NOT NULL,
-  `addedfrom` int(11) NOT NULL
+  `addedfrom` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1055,7 +1112,9 @@ CREATE TABLE `tblexpenses` (
 CREATE TABLE `tblexpenses_categories` (
   `id` int(11) NOT NULL,
   `name` varchar(191) NOT NULL,
-  `description` mediumtext DEFAULT NULL
+  `description` mediumtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1078,7 +1137,9 @@ CREATE TABLE `tblfiles` (
   `staffid` int(11) NOT NULL,
   `contact_id` int(11) DEFAULT 0,
   `task_comment_id` int(11) NOT NULL DEFAULT 0,
-  `dateadded` datetime NOT NULL
+  `dateadded` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1093,7 +1154,9 @@ CREATE TABLE `tblfilters` (
   `builder` mediumtext NOT NULL,
   `staff_id` int(10) UNSIGNED NOT NULL,
   `identifier` varchar(191) NOT NULL,
-  `is_shared` tinyint(3) UNSIGNED NOT NULL DEFAULT 0
+  `is_shared` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1106,7 +1169,9 @@ CREATE TABLE `tblfilter_defaults` (
   `filter_id` int(10) UNSIGNED NOT NULL,
   `staff_id` int(11) NOT NULL,
   `identifier` varchar(191) NOT NULL,
-  `view` varchar(191) NOT NULL
+  `view` varchar(191) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1121,7 +1186,9 @@ CREATE TABLE `tblform_questions` (
   `rel_type` varchar(20) DEFAULT NULL,
   `question` longtext NOT NULL,
   `required` tinyint(1) NOT NULL DEFAULT 0,
-  `question_order` int(11) NOT NULL
+  `question_order` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1133,7 +1200,9 @@ CREATE TABLE `tblform_questions` (
 CREATE TABLE `tblform_question_box` (
   `boxid` int(11) NOT NULL,
   `boxtype` varchar(10) NOT NULL,
-  `questionid` int(11) NOT NULL
+  `questionid` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1146,7 +1215,9 @@ CREATE TABLE `tblform_question_box_description` (
   `questionboxdescriptionid` int(11) NOT NULL,
   `description` longtext NOT NULL,
   `boxid` longtext NOT NULL,
-  `questionid` int(11) NOT NULL
+  `questionid` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1163,7 +1234,9 @@ CREATE TABLE `tblform_results` (
   `rel_type` varchar(20) DEFAULT NULL,
   `questionid` int(11) NOT NULL,
   `answer` mediumtext DEFAULT NULL,
-  `resultsetid` int(11) NOT NULL
+  `resultsetid` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1181,7 +1254,9 @@ CREATE TABLE `tblgdpr_requests` (
   `status` varchar(40) DEFAULT NULL,
   `request_date` datetime NOT NULL,
   `request_from` varchar(150) DEFAULT NULL,
-  `description` mediumtext DEFAULT NULL
+  `description` mediumtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1199,7 +1274,9 @@ CREATE TABLE `tblinvoicepaymentrecords` (
   `date` date NOT NULL,
   `daterecorded` datetime NOT NULL,
   `note` mediumtext DEFAULT NULL,
-  `transactionid` longtext DEFAULT NULL
+  `transactionid` longtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1262,7 +1339,9 @@ CREATE TABLE `tblinvoices` (
   `show_quantity_as` int(11) NOT NULL DEFAULT 1,
   `project_id` int(11) DEFAULT 0,
   `subscription_id` int(11) NOT NULL DEFAULT 0,
-  `short_link` varchar(100) DEFAULT NULL
+  `short_link` varchar(100) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1280,7 +1359,9 @@ CREATE TABLE `tblitemable` (
   `qty` decimal(15,2) NOT NULL,
   `rate` decimal(15,2) NOT NULL,
   `unit` varchar(40) DEFAULT NULL,
-  `item_order` int(11) DEFAULT NULL
+  `item_order` int(11) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1297,7 +1378,9 @@ CREATE TABLE `tblitems` (
   `tax` int(11) DEFAULT NULL,
   `tax2` int(11) DEFAULT NULL,
   `unit` varchar(40) DEFAULT NULL,
-  `group_id` int(11) NOT NULL DEFAULT 0
+  `group_id` int(11) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1308,7 +1391,9 @@ CREATE TABLE `tblitems` (
 
 CREATE TABLE `tblitems_groups` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1323,7 +1408,9 @@ CREATE TABLE `tblitem_tax` (
   `rel_id` int(11) NOT NULL,
   `rel_type` varchar(20) NOT NULL,
   `taxrate` decimal(15,2) NOT NULL,
-  `taxname` varchar(100) NOT NULL
+  `taxname` varchar(100) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1337,7 +1424,9 @@ CREATE TABLE `tblknowedge_base_article_feedback` (
   `articleid` int(11) NOT NULL,
   `answer` int(11) NOT NULL,
   `ip` varchar(40) NOT NULL,
-  `date` datetime NOT NULL
+  `date` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1355,7 +1444,9 @@ CREATE TABLE `tblknowledge_base` (
   `active` tinyint(4) NOT NULL,
   `datecreated` datetime NOT NULL,
   `article_order` int(11) NOT NULL DEFAULT 0,
-  `staff_article` int(11) NOT NULL DEFAULT 0
+  `staff_article` int(11) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1371,7 +1462,9 @@ CREATE TABLE `tblknowledge_base_groups` (
   `description` longtext DEFAULT NULL,
   `active` tinyint(4) NOT NULL,
   `color` varchar(10) DEFAULT '#28B8DA',
-  `group_order` int(11) DEFAULT 0
+  `group_order` int(11) DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1414,7 +1507,9 @@ CREATE TABLE `tblleads` (
   `is_public` tinyint(1) NOT NULL DEFAULT 0,
   `default_language` varchar(40) DEFAULT NULL,
   `client_id` int(11) NOT NULL DEFAULT 0,
-  `lead_value` decimal(15,2) DEFAULT NULL
+  `lead_value` decimal(15,2) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1443,7 +1538,9 @@ CREATE TABLE `tblleads_email_integration` (
   `mark_public` int(11) NOT NULL DEFAULT 0,
   `only_loop_on_unseen_emails` tinyint(1) NOT NULL DEFAULT 1,
   `delete_after_import` int(11) NOT NULL DEFAULT 0,
-  `create_task_if_customer` int(11) NOT NULL DEFAULT 0
+  `create_task_if_customer` int(11) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1461,7 +1558,9 @@ INSERT INTO `tblleads_email_integration` (`id`, `active`, `email`, `imap_server`
 
 CREATE TABLE `tblleads_sources` (
   `id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL
+  `name` varchar(150) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1483,7 +1582,9 @@ CREATE TABLE `tblleads_status` (
   `name` varchar(50) NOT NULL,
   `statusorder` int(11) DEFAULT NULL,
   `color` varchar(10) DEFAULT '#28B8DA',
-  `isdefault` int(11) NOT NULL DEFAULT 0
+  `isdefault` int(11) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1507,7 +1608,9 @@ CREATE TABLE `tbllead_activity_log` (
   `date` datetime NOT NULL,
   `staffid` int(11) NOT NULL,
   `full_name` varchar(100) DEFAULT NULL,
-  `custom_activity` tinyint(1) NOT NULL DEFAULT 0
+  `custom_activity` tinyint(1) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1522,7 +1625,9 @@ CREATE TABLE `tbllead_integration_emails` (
   `body` longtext DEFAULT NULL,
   `dateadded` datetime NOT NULL,
   `leadid` int(11) NOT NULL,
-  `emailid` int(11) NOT NULL
+  `emailid` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1542,7 +1647,9 @@ CREATE TABLE `tblmail_queue` (
   `status` enum('pending','sending','sent','failed') DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `headers` mediumtext DEFAULT NULL,
-  `attachments` longtext DEFAULT NULL
+  `attachments` longtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1552,7 +1659,9 @@ CREATE TABLE `tblmail_queue` (
 --
 
 CREATE TABLE `tblmigrations` (
-  `version` bigint(20) NOT NULL
+  `version` bigint(20) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1579,7 +1688,9 @@ CREATE TABLE `tblmilestones` (
   `color` varchar(10) DEFAULT NULL,
   `milestone_order` int(11) NOT NULL DEFAULT 0,
   `datecreated` date NOT NULL,
-  `hide_from_customer` int(11) DEFAULT 0
+  `hide_from_customer` int(11) DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1592,7 +1703,9 @@ CREATE TABLE `tblmodules` (
   `id` int(11) NOT NULL,
   `module_name` varchar(55) NOT NULL,
   `installed_version` varchar(11) NOT NULL,
-  `active` tinyint(1) NOT NULL
+  `active` tinyint(1) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1606,7 +1719,9 @@ CREATE TABLE `tblnewsfeed_comment_likes` (
   `postid` int(11) NOT NULL,
   `commentid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
-  `dateliked` datetime NOT NULL
+  `dateliked` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1622,7 +1737,9 @@ CREATE TABLE `tblnewsfeed_posts` (
   `visibility` varchar(100) NOT NULL,
   `content` mediumtext NOT NULL,
   `pinned` int(11) NOT NULL,
-  `datepinned` datetime DEFAULT NULL
+  `datepinned` datetime DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1636,7 +1753,9 @@ CREATE TABLE `tblnewsfeed_post_comments` (
   `content` mediumtext DEFAULT NULL,
   `userid` int(11) NOT NULL,
   `postid` int(11) NOT NULL,
-  `dateadded` datetime NOT NULL
+  `dateadded` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1649,7 +1768,9 @@ CREATE TABLE `tblnewsfeed_post_likes` (
   `id` int(11) NOT NULL,
   `postid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
-  `dateliked` datetime NOT NULL
+  `dateliked` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1665,7 +1786,9 @@ CREATE TABLE `tblnotes` (
   `description` mediumtext DEFAULT NULL,
   `date_contacted` datetime DEFAULT NULL,
   `addedfrom` int(11) NOT NULL,
-  `dateadded` datetime NOT NULL
+  `dateadded` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1686,7 +1809,9 @@ CREATE TABLE `tblnotifications` (
   `touserid` int(11) NOT NULL,
   `fromcompany` int(11) DEFAULT NULL,
   `link` longtext DEFAULT NULL,
-  `additional_data` mediumtext DEFAULT NULL
+  `additional_data` mediumtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1699,7 +1824,9 @@ CREATE TABLE `tbloptions` (
   `id` int(11) NOT NULL,
   `name` varchar(191) NOT NULL,
   `value` longtext NOT NULL,
-  `autoload` tinyint(1) NOT NULL DEFAULT 1
+  `autoload` tinyint(1) NOT NULL DEFAULT 1,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2069,7 +2196,8 @@ CREATE TABLE `tblpayment_attempts` (
   `amount` double NOT NULL,
   `fee` double NOT NULL,
   `payment_gateway` varchar(100) NOT NULL,
-  `created_at` datetime NOT NULL
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2086,7 +2214,9 @@ CREATE TABLE `tblpayment_modes` (
   `invoices_only` int(11) NOT NULL DEFAULT 0,
   `expenses_only` int(11) NOT NULL DEFAULT 0,
   `selected_by_default` int(11) NOT NULL DEFAULT 1,
-  `active` tinyint(1) NOT NULL DEFAULT 1
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2105,7 +2235,9 @@ INSERT INTO `tblpayment_modes` (`id`, `name`, `description`, `show_on_pdf`, `inv
 CREATE TABLE `tblpinned_projects` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL
+  `staff_id` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2126,7 +2258,9 @@ CREATE TABLE `tblprojectdiscussioncomments` (
   `contact_id` int(11) DEFAULT 0,
   `fullname` varchar(191) DEFAULT NULL,
   `file_name` varchar(191) DEFAULT NULL,
-  `file_mime_type` varchar(70) DEFAULT NULL
+  `file_mime_type` varchar(70) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2144,7 +2278,9 @@ CREATE TABLE `tblprojectdiscussions` (
   `datecreated` datetime NOT NULL,
   `last_activity` datetime DEFAULT NULL,
   `staff_id` int(11) NOT NULL DEFAULT 0,
-  `contact_id` int(11) NOT NULL DEFAULT 0
+  `contact_id` int(11) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2171,7 +2307,9 @@ CREATE TABLE `tblprojects` (
   `estimated_hours` decimal(15,2) DEFAULT NULL,
   `addedfrom` int(11) NOT NULL,
   `contact_notification` int(11) DEFAULT 1,
-  `notify_contacts` mediumtext DEFAULT NULL
+  `notify_contacts` mediumtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2189,7 +2327,9 @@ CREATE TABLE `tblproject_activity` (
   `visible_to_customer` int(11) NOT NULL DEFAULT 0,
   `description_key` varchar(191) NOT NULL COMMENT 'Language file key',
   `additional_data` mediumtext DEFAULT NULL,
-  `dateadded` datetime NOT NULL
+  `dateadded` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2213,7 +2353,9 @@ CREATE TABLE `tblproject_files` (
   `contact_id` int(11) NOT NULL DEFAULT 0,
   `external` varchar(40) DEFAULT NULL,
   `external_link` mediumtext DEFAULT NULL,
-  `thumbnail_link` mediumtext DEFAULT NULL
+  `thumbnail_link` mediumtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2225,7 +2367,9 @@ CREATE TABLE `tblproject_files` (
 CREATE TABLE `tblproject_members` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL
+  `staff_id` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2238,7 +2382,9 @@ CREATE TABLE `tblproject_notes` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
   `content` mediumtext NOT NULL,
-  `staff_id` int(11) NOT NULL
+  `staff_id` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2251,7 +2397,9 @@ CREATE TABLE `tblproject_settings` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `value` mediumtext DEFAULT NULL
+  `value` mediumtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2303,7 +2451,9 @@ CREATE TABLE `tblproposals` (
   `acceptance_date` datetime DEFAULT NULL,
   `acceptance_ip` varchar(40) DEFAULT NULL,
   `signature` varchar(40) DEFAULT NULL,
-  `short_link` varchar(100) DEFAULT NULL
+  `short_link` varchar(100) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2317,7 +2467,9 @@ CREATE TABLE `tblproposal_comments` (
   `content` longtext DEFAULT NULL,
   `proposalid` int(11) NOT NULL,
   `staffid` int(11) NOT NULL,
-  `dateadded` datetime NOT NULL
+  `dateadded` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2330,7 +2482,9 @@ CREATE TABLE `tblrelated_items` (
   `id` int(11) NOT NULL,
   `rel_id` int(11) NOT NULL,
   `rel_type` varchar(30) NOT NULL,
-  `item_id` int(11) NOT NULL
+  `item_id` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2348,7 +2502,9 @@ CREATE TABLE `tblreminders` (
   `staff` int(11) NOT NULL,
   `rel_type` varchar(40) NOT NULL,
   `notify_by_email` int(11) NOT NULL DEFAULT 1,
-  `creator` int(11) NOT NULL
+  `creator` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2360,7 +2516,9 @@ CREATE TABLE `tblreminders` (
 CREATE TABLE `tblroles` (
   `roleid` int(11) NOT NULL,
   `name` varchar(150) NOT NULL,
-  `permissions` longtext DEFAULT NULL
+  `permissions` longtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2384,7 +2542,9 @@ CREATE TABLE `tblsales_activity` (
   `additional_data` mediumtext DEFAULT NULL,
   `staffid` varchar(11) DEFAULT NULL,
   `full_name` varchar(100) DEFAULT NULL,
-  `date` datetime NOT NULL
+  `date` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2401,7 +2561,9 @@ CREATE TABLE `tblscheduled_emails` (
   `contacts` varchar(197) NOT NULL,
   `cc` mediumtext DEFAULT NULL,
   `attach_pdf` tinyint(1) NOT NULL DEFAULT 1,
-  `template` varchar(197) NOT NULL
+  `template` varchar(197) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2412,7 +2574,9 @@ CREATE TABLE `tblscheduled_emails` (
 
 CREATE TABLE `tblservices` (
   `serviceid` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2425,7 +2589,9 @@ CREATE TABLE `tblsessions` (
   `id` varchar(128) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `data` blob NOT NULL
+  `data` blob NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2443,7 +2609,9 @@ INSERT INTO `tblsessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 
 CREATE TABLE `tblshared_customer_files` (
   `file_id` int(11) NOT NULL,
-  `contact_id` int(11) NOT NULL
+  `contact_id` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2456,7 +2624,9 @@ CREATE TABLE `tblspam_filters` (
   `id` int(11) NOT NULL,
   `type` varchar(40) NOT NULL,
   `rel_type` varchar(10) NOT NULL,
-  `value` mediumtext NOT NULL
+  `value` mediumtext NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2495,7 +2665,9 @@ CREATE TABLE `tblstaff` (
   `two_factor_auth_code` varchar(100) DEFAULT NULL,
   `two_factor_auth_code_requested` datetime DEFAULT NULL,
   `email_signature` mediumtext DEFAULT NULL,
-  `google_auth_secret` mediumtext DEFAULT NULL
+  `google_auth_secret` mediumtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2514,7 +2686,9 @@ INSERT INTO `tblstaff` (`staffid`, `email`, `firstname`, `lastname`, `facebook`,
 CREATE TABLE `tblstaff_departments` (
   `staffdepartmentid` int(11) NOT NULL,
   `staffid` int(11) NOT NULL,
-  `departmentid` int(11) NOT NULL
+  `departmentid` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2526,7 +2700,9 @@ CREATE TABLE `tblstaff_departments` (
 CREATE TABLE `tblstaff_permissions` (
   `staff_id` int(11) NOT NULL,
   `feature` varchar(40) NOT NULL,
-  `capability` varchar(100) NOT NULL
+  `capability` varchar(100) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2560,7 +2736,9 @@ CREATE TABLE `tblsubscriptions` (
   `created_from` int(11) NOT NULL,
   `date_subscribed` datetime DEFAULT NULL,
   `in_test_environment` int(11) DEFAULT NULL,
-  `last_sent_at` datetime DEFAULT NULL
+  `last_sent_at` datetime DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2573,7 +2751,9 @@ CREATE TABLE `tbltaggables` (
   `rel_id` int(11) NOT NULL,
   `rel_type` varchar(20) NOT NULL,
   `tag_id` int(11) NOT NULL,
-  `tag_order` int(11) NOT NULL DEFAULT 0
+  `tag_order` int(11) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2624,7 +2804,9 @@ CREATE TABLE `tbltasks` (
   `kanban_order` int(11) DEFAULT 1,
   `milestone_order` int(11) NOT NULL DEFAULT 0,
   `visible_to_client` tinyint(1) NOT NULL DEFAULT 0,
-  `deadline_notified` int(11) NOT NULL DEFAULT 0
+  `deadline_notified` int(11) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2640,7 +2822,9 @@ CREATE TABLE `tbltaskstimers` (
   `end_time` varchar(64) DEFAULT NULL,
   `staff_id` int(11) NOT NULL,
   `hourly_rate` decimal(15,2) NOT NULL DEFAULT 0.00,
-  `note` mediumtext DEFAULT NULL
+  `note` mediumtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2651,7 +2835,9 @@ CREATE TABLE `tbltaskstimers` (
 
 CREATE TABLE `tbltasks_checklist_templates` (
   `id` int(11) NOT NULL,
-  `description` mediumtext DEFAULT NULL
+  `description` mediumtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2665,7 +2851,9 @@ CREATE TABLE `tbltask_assigned` (
   `staffid` int(11) NOT NULL,
   `taskid` int(11) NOT NULL,
   `assigned_from` int(11) NOT NULL DEFAULT 0,
-  `is_assigned_from_contact` tinyint(1) NOT NULL DEFAULT 0
+  `is_assigned_from_contact` tinyint(1) NOT NULL DEFAULT 0,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2683,7 +2871,9 @@ CREATE TABLE `tbltask_checklist_items` (
   `addedfrom` int(11) NOT NULL,
   `finished_from` int(11) DEFAULT 0,
   `list_order` int(11) NOT NULL DEFAULT 0,
-  `assigned` int(11) DEFAULT NULL
+  `assigned` int(11) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2699,7 +2889,9 @@ CREATE TABLE `tbltask_comments` (
   `staffid` int(11) NOT NULL,
   `contact_id` int(11) NOT NULL DEFAULT 0,
   `file_id` int(11) NOT NULL DEFAULT 0,
-  `dateadded` datetime NOT NULL
+  `dateadded` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2711,7 +2903,9 @@ CREATE TABLE `tbltask_comments` (
 CREATE TABLE `tbltask_followers` (
   `id` int(11) NOT NULL,
   `staffid` int(11) NOT NULL,
-  `taskid` int(11) NOT NULL
+  `taskid` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2723,7 +2917,9 @@ CREATE TABLE `tbltask_followers` (
 CREATE TABLE `tbltaxes` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `taxrate` decimal(15,2) NOT NULL
+  `taxrate` decimal(15,2) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2737,7 +2933,9 @@ CREATE TABLE `tbltemplates` (
   `name` varchar(255) NOT NULL,
   `type` varchar(100) NOT NULL,
   `addedfrom` int(11) NOT NULL,
-  `content` longtext DEFAULT NULL
+  `content` longtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2769,7 +2967,9 @@ CREATE TABLE `tbltickets` (
   `adminread` int(11) NOT NULL DEFAULT 0,
   `assigned` int(11) NOT NULL DEFAULT 0,
   `staff_id_replying` int(11) DEFAULT NULL,
-  `cc` varchar(191) DEFAULT NULL
+  `cc` varchar(191) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2786,7 +2986,9 @@ CREATE TABLE `tbltickets_pipe_log` (
   `subject` varchar(191) NOT NULL,
   `message` longtext NOT NULL,
   `email` varchar(100) NOT NULL,
-  `status` varchar(100) NOT NULL
+  `status` varchar(100) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2798,7 +3000,9 @@ CREATE TABLE `tbltickets_pipe_log` (
 CREATE TABLE `tbltickets_predefined_replies` (
   `id` int(11) NOT NULL,
   `name` varchar(191) NOT NULL,
-  `message` mediumtext NOT NULL
+  `message` mediumtext NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2809,7 +3013,9 @@ CREATE TABLE `tbltickets_predefined_replies` (
 
 CREATE TABLE `tbltickets_priorities` (
   `priorityid` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2832,7 +3038,9 @@ CREATE TABLE `tbltickets_status` (
   `name` varchar(50) NOT NULL,
   `isdefault` int(11) NOT NULL DEFAULT 0,
   `statuscolor` varchar(7) DEFAULT NULL,
-  `statusorder` int(11) DEFAULT NULL
+  `statusorder` int(11) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2858,7 +3066,9 @@ CREATE TABLE `tblticket_attachments` (
   `replyid` int(11) DEFAULT NULL,
   `file_name` varchar(191) NOT NULL,
   `filetype` varchar(50) DEFAULT NULL,
-  `dateadded` datetime NOT NULL
+  `dateadded` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2877,7 +3087,9 @@ CREATE TABLE `tblticket_replies` (
   `date` datetime NOT NULL,
   `message` mediumtext DEFAULT NULL,
   `attachment` int(11) DEFAULT NULL,
-  `admin` int(11) DEFAULT NULL
+  `admin` int(11) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2893,7 +3105,9 @@ CREATE TABLE `tbltodos` (
   `dateadded` datetime NOT NULL,
   `finished` tinyint(1) NOT NULL,
   `datefinished` datetime DEFAULT NULL,
-  `item_order` int(11) DEFAULT NULL
+  `item_order` int(11) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2911,7 +3125,9 @@ CREATE TABLE `tbltracked_mails` (
   `email` varchar(100) NOT NULL,
   `opened` tinyint(1) NOT NULL DEFAULT 0,
   `date_opened` datetime DEFAULT NULL,
-  `subject` longtext DEFAULT NULL
+  `subject` longtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2925,8 +3141,9 @@ CREATE TABLE `tbltwocheckout_log` (
   `reference` varchar(64) NOT NULL,
   `invoice_id` int(11) NOT NULL,
   `amount` varchar(25) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `attempt_reference` varchar(100) DEFAULT NULL
+  `attempt_reference` varchar(100) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2941,7 +3158,9 @@ CREATE TABLE `tbluser_auto_login` (
   `user_agent` varchar(150) NOT NULL,
   `last_ip` varchar(40) NOT NULL,
   `last_login` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `staff` int(11) NOT NULL
+  `staff` int(11) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2956,7 +3175,9 @@ CREATE TABLE `tbluser_meta` (
   `client_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `contact_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `meta_key` varchar(191) DEFAULT NULL,
-  `meta_value` longtext DEFAULT NULL
+  `meta_value` longtext DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2979,7 +3200,9 @@ CREATE TABLE `tblvault` (
   `share_in_projects` tinyint(1) NOT NULL DEFAULT 0,
   `last_updated` datetime DEFAULT NULL,
   `last_updated_from` varchar(100) DEFAULT NULL,
-  `date_created` datetime NOT NULL
+  `date_created` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2993,7 +3216,9 @@ CREATE TABLE `tblviews_tracking` (
   `rel_id` int(11) NOT NULL,
   `rel_type` varchar(40) NOT NULL,
   `date` datetime NOT NULL,
-  `view_ip` varchar(40) NOT NULL
+  `view_ip` varchar(40) NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -3027,7 +3252,9 @@ CREATE TABLE `tblweb_to_lead` (
   `track_duplicate_field` varchar(20) DEFAULT NULL,
   `track_duplicate_field_and` varchar(20) DEFAULT NULL,
   `create_task_on_duplicate` int(11) NOT NULL DEFAULT 0,
-  `dateadded` datetime NOT NULL
+  `dateadded` datetime NOT NULL,
+   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
