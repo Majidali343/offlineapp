@@ -2,7 +2,7 @@
 <?php $this->load->view('authentication/includes/head.php'); ?>
 <script>
     //    function checkOnlineStatus() {
-    //         var onlineUrl = 'https://google.com';
+    //         var onlineUrl = 'https://offlinecrm.realtechcrm.online/';
 
     //         // Check if the browser is online
     //         if (navigator.onLine) {
