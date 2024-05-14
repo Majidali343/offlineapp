@@ -43,10 +43,18 @@ function syncTable($conn1, $conn2, $table) {
         if ($resultCheck->num_rows > 0) {
             $existingRow = $resultCheck->fetch_assoc();
             if ($existingRow['created_at'] != $created_at) {
-                // If record exists and created_at is different, update it
-                $updateQuery = "UPDATE $table SET $setClause WHERE `{$columns[0]}` = '$id'";
-                if (!$conn2->query($updateQuery)) {
-                    die("Error updating data in $table in database2: " . $conn2->error);
+                // If record exists and created_at is different, insert it as a new record and delete the old one
+                $columnsWithoutId = array_slice($columns, 1);
+                $valuesWithoutId = array_slice($row1, 1);
+                $columnsWithoutIdEscaped = array_map(function($col) { return "`$col`"; }, $columnsWithoutId);
+                $valuesWithoutIdEscaped = array_map([$conn2, 'real_escape_string'], $valuesWithoutId);
+                $insertQuery = "INSERT INTO $table (" . implode(", ", $columnsWithoutIdEscaped) . ") VALUES ('" . implode("', '", $valuesWithoutIdEscaped) . "')";
+                if (!$conn2->query($insertQuery)) {
+                    die("Error inserting data into $table in database2: " . $conn2->error);
+                }
+                $deleteQuery = "DELETE FROM $table WHERE `{$columns[0]}` = '$id'";
+                if (!$conn1->query($deleteQuery)) {
+                    die("Error deleting data from $table in database2: " . $conn2->error);
                 }
             }
         } else {
@@ -84,10 +92,18 @@ function syncTable($conn1, $conn2, $table) {
         if ($resultCheck->num_rows > 0) {
             $existingRow = $resultCheck->fetch_assoc();
             if ($existingRow['created_at'] != $created_at) {
-                // If record exists and created_at is different, update it
-                $updateQuery = "UPDATE $table SET $setClause WHERE `{$columns[0]}` = '$id'";
-                if (!$conn1->query($updateQuery)) {
-                    die("Error updating data in $table in database1: " . $conn1->error);
+                // If record exists and created_at is different, insert it as a new record and delete the old one
+                $columnsWithoutId = array_slice($columns, 1);
+                $valuesWithoutId = array_slice($row2, 1);
+                $columnsWithoutIdEscaped = array_map(function($col) { return "`$col`"; }, $columnsWithoutId);
+                $valuesWithoutIdEscaped = array_map([$conn1, 'real_escape_string'], $valuesWithoutId);
+                $insertQuery = "INSERT INTO $table (" . implode(", ", $columnsWithoutIdEscaped) . ") VALUES ('" . implode("', '", $valuesWithoutIdEscaped) . "')";
+                if (!$conn1->query($insertQuery)) {
+                    die("Error inserting data into $table in database1: " . $conn1->error);
+                }
+                $deleteQuery = "DELETE FROM $table WHERE `{$columns[0]}` = '$id'";
+                if (!$conn2->query($deleteQuery)) {
+                    die("Error deleting data from $table in database1: " . $conn1->error);
                 }
             }
         } else {
